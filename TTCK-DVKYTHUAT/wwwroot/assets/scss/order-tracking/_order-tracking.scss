@@ -1,0 +1,23 @@
+
+
+
+/*====  Video Start  =====*/
+
+.order-tracking-page{}
+
+
+.order-tracking-wrapper{
+    & p{
+        font-size: 14px;
+        color: $body-color;
+    }
+
+    & .single-form{
+        & .main-btn{
+            width: 160px;
+        }
+    }
+}
+
+
+

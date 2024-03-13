@@ -1,0 +1,172 @@
+
+
+
+/*====  Shop Page Start  =====*/
+
+.shop-container{
+    @media #{$desktop}{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+.shop-top-bar{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: -20px;
+    position: relative;
+    z-index: 5;
+    
+    
+    @media #{$xs}{
+        display: block;
+    }
+    @media #{$sm}{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+    }
+}
+
+.shop-top-left{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    @media #{$xs}{
+        display: block;
+    }
+    @media #{$sm}{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+    }
+
+    & p{
+        font-size: 12px;
+        color: $body-color;
+        margin-top: 10px;
+    }
+    & .show{
+        margin-left: 40px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        margin-top: 10px;
+
+        @media #{$xs}{
+            margin-left: 0;
+        }
+        @media #{$sm}{
+            margin-left: 40px;
+        }
+
+        & span{
+            font-size: 12px;
+            color: $body-color;
+            line-height: 25px;
+        }
+        & ul{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+
+            & li{
+                margin-left: 12px;
+
+                & a{
+                    font-size: 12px;
+                    color: $body-color;
+                    position: relative;
+                    padding: 3px 0;
+                    border-bottom: 1px solid transparent;                   
+
+                    &.active{
+                        border-bottom-color: $black;                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+.shop-top-right{
+    & .shop-sort{
+        margin-top: 10px;
+        position: relative;
+
+        & select{
+            height: 35px;
+            line-height: 35px;
+            padding: 0 15px;
+            padding-right: 25px;
+            border: 1px solid $border-color;
+            font-size: 12px;
+            color: $body-color;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        & i{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            @include transform(translateY(-50%));
+            font-size: 12px;
+            color: $black;
+        }
+
+        & #resizing_select {
+            width: 95px;
+        } 
+    }
+    
+}
+
+
+/*========== Shop Metro ==========*/
+
+.shop-metro-page{
+    & .row{
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+}
+
+.shop-metro{
+    & .product-image{
+        & .image{
+            padding-bottom: 70%;
+            background-size: cover;
+            background-position: top center;
+
+            @media #{$md}{
+                padding-bottom: 80%;
+            }
+            @media #{$xs}{
+                padding-bottom: 80%;
+            }
+            @media #{$sm}{
+                padding-bottom: 70%;
+            }
+        }
+    }
+}

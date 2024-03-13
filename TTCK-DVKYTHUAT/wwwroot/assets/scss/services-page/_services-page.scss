@@ -1,0 +1,155 @@
+
+
+
+/*====  Services Start  =====*/
+
+.services-title{
+    & .title{
+        font-size: 48px;
+        line-height: 50px;
+        color: $black;
+        font-family: $font-1;
+        
+        @media #{$md}{
+            font-size: 28px;
+            line-height: 42px;
+        }
+        @media #{$xs}{
+            font-size: 24px;
+            line-height: 38px;
+        }
+        @media #{$xs}{
+            font-size: 28px;
+            line-height: 42px;
+        }
+    }
+    & .signature{
+        margin-top: 20px;
+
+        @media #{$xs}{
+            width: 160px;
+        }
+    }
+    & p{
+        margin-top: 25px;
+        font-size: 14px;
+    }
+}
+
+.services-image{
+    & img{
+        width: 100%;
+    }
+}
+.services-content{
+    position: relative;
+    z-index: 5;
+    margin-left: -50px;
+
+    @media #{$xs}{
+        margin-left: 0;
+    }
+
+    & .subheading{
+        font-size: 48px;
+        line-height: 72px;
+        color: $black;
+        font-family: $font-1;
+
+        @media #{$md}{
+            font-size: 28px;
+            line-height: 42px;
+        }
+        @media #{$xs}{
+            font-size: 24px;
+            line-height: 38px;
+        }
+        @media #{$xs}{
+            font-size: 28px;
+            line-height: 42px;
+        }
+    }
+    & .name{
+        font-weight: 300;
+        font-size: 20px;
+        font-style: italic;
+        font-family: "Prata",serif;
+        font-family: $font-1;
+        position: relative;
+        padding-left: 80px;
+        margin-top: 15px;
+
+        @media #{$xs}{
+            padding-left: 50px;
+            font-size: 16px;
+        }
+
+        &::before{
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 0;
+            width: 70px;
+            height: 1px;
+            background-color: $black;
+            @include transform(translateY(-50%));
+
+            @media #{$xs}{
+                width: 40px;
+            }
+        }
+    }
+}
+
+.services-element{
+    & .services-element-content{
+        max-width: 470px;
+        margin-left: auto;
+
+        & .title{
+            font-size: 48px;
+            color: $black;
+            font-family: $font-1;
+
+            @media #{$md}{
+                font-size: 28px;
+            }
+            @media #{$xs}{
+                font-size: 24px;
+            }
+            @media #{$xs}{
+                font-size: 28px;
+                line-height: 42px;
+            }
+        }
+        & p{
+            margin-top: 15px;
+        }
+        & .main-btn{
+            margin-top: 50px;
+            border: 2px solid rgba(35,35,36,0.2);
+            background-color: transparent;
+            color: $black;
+            height: 60px;
+            line-height: 54px;
+            padding: 0 55px;
+
+            @media #{$xs}{
+                padding: 0 30px;
+                height: 46px;
+                line-height: 40px;
+            }
+
+            &:hover{
+                background-color: $theme-color;
+                border-color: $theme-color;
+                color: $white;
+            }
+        }
+    }
+    & .services-element-image{}
+}
+
+
+
+

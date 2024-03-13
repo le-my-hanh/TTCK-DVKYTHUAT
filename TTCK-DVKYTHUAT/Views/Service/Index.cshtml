@@ -1,0 +1,122 @@
+﻿@using PagedList.Core.Mvc;
+@model IEnumerable<TTCK_DVKYTHUAT.Models.Service>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--====== Page Banner Start ======-->
+
+@* <section class="page-banner bg_cover" style="background-image: url(images/banner6.jpg);  width:800px;height:400px;">
+    <div class="container">
+        <div class="page-banner-content text-center">
+            <h2 class="title">Shop Masonry</h2>
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Shop</li>
+            </ol>
+        </div> 
+    </div>
+</section>  *@
+<section class="slider-area slider-02 slider-active">
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner7.jpg); width:800px;height:300px; " data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+        <div class="container">
+            
+        </div>
+    </div>
+   
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== Shop Masonry Start ======-->
+
+<section class="shop-page pt-50 pb-80">
+    <div class="container-fluid custom-container">
+        <div class="row product-row">
+            @foreach(var item in Model)
+            {
+                <div class="product-col-2 col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-product mt-50">
+                        <div class="product-image">
+                            <div class="image">
+                                
+                                <img class="product-1" src="~/images/@item.Image" alt="product">
+                               @*  <img class="product-1" src="~/images/@item.Image" alt="product"> *@
+                                <a class="link" href="product-simple-01.html"></a>
+                            </div>
+                            <ul class="product-meta text-center">
+                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" data-id="@item.ServiceId" class="ajax-add-to-cart"><i class="fal fa-Shopping-cart"></i></a></li>
+                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                               @*  <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li> *@
+                            </ul>
+                        </div>
+                        <div class="product-content d-flex justify-content-between">
+                            <div class="product-title">
+                                <h4 class="title"><a asp-action="Details" asp-controller="Service" asp-route-Id="@item.ServiceId">@item.Name</a></h4>
+                            </div>
+                            <div class="product-price">
+                                <span class="price">$ @item.Price.Value.ToString("#,##0") VND</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+          
+        </div>
+        <div class="pagination-items mt-45">
+            <ul class="pagination justify-content-center">
+
+                <li><a class="prev" href="#">Previous</a></li>
+                <pager class="pager-container" options="@PagedListRenderOptions.Bootstrap4PageNumbersOnly" list="@Model" asp-area="" asp-controller="Service" asp-action="Index"></pager>
+
+                @* <li><a href="#">1</a></li>
+                <li><a class="active" href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li> *@
+                <li><a class="next" href="#">Next</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--====== Shop Masonry Ends ======-->
+@section scripts{
+  
+
+    <script>
+        $(document).ready(function () {
+            $(".ajax-add-to-cart").click(function () {
+                $.ajax({
+                    url: "/Cart/AddToCart",
+                    data: {
+                        id: $(this).data("id"),
+                        SoLuong: 1,
+                        type: "ajax"
+                    },
+                    success: function (data) {
+                        // Swal.fire({
+                        //     icon: 'success',
+                        //     title: 'Thêm dịch vụ thành công',
+                        //     showConfirmButton: false,
+                        //     timer: 2500
+                        // });
+                        console.log(data.soLuong);
+                        $("#cart_count").html(data.soLuong);
+                    },
+                    error: function () {
+                        // Swal.fire({
+                        //     icon: 'error',
+                        //     title: 'Thêm dịch vụ thất bại',
+                        //     text: 'Vui lòng thử lại',
+                        //     showConfirmButton: false,
+                        //     timer: 2500
+                        // });
+                    }
+                });
+            });
+        });
+    </script>
+}

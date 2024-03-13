@@ -1,0 +1,310 @@
+
+
+
+/*====  Blog Details Start  =====*/
+
+
+.blog-details-content{
+    & .blog-meta{
+        margin-top: 10px;
+
+        & li{
+            display: inline-block;
+
+            & + li{
+                margin-left: 10px;
+            }
+
+            a{
+                font-size: 13px;
+                color: $body-color;
+                @include transition(0.3s);
+
+                & span{
+                    color: $black;
+                    font-weight: 700;
+                    @include transition(0.3s);
+                }
+                & i{
+                    margin-right: 4px;
+                }
+
+                &:hover{
+                    color: $theme-color;
+
+                    & span{
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+
+    & p{
+        margin-top: 25px;
+        font-size: 14px;
+    }
+
+    & .blog-details-image{
+        padding-top: 40px;
+        padding-bottom: 15px;
+
+        & .row{
+            margin-left: -5px;
+            margin-right: -5px;
+
+            & .image-col{
+                padding: 0 5px;
+            }
+        }
+
+        & .image{
+            margin-top: 10px;
+
+            & img{
+                width: 100%;
+            }
+        }
+    }    
+
+    & .details-wrapper{
+        padding-top: 20px;
+
+        & .title{
+            font-size: 46px;
+            font-weight: 400;
+            font-family: $font-1;  
+            color: $black;  
+            margin-top: 30px;   
+            
+            @media #{$md}{
+                font-size: 40px;
+            }
+            @media #{$xs}{
+                font-size: 24px;
+            }
+            @media #{$sm}{
+                font-size: 30px;
+            }
+        }
+
+        & img{
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        & ul{
+            list-style-type: disc;
+            padding-top: 25px;
+            padding-left: 15px;
+
+            & li{
+                font-size: 14px;
+                color: $body-color;
+            }
+        }
+    }
+
+    & .post-share{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin-top: 45px;
+
+        & span{
+            font-size: 14px;
+            color: $body-color;
+        }
+
+        & .social{
+            & li{
+                display: inline-block;
+                margin-left: 15px;
+
+                & a{
+                    font-size: 16px;
+                    color: $black;
+                }
+            }
+        }
+    }
+    
+    
+}
+
+
+.blog-author-info{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;	
+    padding: 50px;
+    margin-top: 80px;
+    border: 1px solid #e5e5e5;
+
+    @media #{$xs}{
+        padding: 20px;
+        display: block;
+    }
+    @media #{$sm}{
+        padding: 30px;
+    }
+
+    & .author-thumb{
+        width: 90px;
+
+        & a{
+            display: block;
+
+            & img{
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+    }
+    & .author-content{
+        padding-left: 20px;
+        -webkit-flex: 1;
+        -moz-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+
+        @media #{$xs}{
+            padding-top: 20px;
+            padding-left: 0;
+        }
+
+        & .name{
+            & a{
+                font-size: 18px;
+                font-weight: 400;
+                color: $black;
+                @include transition(0.3s);
+
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+        & p{
+            margin-top: 15px;
+            font-size: 14px;
+            color: $body-color;
+        }
+    }
+}
+
+
+
+.blog-comment{
+    margin-top: 80px;
+
+    & .comment-title{
+        font-family: $font-1;
+        text-transform: none;
+        font-size: 24px;
+        font-weight: 400;
+        color: $black;
+
+        @media #{$xs}{
+            font-size: 20px;
+        }
+        @media #{$sm}{
+            font-size: 24px;
+        }
+    }
+
+    & .comment-wrapper{
+        & .commentlist{
+            & .comment{}
+
+            & .comment-container{
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                padding-bottom: 40px;
+                border-bottom: 1px solid #e3e3e3;
+                margin-top: 40px;
+
+                @media #{$xs}{
+                    display: block;
+                }
+
+                & img{
+                    width: 80px;
+                    border-radius: 50%;
+                }
+                & .comment-text{
+                    -webkit-flex: 1;
+                    -moz-flex: 1;
+                    -ms-flex: 1;
+                    flex: 1;
+                    padding-left: 20px;
+
+                    @media #{$xs}{
+                        padding-top: 20px;
+                        padding-left: 0;
+                    }
+
+                    & .description{
+                        & p{
+                            color: $body-color;
+                            font-size: 14px;
+                        }
+                    }
+                    & .comment-meta{
+                        margin-top: 10px;
+
+                        & .date{
+                            color: $body-color;
+                            font-size: 13px;
+                        }
+                        & .author{
+                            color: $black;
+                            font-size: 13px;
+                            margin-left: 10px;
+                        }
+                        & .replay{
+                            display: block;
+                            float: right;
+                            font-size: 13px;
+                            color: $body-color;
+                            text-decoration: underline;
+                            margin-top: 3px;
+                            @include transition(0.3s);
+
+                            &:hover{
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    }
+
+    & .comment-form{
+        margin-top: 50px;
+
+        & .single-form{
+            & .main-btn{
+                padding: 0 40px;
+
+                @media #{$xs}{
+                    padding: 0 20px;
+                }
+            }
+        }
+    }
+}
+
+
+

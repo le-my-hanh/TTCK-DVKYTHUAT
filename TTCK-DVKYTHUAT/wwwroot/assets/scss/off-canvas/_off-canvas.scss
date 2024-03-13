@@ -1,0 +1,179 @@
+
+
+
+/*====  Off Canvas Start  =====*/
+
+
+.off-canvas-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background-color: rgba($white, 0.9);
+    overflow: auto;
+    text-align: center;
+    @include transition(0.3s);
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+
+    & .off-canvas-navbar{
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        max-width: 90%;
+
+        & .menu-close{
+            position: absolute;
+            top: 20%;
+            right: 20%;
+            line-height: 40px;
+            @include transition(0.3s);
+            font-size: 40px;
+            color: rgba($black, 0.6);
+
+            &:hover{
+                @include transform(rotate(90deg));
+            }
+        }
+
+        & .canvas-menu{
+            & .main-menu{
+                & > li{
+                    @include transition(0.4s);
+                    @include transform(translateY(30px));
+                    opacity: 0;                    
+
+                    &:nth-of-type(1){
+                        @include transition-delay(250ms);
+                    }
+                    &:nth-of-type(2){
+                        @include transition-delay(300ms);
+                    }
+                    &:nth-of-type(3){
+                        @include transition-delay(350ms);
+                    }
+                    &:nth-of-type(4){
+                        @include transition-delay(400ms);
+                    }
+                    &:nth-of-type(5){
+                        @include transition-delay(450ms);
+                    }
+                    &:nth-of-type(6){
+                        @include transition-delay(500ms);
+                    }
+                    &:nth-of-type(7){
+                        @include transition-delay(550ms);
+                    }
+                    &:nth-of-type(8){
+                        @include transition-delay(600ms);
+                    }
+                    &:nth-of-type(9){
+                        @include transition-delay(650ms);
+                    }
+                    &:nth-of-type(10){
+                        @include transition-delay(700ms);
+                    }
+
+                    & a{
+                        font-size: 60px;
+                        font-weight: 700;
+                        color: $black;
+                        line-height: 1.6;
+                        @include transition(0.3s);
+
+                        &:hover{
+                            color: $theme-color;
+                        }
+                    }                   
+
+                    & .sub-mega-menu{
+                        padding: 10px 0;
+
+                        & li{
+                            & a{
+                                font-size: 16px;
+                                font-weight: 700;
+                                line-height: 2;
+                            }
+
+                            & .sub-menu{
+                                padding: 10px 0;
+
+                                & li{
+                                    & a{
+                                        font-size: 14px;
+                                        font-weight: 400;
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }                
+
+                    & .sub-menu{
+                        padding: 10px 0;
+
+                        & li{
+                            & a{
+                                font-size: 16px;
+                                font-weight: 700;
+                                line-height: 2;
+                            }
+
+                            & .sub-menu{
+                                padding: 10px 0;
+
+                                & li{
+                                    & a{
+                                        font-size: 14px;
+                                        font-weight: 400;
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.open{
+        opacity: 1;
+        visibility: visible;
+
+        & .off-canvas-navbar{     
+            & .canvas-menu{
+                & .main-menu{
+                    & > li{
+                        @include transform(translateY(0));
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

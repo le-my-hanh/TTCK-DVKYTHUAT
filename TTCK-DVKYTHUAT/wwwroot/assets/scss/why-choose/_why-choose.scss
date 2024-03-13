@@ -1,0 +1,201 @@
+
+
+
+/*====  Why Choose Start  =====*/
+
+.why-choose-area{
+    background-size: auto;
+    background-position: 0px center;
+    background-repeat: repeat;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    padding-bottom: 220px;
+
+    &::after,
+    &::before{
+        content: "";
+        position: absolute;
+        background: $white;
+        width: 110%;
+        height: 300px;
+        left: -5%;
+        border-radius: 100%;
+        top: -140px;
+        z-index: -1;
+
+        @media #{$md}{
+            height: 180px;
+            top: -80px;
+        }
+        @media #{$xs}{
+            height: 120px;
+            top: -80px;
+        }
+    }
+    &::after{
+        top: auto;
+        bottom: -200px;
+
+        @media #{$xs}{
+            bottom: -80px;
+        }
+    }
+}
+
+
+.why-choose-content{
+    padding-top: 160px;
+    max-width: 470px;
+    margin-left: auto;
+
+    @media #{$md}{
+        padding-top: 40px;
+    }
+    @media #{$xs}{
+        padding-top: 90px;
+    }
+
+    & .choose-title{
+        font-size: 46px;
+        font-weight: 400;
+        font-family: $font-3;
+        color: $white;
+
+        @media #{$md}{
+            font-size: 40px;
+        }
+        @media #{$xs}{
+            font-size: 30px;
+        }
+    }
+
+    & .choose-items{
+        padding-top: 15px;
+        
+        & .single-choose{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-top: 20px;
+
+            & .choose-icon{
+                & img{
+                    width: 80px;
+
+                    @media #{$md}{
+                        width: 70px;
+                    }
+                }
+            }
+            & .choose-content{
+                padding-left: 20px;
+                -webkit-flex: 1;
+                -moz-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+
+                & .title{
+                    font-size: 30px;
+                    font-weight: 400;
+                    color: $white;
+                    font-family: $font-3;
+
+                    @media #{$md}{
+                        font-size: 24px;
+                    }
+                    @media #{$xs}{
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*====  Why Choose Start  =====*/
+
+
+
+.single-choose-2{
+    background-size: cover;
+    border-radius: 50%;
+    padding: 0 0 100%;
+    position: relative;
+    background-color: #e7e3d9;
+    transition: all .4s ease;    
+
+    & .choose-content{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        @include transform(translateY(-50%));
+        text-align: center;
+        
+        & .title{
+            font-size: 24px;
+            font-weight: 400;
+            color: $black;
+            font-family: $font-1;
+
+            @media #{$md}{
+                font-size: 20px;
+            }
+        }
+        & .more{
+            font-size: 12px;
+            color: $body-color;
+            margin-top: 15px;
+
+            & i{
+                font-size: 10px;
+                margin-left: 5px;
+            }
+        }
+    }
+
+    &.choose-bg-1{
+        background-image: url(../images/why-choose/m15-bg1.jpg);
+
+        &:hover{
+            background-image: url(../images/why-choose/m15-bg1-hover.jpg);
+        }
+    }
+    &.choose-bg-2{
+        background-image: url(../images/why-choose/m15-bg2.jpg);
+
+        &:hover{
+            background-image: url(../images/why-choose/m15-bg2-hover.jpg);
+        }
+    }
+    &.choose-bg-3{
+        background-image: url(../images/why-choose/m15-bg3.jpg);
+
+        &:hover{
+            background-image: url(../images/why-choose/m15-bg3-hover.jpg);
+        }
+    }
+
+    &:hover{
+        & .choose-content{
+            & .title{
+                color: #d6c49f;
+            }
+            & .more{
+                color: $white;
+            }
+        }
+    }
+}
+
+
+
+
+

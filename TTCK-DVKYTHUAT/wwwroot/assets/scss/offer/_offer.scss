@@ -1,0 +1,139 @@
+
+
+
+/*====  Offer Start  =====*/
+
+.offer-area{}
+
+
+.offer-wrapper{
+    position: relative;
+    z-index: 7;
+    @include box-shadow (0px 0px 38px 0px rgba(41, 44, 58, 0.1));
+    background: #fff;
+    margin: -250px 0 0;
+    border-radius: 10px;
+    padding: 6%;
+
+    @media #{$xs}{
+        padding: 8% 4%;
+    }
+}
+
+.offer-image{
+    max-width: 420px;
+
+    & img{
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+.offer-content{
+    & .title{
+        & a{
+            font-size: 46px;
+            font-weight: 400;
+            color: $black;
+            font-family: $font-3;
+
+            @media #{$xs}{
+                font-size: 30px;
+            }
+        }
+    }
+    & p{
+        margin-top: 25px;
+        font-size: 14px;
+    }
+    & .offer-countdown{
+        background-color: #eede56;
+        max-width: 350px;
+        width: 100%;
+        padding: 25px 20px;
+        margin-top: 30px;        
+
+        & .countdown{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+
+            & .single-countdown{                
+                width: 25%;
+                text-align: center;
+
+                & .count{
+                    display: block;
+                    line-height: 1;
+                    font-size: 18px;
+                    font-weight: 700;  
+                    color: $black;                  
+                }
+                & .value{
+                    display: block;
+                    padding: 0;
+                    font-size: 12px;
+                    line-height: 1.4;   
+                    color: $black;                    
+                }
+            }
+        }
+    }
+
+    & .offer-btn{
+        margin-top: 20px;
+
+        & .main-btn{
+            display: inline-block;
+            border: 3px solid rgba($black, 0.3);
+            color: $black;
+            height: 60px;
+            line-height: 54px;
+            padding: 0 53px;
+            color: $black;
+            background-color: transparent;     
+            text-transform: capitalize;       
+
+            @media #{$laptop}{
+                height: 46px;
+                line-height: 40px;
+                padding: 0 30px;
+            }
+            @media #{$xs}{
+                height: 46px;
+                line-height: 40px;
+                padding: 0 30px;
+            }
+            @media #{$sm}{
+                height: 50px;
+                line-height: 46px;
+                padding: 0 30px;
+            }
+
+            &:hover{
+                background-color: #7bc933;
+                border-color: #7bc933;
+                color: $white;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+
+
+
+/*====  Login Register Start  =====*/
+
+
+
+.login-register-content{
+
+    & .title{
+        font-size: 24px;
+        font-weight: 500;
+        color: $black;
+    }
+
+    & .login-register-form{
+        & .single-form{
+            & .main-btn{
+                width: 100%;
+            }
+            & .forget{
+                & a{
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $body-color;
+                    @include transition(0.3s);
+
+                    &:hover{
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+

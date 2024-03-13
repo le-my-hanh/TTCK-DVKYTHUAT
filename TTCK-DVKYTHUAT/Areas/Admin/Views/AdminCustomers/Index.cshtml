@@ -1,0 +1,208 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<TTCK_DVKYTHUAT.Models.Customer>
+@{
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh sách khách hàng" + CurrentPage;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@* @model IEnumerable<TTCK_DVKYTHUAT.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+} *@
+<style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+        /*    border: 1px solid red; */
+    }
+
+    thead th:nth-child(1) {
+        width: 5%;
+    }
+
+    thead th:nth-child(2) {
+        width: 20%;
+    }
+
+    thead th:nth-child(3) {
+        width: 10%;
+    }
+
+    thead th:nth-child(4) {
+        width: 15%;
+    }
+
+    thead th:nth-child(5) {
+        width: 20%;
+    }
+
+    thead th:nth-child(6) {
+        width: 15%;
+    }
+
+    thead th:nth-child(7) {
+        width: 25%;
+    }
+
+
+
+
+
+    th,
+    td {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 20px;
+    }
+</style>
+<!-- Bottom Breadcrumb card start -->
+<div class="card">
+    <div class="card-block">
+        <div class="breadcrumb-header">
+            <h5>Quản Lý Tin Tức</h5>
+        </div>
+        <div>
+            <ul class="breadcrumb-title">
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                        <i class="icofont icofont-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="AdminCustomers" asp-action="Index">Danh Sách Khách Hàng</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#!">.....</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Bottom Breadcrumb card end -->
+<!-- Basic table card start -->
+<div class="card">
+    <div class="card-header">
+        @* <h5>Basic table</h5>
+        <span>use class <code>table</code> inside table element</span> *@
+        <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Khách hàng</th>
+                        <th>SĐT</th>
+                        <th>Email</th>
+                         <th>Địa chỉ</th>
+                         <th>Ảnh</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.CustomerId</th>
+                                <td>@item.Name</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td>@item.Address</td>
+                                <td><img src="~/images/@item.Image" style="width: 50px; height: 50px;" /></td>
+                                
+
+                            </tr>
+                        }
+                    }
+                    
+                   
+                </tbody>
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <pager class="pager-container" list="@Model" asp-area="Admin" asp-controller="AdminCustomers" asp-route-CategoryID="@ViewBag.CurrentCateID" asp-action="Index"></pager>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Basic table card end -->
+@* <h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CraetedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CraetedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ *@

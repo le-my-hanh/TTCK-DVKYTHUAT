@@ -1,0 +1,131 @@
+﻿@model IEnumerable<TTCK_DVKYTHUAT.Models.Conment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!-- Bottom Breadcrumb card start -->
+<div class="card">
+    <div class="card-block">
+        <div class="breadcrumb-header">
+            <h5>Quản Lý Bình Luận</h5>
+        </div>
+        <div>
+            <ul class="breadcrumb-title">
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                        <i class="icofont icofont-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="AdminConments" asp-action="Index">Danh Sách Bình Luận</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#!">.....</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Bottom Breadcrumb card end -->
+<!-- Basic table card start -->
+<div class="card">
+    <div class="card-header">
+        @* <h5>Basic table</h5>
+        <span>use class <code>table</code> inside table element</span> *@
+        <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Khách hàng</th>
+                        <th>Dịch vụ</th>
+                        <th>Message</th>
+                        <th>Rating</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.ConmentId</th>
+                                <td>@item.Customer.Name</td>
+                                <td>@item.Service.Name</td> 
+                                <td>@item.Message</td>
+                                <td>@item.Rating</td>
+                                
+                                <td>
+
+                                    <a asp-area="Admin" asp-controller="AdminConments" asp-action="Details" asp-route-id="@item.ConmentId">
+                                        <button class="btn btn-info">Details</button>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Basic table card end -->
+@* <h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Service)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.ServiceId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ConmentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ConmentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ConmentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ *@

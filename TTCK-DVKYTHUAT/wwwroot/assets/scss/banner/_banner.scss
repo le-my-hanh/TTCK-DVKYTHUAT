@@ -1,0 +1,352 @@
+
+
+
+/*====  Banner Start  =====*/
+
+.banner-area{
+    background-color: #e6e5e3;
+    overflow: hidden;
+}
+
+.banner-image{
+    background-position: top center;
+
+    @media #{$xs}{
+        height: 300px;
+    }
+    @media #{$sm}{
+        height: 400px;
+    }
+}
+
+.banner-content{
+    max-width: 650px;
+    padding-top: 170px;
+    padding-bottom: 200px;
+
+    @media #{$lg}{
+        padding-top: 95px;
+        padding-bottom: 100px;
+    }
+    @media #{$md}{
+        padding: 95px 30px 100px;
+    }
+    @media #{$xs}{
+        padding: 50px 15px 50px;
+    }
+
+    & .title{
+        font-size: 60px;
+        font-weight: 400;
+        color: #000;
+        font-family: $font-1;
+
+        @media #{$lg}{
+            font-size: 48px;
+        }
+        @media #{$md}{
+            font-size: 36px;
+        }
+        @media #{$xs}{
+            font-size: 30px;
+        }
+    }
+    & p{
+        margin-top: 20px;
+        font-size: 14px;
+        color: $black;
+    }
+    & .main-btn{
+        margin-top: 55px;
+        width: 180px;
+        height: 54px;
+        line-height: 54px;
+
+        @media #{$md}{
+            width: auto;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 30px;
+            margin-top: 35px;
+        }
+        @media #{$xs}{
+            width: auto;
+            height: 50px;
+            line-height: 50px;
+            margin-top: 35px;
+        }
+    }
+}
+
+
+/*====  Banner 2 Start  =====*/
+
+.banner-area-2{
+    background-color: #eee;
+    overflow: hidden;
+}
+
+.banner-content-2{
+    max-width: 640px;
+    margin-left: auto;
+    padding-top: 225px;
+    padding-bottom: 160px;
+
+    &.banner-3{
+        margin-right: 60px;
+
+        @media #{$md}{
+            margin-right: 0;
+        }
+        @media #{$xs}{
+            margin-right: 0;
+        }
+    }
+
+    @media #{$lg}{
+        padding-top: 95px;
+        padding-bottom: 100px;
+    }
+    @media #{$md}{
+        padding: 95px 30px 100px;
+    }
+    @media #{$xs}{
+        padding: 50px 15px 50px;
+    }
+
+    & .title{
+        font-size: 59px;
+        font-weight: 700;
+        color: $black;
+
+        @media #{$lg}{
+            font-size: 48px;
+        }
+        @media #{$md}{
+            font-size: 36px;
+        }
+        @media #{$xs}{
+            font-size: 26px;
+        }
+    }
+    & p{
+        font-size: 10px;
+        color: $black;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding-top: 10px;
+
+        @media #{$xs}{
+            letter-spacing: 0;
+        }
+    }
+    & .price{
+        padding-top: 20px;
+        position: relative;
+        display: inline-block;
+        padding-left: 60px;
+        padding-right: 60px;
+
+        & .regular-price{
+            font-size: 16px;
+            font-weight: 700;
+            color: $body-color;
+            text-transform: uppercase;
+            padding-top: 10px;
+            text-decoration: line-through;
+            margin-right: 5px;
+        }
+        & .sale-price{
+            font-size: 16px;
+            font-weight: 700;
+            color: $black;
+            text-transform: uppercase;
+            padding-top: 10px;
+        }
+        & .discount{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: $white;
+            background-color: $black;
+            border-radius: 50%;
+            position: absolute;
+            top: -10px;
+            right: -15px;
+
+            @media #{$xs}{
+                right: 0;
+            }
+        }
+    }
+    & .banner-btn{
+        padding-top: 35px;
+
+        & .main-btn{
+            padding: 0 50px;
+            border: 3px solid rgba($black, 0.3);
+            color: $black;
+            background-color: transparent;
+            height: 56px;
+            line-height: 50px;
+
+            @media #{$xs}{
+                padding: 0 30px;
+                height: 46px;
+                line-height: 40px;
+            }
+
+            &:hover{
+                background-color: $theme-color;
+                border-color: $theme-color;
+                color: $white;
+            }
+        }
+    }
+}
+
+
+/*====  Banner 3 Start  =====*/
+
+
+.banner-area-3{
+    overflow: hidden;
+
+    & .banner-wrapper{
+        margin-left: -5px;
+        margin-right: -5px;
+
+    }
+}
+
+.single-banner-3{
+    margin-top: 10px;
+    padding: 0 5px;
+    width: 50%;
+    position: relative;
+
+    @media #{$md}{
+        width: 100%;
+    }
+    @media #{$xs}{
+        width: 100%;
+    }
+
+    & .banner-image-3{
+        overflow: hidden;
+
+        & img{
+            width: 100%;
+            @include transition(0.3s);
+        }
+    }
+
+    & .banner-content-3{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        @include transform(translateY(-50%));
+        padding: 30px 100px;
+
+        @media #{$laptop}{
+            padding: 10px 50px;
+        }
+        @media #{$lg}{
+            padding: 10px 50px;
+        }
+        @media #{$xs}{
+            padding: 10px 30px;
+        }
+
+        & .sub-title{
+            font-size: 18px;
+            font-weight: 700;
+            color: $white;
+
+            @media #{$laptop}{
+                font-size: 16px;
+            }
+            @media #{$lg}{
+                font-size: 16px;
+            }
+            @media #{$xs}{
+                font-size: 14px;
+            }
+            @media #{$sm}{
+                font-size: 16px;
+            }
+        }
+        & .title{
+            font-size: 72px;
+            line-height: 80px;
+            color: $white;
+
+            @media #{$laptop}{
+                font-size: 60px;
+                line-height: 70px;
+            }
+            @media #{$lg}{
+                font-size: 60px;
+                line-height: 70px;
+            }
+            @media #{$xs}{
+                font-size: 24px;
+                line-height: 30px;
+            }
+            @media #{$sm}{
+                font-size: 50px;
+                line-height: 60px;
+            }
+        }
+        & p{
+            font-size: 16px;
+            color: $white;
+            margin-top: 10px;
+
+            @media #{$xs}{
+                font-size: 14px;
+            }
+            @media #{$sm}{
+                font-size: 16px;
+            }
+        }
+        & .main-btn{
+            width: 160px;
+            border: 2px solid $white;
+            color: $white;
+            line-height: 46px;
+            background-color: transparent;
+            margin-top: 30px;
+
+            @media #{$xs}{
+                margin-top: 20px;
+                height: 45px;
+                line-height: 41px;
+                width: auto;
+            }
+
+            &:hover{
+                background-color: $theme-color;
+                border-color: $theme-color;
+                color: $white;
+            }
+        }
+    }
+
+    &:hover{
+        & .banner-image-3{
+            & img{
+                @include transform(scale(1.05));
+            }
+        }
+    }
+}
+
+
+
+
+
+

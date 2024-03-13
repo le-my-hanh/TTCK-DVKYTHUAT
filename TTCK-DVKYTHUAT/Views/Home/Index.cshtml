@@ -1,0 +1,347 @@
+﻿@using PagedList.Core.Mvc;
+@model IEnumerable<TTCK_DVKYTHUAT.Models.Category>
+
+<!--====== Slider Start ======-->
+
+<section class="slider-area slider-02 slider-active">
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner4.png); width:800px;height:400px; " data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+        <div class="container">
+            @* <div class="slider-content-2 text-center">
+                <h1 class="title"><span data-animation="slideInUp" data-delay="0.6s">Technical services 2024</span></h1>
+                <div class="slider-btn">
+                    <a data-animation="zoomIn" data-delay="1.2s" href="#" class="main-btn">Services Now</a>
+                </div>
+            </div> *@
+        </div>
+    </div>
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner5.png); width:800px;height:400px;" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+        <div class="container">
+            @* <div class="slider-content-2-2 text-center">
+                <h5 class="sub-title"><span data-animation="slideInDown" data-delay="0.6s">Trung tâm Dịch vụ kỹ thuật - VCC Services</span></h5>
+                <h1 class="title"><span data-animation="slideInUp" data-delay="1s">Up to 25%</span></h1>
+                <div class="slider-btn">
+                    <a data-animation="zoomIn" data-delay="1.6s" href="#" class="main-btn">Services Now</a>
+                </div>
+            </div> *@
+        </div>
+    </div>
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner3.jpg); width:800px;height:400px;" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+        <div class="container">
+            <div class="slider-content-2-3 text-bg-while">
+                <h1 class="title"><span data-animation="slideInUp" data-delay="0.6s">Tiết Kiệm  <br> Lên Đến 25%</span></h1>
+                <p><span data-animation="slideInLeft" data-delay="1s">Hotline:13080632 - Dịch Vụ</span></p>
+              @*   <span class="price"><span data-animation="slideInLeft" data-delay="1.5s">25%</span></span> *@
+                <div class="slider-btn">
+                    <a data-animation="zoomIn" data-delay="2s" href="#" class="main-btn">Đăng Ký Ngay !</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Slider Ends ======-->
+<!--====== Category Start ======-->
+
+<section class="category-area pt-50">
+    <div class="container-fluid custom-container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="category-item-2 mt-30">
+                        <a asp-area ="" asp-controller="Category" asp-action="Index" asp-route-categoreId="@item.CategoryId">
+                            <img src="~/images/@item.Image" alt="@item.Name">
+                            <div style="margin-top: 20px;">@item.Name</div>
+                            <div class="category-content">
+                                <h4 class="title">Xem Thêm</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+           @*  <div class="col-md-4">
+                <div class="category-item-2 mt-30">
+                    <a href="shop-sidebar.html">
+                        <img src="assets/images/m2-b1.jpg" alt="">
+                        <div class="category-content">
+                            <h4 class="title">Man</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-item-2 mt-30">
+                    <a href="shop-sidebar.html">
+                        <img src="assets/images/m2-b2.jpg" alt="">
+                        <div class="category-content">
+                            <h4 class="title">WoMan</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-item-2 mt-30">
+                    <a href="shop-sidebar.html">
+                        <img src="assets/images/m2-b3.jpg" alt="">
+                        <div class="category-content">
+                            <h4 class="title">Kids</h4>
+                        </div>
+                    </a>
+                </div>
+            </div> *@
+        </div>
+    </div>
+</section>
+
+<!--====== Category Ends ======-->
+<!--====== Product Start ======-->
+
+<section class="product-area pt-85">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center pb-25">
+                    <h2 class="title">NEW ARRIVAL</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid custom-container-2">
+        <div class="row-wrapper product-active">
+            <div class="custom-col">
+                <div class="single-product mt-50">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="product-1" src="assets/images/product/product-7.jpg" alt="product">
+                            <img class="product-2" src="assets/images/product/product-8.jpg" alt="product">
+                            <a class="link" href="product-simple-01.html"></a>
+                        </div>
+                        <ul class="product-meta text-center">
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                        </ul>
+                        <span class="discount">40%</span>
+                    </div>
+                    <div class="product-content d-flex justify-content-between">
+                        <div class="product-title">
+                            <h4 class="title"><a href="product-simple-01.html">Basic Contrasting T-Shirt</a></h4>
+                        </div>
+                        <div class="product-price">
+                            <span class="regular-price">£250.00</span>
+                            <span class="sale-price">£200.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product mt-50">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="product-1" src="assets/images/product/product-9.jpg" alt="product">
+                            <img class="product-2" src="assets/images/product/product-10.jpg" alt="product">
+                            <a class="link" href="product-simple-01.html"></a>
+                        </div>
+                        <ul class="product-meta text-center">
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content d-flex justify-content-between">
+                        <div class="product-title">
+                            <h4 class="title"><a href="product-simple-01.html">Biker Jacket</a></h4>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">£250.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product mt-50">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="product-1" src="assets/images/product/product-21.jpg" alt="product">
+                            <img class="product-2" src="assets/images/product/product-22.jpg" alt="product">
+                            <a class="link" href="product-simple-01.html"></a>
+                        </div>
+                        <ul class="product-meta text-center">
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content d-flex justify-content-between">
+                        <div class="product-title">
+                            <h4 class="title"><a href="product-simple-01.html">Oversized Check Dress</a></h4>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">£150.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product mt-50">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="product-1" src="assets/images/product/product-23.jpg" alt="product">
+                            <img class="product-2" src="assets/images/product/product-24.jpg" alt="product">
+                            <a class="link" href="product-simple-01.html"></a>
+                        </div>
+                        <ul class="product-meta text-center">
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content d-flex justify-content-between">
+                        <div class="product-title">
+                            <h4 class="title"><a href="product-simple-01.html">Polyamide Dress With Long Sleeves</a></h4>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">£150.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-btn text-center mt-95">
+            <a href="shop-sidebar.html" class="view-product">View All Product</a>
+        </div>
+    </div>
+</section>
+
+<!--====== Product Ends ======-->
+<!--====== Product Start ======-->
+
+<section class="product-area pt-75 pb-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center pb-25">
+                    <h2 class="title">Top Trend</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid custom-container-2">
+        <div class="row-wrapper product-active">
+            <div class="custom-col">
+                <div class="single-product mt-50">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="product-1" src="assets/images/product/product-33.jpg" alt="product">
+                            <img class="product-2" src="assets/images/product/product-34.jpg" alt="product">
+                            <a class="link" href="product-simple-01.html"></a>
+                        </div>
+                        <ul class="product-meta text-center">
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content d-flex justify-content-between">
+                        <div class="product-title">
+                            <h4 class="title"><a href="product-simple-01.html">Basic Contrasting T-Shirt</a></h4>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">£150.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product mt-50">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="product-1" src="assets/images/product/product-35.jpg" alt="product">
+                            <img class="product-2" src="assets/images/product/product-36.jpg" alt="product">
+                            <a class="link" href="product-simple-01.html"></a>
+                        </div>
+                        <ul class="product-meta text-center">
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content d-flex justify-content-between">
+                        <div class="product-title">
+                            <h4 class="title"><a href="product-simple-01.html">Biker Jacket</a></h4>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">£250.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product mt-50">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="product-1" src="assets/images/product/product-37.jpg" alt="product">
+                            <img class="product-2" src="assets/images/product/product-38.jpg" alt="product">
+                            <a class="link" href="product-simple-01.html"></a>
+                        </div>
+                        <ul class="product-meta text-center">
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content d-flex justify-content-between">
+                        <div class="product-title">
+                            <h4 class="title"><a href="product-simple-01.html">Oversized Check Dress</a></h4>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">£150.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product mt-50">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="product-1" src="assets/images/product/product-29.jpg" alt="product">
+                            <img class="product-2" src="assets/images/product/product-30.jpg" alt="product">
+                            <a class="link" href="product-simple-01.html"></a>
+                        </div>
+                        <ul class="product-meta text-center">
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                            <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                        </ul>
+                        <span class="discount">40%</span>
+                    </div>
+                    <div class="product-content d-flex justify-content-between">
+                        <div class="product-title">
+                            <h4 class="title"><a href="product-simple-01.html">Polyamide Dress With Long Sleeves</a></h4>
+                        </div>
+                        <div class="product-price">
+                            <span class="regular-price">£250.00</span>
+                            <span class="sale-price">£200.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-btn text-center mt-85">
+          @*   <a href="shop-sidebar.html" class="view-product">View All Product</a> *@
+        </div>
+    </div>
+</section>
+
+<!--====== Product Ends ======-->
+
+
+

@@ -1,0 +1,67 @@
+﻿@model TTCK_DVKYTHUAT.ModelsView.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--====== Page Banner Start ======-->
+
+<section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
+    <div class="container">
+        <div class="page-banner-content text-center">
+            <h2 class="title">Login</h2>
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Login</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== Login Register Start ======-->
+
+<section class="login-register-area pt-75 pb-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="login-register-content">
+                    <h4 class="title">Đăng Nhập Tài Khoản</h4>
+
+                    <div class="login-register-form">
+                        <form asp-action="Login">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="single-form">
+                                <label>Email *</label>
+                                <input asp-for="UserName" type="email">
+                            </div>
+                            <div class="single-form">
+                                <label>Mật Khẩu *</label>
+                                <input asp-for="Password" type="password">
+                            </div>
+                            <div class="single-form">
+                                <button class="main-btn d-block">Đăng Nhập</button>
+                            </div>
+                            @* <div class="single-form d-flex justify-content-between">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="remember">
+                                    <label for="remember"><span></span> Remember Me</label>
+                                </div>
+                                <div class="forget">
+                                    <a href="#">Lost Your Password</a>
+                                </div>
+                            </div> *@
+                            <div class="single-form">
+                                <label> Bạn Không Có Tài Khoản !</label>
+                                <a asp-action="DangKyTaiKhoan" asp-controller="Accounts" class="main-btn main-btn-2 d-block">Đăng Ký </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Login Register Ends ======-->
+

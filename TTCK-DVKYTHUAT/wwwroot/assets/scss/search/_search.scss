@@ -1,0 +1,155 @@
+
+
+
+/*====  Search Start  =====*/
+
+
+.search-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background-color: rgba($white, 0.9);
+    overflow: auto;
+    text-align: center;
+    @include transition(0.3s);
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+
+    & .search-box{
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        max-width: 90%;
+
+        & .search-close{
+            position: absolute;
+            top: 20%;
+            right: 20%;
+            line-height: 40px;
+            @include transition(0.3s);
+            font-size: 40px;
+            color: rgba($black, 0.6);
+
+            &:hover{
+                @include transform(rotate(90deg));
+            }
+        }
+
+        & .search-form{
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            @include transform(scale(0.7));
+            @include transition(0.3s);
+
+            @media #{$xs}{
+                padding: 0 15px;
+            }
+
+            & label{
+                font-size: 18px;
+                color: $black;
+                font-weight: 400;
+
+                @media #{$xs}{
+                    font-size: 13px;
+                }
+                @media #{$sm}{
+                    font-size: 16px;
+                }
+            }
+            & .search-input{
+                position: relative;
+
+                & input{
+                    width: 100%;
+                    height: 75px;
+                    padding: 0 15px;
+                    font-size: 30px;
+                    font-weight: 300;
+                    color: $black;
+                    border: 0;
+                    border-bottom: 2px solid $black;
+                    background: none;
+                    text-align: center;
+
+                    @media #{$xs}{
+                        height: 45px;
+                        font-size: 16px;
+                        padding: 0 15px;
+                    }
+                    @media #{$sm}{
+                        height: 55px;
+                        font-size: 18px;
+                        padding: 0 15px;
+                    }
+
+                    @include placeholder{
+                        opacity: 1;
+                        color: $black;
+                    }
+                }
+
+                & button{
+                    width: 60px;
+                    height: 60px;
+                    font-size: 30px;
+                    background: none;
+                    border: 0;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+
+                    @media #{$xs}{
+                        font-size: 16px;
+                        width: 40px;
+                        height: 40px;
+                    }
+                    @media #{$sm}{
+                        font-size: 20px;
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.open{
+        opacity: 1;
+        visibility: visible;
+
+        & .search-box{
+            & .search-form{
+                @include transform(scale(1));
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

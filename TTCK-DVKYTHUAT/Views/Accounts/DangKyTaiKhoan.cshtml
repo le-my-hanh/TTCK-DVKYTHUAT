@@ -1,0 +1,124 @@
+﻿@model TTCK_DVKYTHUAT.ModelsView.RegisterVM
+
+@{
+    ViewData["Title"] = "DangKyTaiKhoan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+ <!--====== Page Banner Start ======-->
+
+    <section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
+        <div class="container">
+            <div class="page-banner-content text-center">
+                <h2 class="title">Register</h2>
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Register</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!--====== Page Banner Ends ======-->
+
+    <!--====== Login Register Start ======-->
+
+    <section class="login-register-area pt-75 pb-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="login-register-content">
+                        <h4 class="title">Đăng Ký Tài Khoản !</h4>
+
+                        <div class="login-register-form">
+                        <form asp-action="DangKyTaiKhoan">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="single-form">
+                                    <label>Họ và Tên *</label>
+                                <input asp-for="FullName" type="text">
+                                </div>
+                            <div class="single-form">
+                                <label>Email *</label>
+                                <input asp-for="Email" type="email">
+                            </div>
+                            <div class="single-form">
+                                <label>Số điện thoại *</label>
+                                <input asp-for="Phone" type="tel">
+                            </div>
+                            <div class="single-form">
+                                <label>Mật Khẩu *</label>
+                                <input asp-for="Password" type="password">
+                            </div>
+                                <div class="single-form">
+                                    <label>Nhập lại mật khẩu *</label>
+                                <input asp-for="ConfirmPassword"  type="password">
+                                </div>
+                                <div class="single-form">
+                                    <button class="main-btn btn-block">Đăng Ký</button>
+                                </div>
+                                @* <div class="single-form">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="remember">
+                                        <label for="remember"><span></span> Receive Offers From Our Partners</label>
+                                    </div>
+                                </div> *@
+                                <div class="single-form">
+                                    <label>Already have an account?</label>
+                                    <a href="login.html" class="main-btn main-btn-2 btn-block">Log in instead!</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </section>
+
+    <!--====== Login Register Ends ======-->
+
+@* <h1>DangKyTaiKhoan</h1>
+
+<h4>RegisterVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DangKyTaiKhoan">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+ *@

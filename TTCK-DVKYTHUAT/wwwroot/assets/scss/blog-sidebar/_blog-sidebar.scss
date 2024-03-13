@@ -1,0 +1,188 @@
+
+
+
+/*====  Blog Sidebar Start  =====*/
+
+
+.blog-sidebar{
+    & .sidebar-title{
+        font-family: $font-1;
+        font-size: 18px;
+        font-weight: 400;
+        color: $black;
+        text-transform: uppercase;
+    }
+}
+
+.blog-sidebar-search{
+    & .sidebar-search-form{
+        position: relative;
+        margin-top: 25px;
+
+        & input{
+            border: 1px solid #e3e3e3;
+            padding: 0px 20px;
+            height: 50px;
+            font-size: 12px;
+            color: $black;
+            width: 100%;
+            @include transition(0.3s);
+
+            &:focus{
+                border-color: $black;
+            }
+        }
+        & button{
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            border: 0;
+            background: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 16px;
+            color: $black;
+        }
+    }
+}
+
+
+.blog-sidebar-category{
+    & .sidebar-category{
+        & .category-list{
+            padding-top: 5px;
+
+            & li{
+                margin-top: 25px;
+
+                & a{
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: $body-color;
+                    @include transition(0.3s);
+                    display: block;
+
+                    &:hover{
+                        color: $black;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.blog-sidebar-post{
+    & .sidebar-post{
+        & .single-post{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            margin-top: 30px;
+
+            & .post-thumb{
+                & img{
+                    width: 80px;
+                }
+            }
+            & .post-content{
+                -webkit-flex: 1;
+                -moz-flex: 1;
+                -ms-flex: 1;
+                flex: 1;	
+                padding-left: 15px;	
+
+                & .title{
+                    & a{
+                        font-size: 14px;
+                        font-weight: 700;
+                        color: $black;
+                    }
+                }
+                & .date{
+                    & a{
+                        font-size: 11px;
+                        color: $body-color;
+
+                        @media #{$lg}{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.blog-sidebar-comment{
+    & .sidebar-comment{
+        padding-top: 20px;
+
+        & .comment-items{
+            & li{
+                font-size: 12px;
+                color: $body-color;
+
+                & + li{
+                    margin-top: 10px;
+                }
+
+                & i{
+                    margin-right: 3px;
+                }
+
+                & a{
+                    color: $black;
+                }
+            }
+        }
+    }
+}
+
+
+
+.blog-sidebar-tags{
+    & .sidebar-tags{
+        padding-top: 14px;
+
+        & .tags-list{
+            margin-left: -2px;
+            margin-right: -2px;
+
+            & li{
+                color: $body-color;
+                display: inline-block;
+                padding: 6px 2px 0;
+
+                & a{
+                    color: $black;
+                    padding: 0 20px;
+                    height: 40px;
+                    line-height: 38px;
+                    border: 1px solid $border-color;
+                    font-size: 10px;
+                    text-transform: uppercase;
+                    color: $body-color;
+                    @include transition(0.3s);
+
+                    &:hover{
+                        background-color: transparent;
+                        border-color: $black;
+                        color: $black;
+                        @include box-shadow (2px 2px 8px rgba($black, 0.25));
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+

@@ -1,0 +1,107 @@
+﻿
+@using System.Text.Json;
+<header class="header-area">
+
+    <div class="header-navbar">
+        <div class="container-fluid custom-container">
+            <div class="header-wrapper d-flex justify-content-between align-items-center">
+
+                <div class="header-logo">
+                    <a href="index.html">
+                        <img src="~/images/logo2.png" alt="Logo" style=“width:60px;height:60px;Margin-left:45px;”>
+                    </a>
+                </div>
+
+                <div class="header-menu site-nav d-none d-lg-block">
+                    <ul class="main-menu">
+                        <li class="static active"> 
+                            <a asp-controller="Home" asp-action="Index">Trang Chủ</a>
+                           
+                        </li>
+                        <li>
+                            <a asp-controller="Service" asp-action="Index">Dịch Vụ</a>
+                            <ul class="sub-menu">
+                                <li>
+                                    @await Component.InvokeAsync("CategoryMenu")
+                                </li>
+                               
+                            </ul>
+                            
+                        </li>
+                        <li>
+                            <a asp-controller="News" asp-action="Index">Tin Tức</a>
+                           
+                        </li>
+                      
+                        <li><a asp-controller="Contact" asp-action="Index">Liên Hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="header-meta">
+                    @*  @{
+                         var isLoggedIn = ViewData["login"] as bool? ?? false;
+                        var loggedInUser = ViewData["loggedInUser"] as Customer;
+                    } 
+                   *@
+                
+                    @if ( User.Identity.IsAuthenticated)
+                    {
+                        <ul class="meta">
+                            <li class="nav-item dropdown">
+                            
+                                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" asp-action="Dashboard" asp-controller="Accounts">
+                                    Xin Chào,My Acuont
+                                </a>
+                                                                    
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-action="Dashboard" asp-controller="Accounts">My Accuont</a></li>
+                                    <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Accounts">Đăng Xuất</a></li>
+                                </ul>
+                                </li>
+
+                            <li><a class="cart-toggle" asp-action="Index" asp-controller="Cart"><i class="far fa-Shopping-cart"></i><span id="cart_count">
+                                        @using TTCK_DVKYTHUAT.Helpers;
+                                        @using TTCK_DVKYTHUAT.ModelsView;
+                                        @{
+                                            var data = Context.Session.Get<List<CartItem>>("GioHang");
+                                            if (data == null)
+                                            {
+                                                data = new List<CartItem>();
+                                            }
+                                        }
+                                        @(data.Sum(c => c.SoLuong))
+                            </span></a></li>
+                            <li><a class="search-toggle" href="javascript:void(0)"><i class="far fa-search"></i></a></li>
+                            <li><a class="sidebar-toggle" href="javascript:void(0)"><i class="fal fa-bars"></i></a></li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="meta">
+                            <li> <a asp-action="Login" asp-controller="Accounts"><i class="fa fa-user mr-3" aria-hidden="true"></i></a></li>
+                            <li><a class="cart-toggle" asp-action="Index" asp-controller="Cart"><i class="far fa-Shopping-cart"></i><span id="cart_count">
+                                        @using TTCK_DVKYTHUAT.Helpers;
+                                        @using TTCK_DVKYTHUAT.ModelsView;
+                                        @{
+                                            var data = Context.Session.Get<List<CartItem>>("GioHang");
+                                            if (data == null)
+                                            {
+                                                data = new List<CartItem>();
+                                            }
+                                        }
+                                        @(data.Sum(c => c.SoLuong))
+                            </span></a></li>
+                            <li><a class="search-toggle" href="javascript:void(0)"><i class="far fa-search"></i></a></li>
+                            <li><a class="sidebar-toggle" href="javascript:void(0)"><i class="fal fa-bars"></i></a></li>
+                        </ul>
+                    }
+                   
+                </div>
+
+            </div>
+        </div>
+
+      
+    </div>
+
+</header>

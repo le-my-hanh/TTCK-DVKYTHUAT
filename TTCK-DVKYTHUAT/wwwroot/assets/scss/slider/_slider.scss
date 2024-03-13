@@ -1,0 +1,1894 @@
+
+
+
+/*====  Slider Start  =====*/
+
+.slider-area{
+    overflow: hidden;
+    padding-top: 140px;
+
+    @media #{$md}{
+        padding-top: 70px;
+    }
+    @media #{$xs}{
+        padding-top: 70px;
+    }
+}
+
+.slider-01{
+    padding-top: 0;
+}
+
+.single-slider{
+    height: 750px;
+    position: relative;      
+
+    @media #{$desktop}{
+        height: 870px;
+    }
+    @media #{$md}{
+        height: 650px;
+    }
+    @media #{$xs}{
+        height: 400px;
+    }
+    @media #{$sm}{
+        height: 500px;
+    }
+    
+    & .single-shape{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%;
+        height: 100%;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        @media #{$md}{
+            width: 100%;
+        }
+        @media #{$xs}{
+            width: 100%;
+        }
+
+        & img{
+            max-width: 600px;
+            position: relative !important;
+
+            @media #{$md}{
+                max-width: 60%;
+                margin: 0 auto;
+            }
+            @media #{$xs}{
+                max-width: 70%;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+
+.slider-content{
+    max-width: 670px;
+    position: relative !important;
+    margin-right: auto;
+    z-index: 9;
+    
+    @media #{$md}{
+        padding-top: 90px;
+        max-width: 500px;
+    }
+    @media #{$xs}{
+        padding-top: 90px;
+        max-width: 350px;
+    }
+
+    & .title{
+        font-size: 100px;
+        font-weight: 400;
+        font-family: $font-1;
+        color: #000;
+        overflow: hidden;
+        display: inline-block;
+        margin-top: -35px;
+        letter-spacing: -2px;
+
+        @media #{$lg}{
+            font-size: 74px;
+            margin-top: -28px;
+        }
+        @media #{$md}{
+            font-size: 70px;
+            margin-top: -22px;
+        }
+        @media #{$xs}{
+            font-size: 32px;
+            margin-top: -12px;
+        }
+        @media #{$sm}{
+            font-size: 40px;
+            margin-top: -18px;
+        }
+
+        & span{
+
+        }
+    }
+
+    & .text{
+        position: relative;
+        display: inline-block;
+        line-height: 0;
+        top: -25px;
+
+        @media #{$md}{
+            top: -15px;
+        }
+        @media #{$xs}{
+            top: -5px;
+        }
+
+        &::before,
+        &::after{
+            position: absolute;
+            content: '';
+            top: 50%;
+            width: 80px;
+            height: 2px;
+            background-color: #000000;
+            left: -100px;
+            @include transition(0.5s);
+
+            @media #{$xs}{
+                width: 40px;
+                left: -50px;
+            }
+        }
+        &::after{
+            left: auto;
+            right: -100px;
+
+            @media #{$xs}{
+                right: -50px;
+            }
+        }
+
+        &.line{
+            &::before,
+            &::after{
+                width: 0;
+            }
+        }
+
+        & p{
+            position: relative;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 400;
+            color: $black;
+            text-transform: uppercase;
+            display: inline-block;
+            overflow: hidden;
+
+            @media #{$xs}{
+                font-size: 12px;
+            }
+            @media #{$sm}{
+                font-size: 14px;
+            }
+        }
+    }
+
+    & .slider-btn{
+
+        & .main-btn{
+            margin-top: 10px;
+            text-transform: capitalize;
+            height: 60px;
+            line-height: 60px;
+            padding: 0 50px;
+
+            @media #{$md}{
+                height: 50px;
+                line-height: 50px;
+                padding: 0 30px;
+            }
+            @media #{$xs}{
+                height: 50px;
+                line-height: 50px;
+                padding: 0 30px;
+                width: auto;
+            }
+        }
+    }
+}
+
+
+.slider-active{
+    
+    & .slick-arrow{
+        position: absolute;
+        top: 50%;
+        @include transform(translateY(-50%));
+        @include transition(0.3s);
+        left: 0;
+        z-index: 99;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+
+        & i{
+            font-size: 40px;
+            color: $white;
+
+            @media #{$xs}{
+                font-size: 24px;
+            }
+            @media #{$sm}{
+                font-size: 30px;
+            }
+        }
+
+        &.next{
+            left: auto;
+            right: 0;
+        }
+    }
+
+    &:hover{
+        & .slick-arrow{
+            left: 20px;
+            opacity: 1;
+            visibility: visible;
+
+            @media #{$xs}{
+                left: 10px;
+            }
+
+            &.next{
+                left: auto;
+                right: 20px;
+
+                @media #{$xs}{
+                    right: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+
+/*====  Slider 2 Start  =====*/
+
+.slider-02{
+    .single-slider{
+        height: 650px;      
+    
+        @media #{$desktop}{
+            height: 800px;
+        }
+        @media #{$md}{
+            height: 600px;
+        }
+        @media #{$xs}{
+            height: 400px;
+        }
+        @media #{$sm}{
+            height: 500px;
+        }
+    }
+}
+
+.slider-content-2{
+    
+    & .title{
+        font-size: 72px;
+        font-weight: 700;
+        color: $white;
+        overflow: hidden;
+        letter-spacing: -5px;
+
+        @media #{$lg}{
+            font-size: 62px;
+        }
+        @media #{$md}{
+            font-size: 52px;
+        }
+        @media #{$xs}{
+            font-size: 32px;
+            letter-spacing: 0;
+        }
+        @media #{$sm}{
+            font-size: 40px;
+        }
+
+        & span{
+
+        }
+    }
+    & .slider-btn{
+        padding-top: 30px;
+
+        @media #{$xs}{
+            padding-top: 20px;
+        }
+
+        & .main-btn{
+            padding: 0 55px;
+            margin-top: 10px;
+            text-transform: capitalize;
+            border: 3px solid rgba($white, 0.5);
+            background-color: transparent;
+            height: 60px;
+            line-height: 54px;
+            @include transition(0s);
+
+            &:hover{
+                background-color: $black;
+                border-color: $black;                
+            }
+
+            @media #{$xs}{
+                height: 46px;
+                line-height: 40px;
+                padding: 0 20px;
+            }
+        }
+    }
+}
+
+.slider-content-2-2{
+    
+    & .sub-title{
+        font-size: 40px;
+        font-weight: 700;
+        color: $white;
+        overflow: hidden;
+
+        @media #{$xs}{
+            font-size: 20px;
+        }
+        & span{
+
+        }
+    }
+    & .title{
+        font-size: 150px;
+        font-weight: 700;
+        color: $white;
+        overflow: hidden;
+        line-height: 130px;
+
+        @media #{$lg}{
+            font-size: 120px;
+            line-height: 120px;
+        }
+        @media #{$md}{
+            font-size: 90px;
+            line-height: 110px;
+        }
+        @media #{$xs}{
+            font-size: 40px;
+            line-height: 60px;
+        }
+        @media #{$sm}{
+            font-size: 70px;
+            line-height: 80px;
+        }
+
+        & span{
+
+        }
+    }
+    & .slider-btn{
+        padding-top: 30px;
+
+        @media #{$xs}{
+            padding-top: 20px;
+        }
+
+        & .main-btn{
+            padding: 0 53px;
+            margin-top: 10px;
+            text-transform: capitalize;
+            border: 3px solid rgba($white, 0.5);
+            background-color: transparent;
+            height: 60px;
+            line-height: 54px;
+
+            &:hover{
+                background-color: $black;
+                border-color: $black;                
+            }
+
+            @media #{$xs}{
+                height: 46px;
+                line-height: 40px;
+                padding: 0 30px;
+            }
+        }
+    }
+}
+
+
+.slider-content-2-3{
+    
+    & .title{
+        font-size: 72px;
+        font-weight: 700;
+        color: $black;
+        overflow: hidden;
+        line-height: 75px;
+
+        @media #{$lg}{
+            font-size: 62px;
+        }
+        @media #{$md}{
+            font-size: 58px;
+        }
+        @media #{$xs}{
+            font-size: 32px;
+            line-height: 40px;
+        }
+        @media #{$sm}{
+            font-size: 40px;
+        }
+
+        & span{
+
+        }
+    }
+    & p{
+        overflow: hidden;
+        font-size: 10px;
+        color: $black;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        padding-top: 15px;
+    }
+    & .price{
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: 700;
+        color: $black;
+        text-transform: uppercase;
+        padding-top: 10px;
+    }
+    & .slider-btn{
+        padding-top: 10px;
+
+        & .main-btn{
+            padding: 0 50px;
+            margin-top: 10px;
+            text-transform: capitalize;
+            border: 3px solid rgba(35, 35, 36, 0.8);
+            background-color: transparent;
+            color: $black;
+            height: 60px;
+            line-height: 56px;
+
+            &:hover{
+                background-color: $black;
+                border-color: $black; 
+                color: $white;               
+            }
+
+            @media #{$xs}{
+                height: 46px;
+                line-height: 40px;
+                padding: 0 30px;
+            }
+        }
+    }
+}
+
+
+
+
+/*====  Slider 3 Start  =====*/
+
+.slider-03{
+    .single-slider{
+        height: 650px;      
+    
+        @media #{$desktop}{
+            height: 750px;
+        }
+        @media #{$md}{
+            height: 600px;
+        }
+        @media #{$xs}{
+            height: 320px;
+        }
+        @media #{$sm}{
+            height: 450px;
+        }
+    }
+}
+
+.slider-content-3{
+    display: inline-block !important;
+    padding-top: 180px;
+
+    @media #{$md}{
+        padding-top: 130px;
+    }
+    @media #{$xs}{
+        padding-top: 50px;
+    }
+
+    & .sticker{
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 13px;
+        color: $white;
+        text-transform: uppercase;
+        background-color: #526df9;
+
+        @media #{$xs}{
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 10px;
+        }
+    }
+    & .title{
+        font-size: 72px;
+        font-weight: 700;
+        color: $black;
+        overflow: hidden;
+
+        @media #{$lg}{
+            font-size: 62px;
+        }
+        @media #{$md}{
+            font-size: 52px;
+        }
+        @media #{$xs}{
+            font-size: 24px;
+        }
+        @media #{$sm}{
+            font-size: 36px;
+        }
+    }
+    & p{
+        position: relative;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        color: $body-color;
+        text-transform: capitalize;
+        display: inline-block;
+        overflow: hidden;
+
+        @media #{$xs}{
+            font-size: 12px;
+        }
+    }
+    & .slider-btn{
+        padding-top: 10px;
+
+        & .main-btn{
+            padding: 0 50px;
+            margin-top: 10px;
+            text-transform: capitalize;
+            border: 3px solid rgba(35, 35, 36, 0.8);
+            background-color: transparent;
+            color: $black;
+            height: 60px;
+            line-height: 56px;
+
+            &:hover{
+                background-color: $black;
+                border-color: $black;  
+                color: $white;              
+            }
+
+            @media #{$xs}{
+                height: 46px;
+                line-height: 40px;
+                padding: 0 30px;
+            }
+        }
+    }
+}
+
+
+/*====  Slider 4 Start  =====*/
+
+.slider-04{
+    background: #f5f5f5;
+    padding-top: 0;
+
+    & .single-slider{
+        @media #{$lg}{
+            height: 660px;
+        }
+    }
+}
+
+.slider-content-4{
+    position: relative;
+    z-index: 9;
+
+    @media #{$xs}{
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    @media #{$sm}{
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    & .slider-1{
+        max-width: 520px;
+        width: 100%;
+        margin-left: auto;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+
+        @media #{$desktop}{
+            max-width: 620px;
+        }
+        @media #{$lg}{
+            max-width: 470px;
+        }
+        @media #{$md}{
+            max-width: 380px;
+        }
+        @media #{$xs}{
+            max-width: 200px;
+        }
+        @media #{$sm}{
+            max-width: 295px;
+        }
+    }
+    & .slider-2{
+        position: absolute !important;
+        top: 16% !important;
+        left: 21% !important;
+        z-index: -1;
+        overflow: hidden;
+
+        @media #{$laptop}{
+            max-width: 460px;
+        }
+        @media #{$lg}{
+            max-width: 410px;
+        }
+        @media #{$md}{
+            max-width: 300px;
+            top: 6% !important;
+        }
+        @media #{$xs}{
+            max-width: 100px;
+        }
+        @media #{$sm}{
+            max-width: 220px;
+        }
+    }
+    & .slider-3{
+        position: absolute !important;
+        top: 41% !important;
+        left: 24% !important;
+        @include transform(translateX(-50%));
+        z-index: 3;
+        overflow: hidden;
+
+        @media #{$laptop}{
+            max-width: 460px;
+        }
+        @media #{$lg}{
+            max-width: 390px;
+            top: 43% !important;
+        }
+        @media #{$md}{
+            max-width: 290px;
+            top: 35% !important;
+        }
+        @media #{$xs}{
+            max-width: 110px;
+            top: 35% !important;
+        }
+        @media #{$sm}{
+            max-width: 230px;
+            top: 40% !important;
+        }
+    }
+    & .slider-4{
+        position: absolute !important;
+        top: 24% !important;
+        left: 0 !important;
+        @include transform(translateY(-50%));
+        z-index: 2;
+        overflow: hidden;
+
+        @media #{$laptop}{
+            max-width: 370px;
+        }
+        @media #{$lg}{
+            max-width: 340px;
+        }
+        @media #{$md}{
+            max-width: 240px;
+            top: 17% !important;
+        }
+        @media #{$xs}{
+            max-width: 100px;
+        }
+        @media #{$sm}{
+            max-width: 190px;
+        }
+    }
+
+    & .slider-btn{
+        position: absolute !important;
+        top: 70% !important;
+        left: 30% !important;
+        overflow: hidden;
+        z-index: 5;
+
+        @media #{$xs}{
+            top: 60% !important;
+            left: 25% !important;
+        }
+        @media #{$sm}{
+            top: 70% !important;
+        }
+
+        & .main-btn{
+            padding: 0 53px;
+            margin-top: 10px;
+            text-transform: capitalize;
+            border: 3px solid rgba(35, 35, 36, 0.8);
+            background-color: transparent;
+            color: $black;
+            height: 60px;
+            line-height: 54px;
+
+            &:hover{
+                background-color: $black;
+                border-color: $black;  
+                color: $white;              
+            }
+
+            @media #{$xs}{
+                height: 46px;
+                line-height: 40px;
+                padding: 0 30px;
+            }
+        }
+    }
+}
+
+
+
+/*====  Slider 6 Start  =====*/
+
+.slider-06{
+    height: 700px;
+    position: relative;
+    z-index: 5;
+
+    @media #{$desktop}{
+        height: 900px;
+    }
+    @media #{$lg}{
+        height: 650px;
+    }
+    @media #{$md}{
+        height: 580px;
+    }
+    @media #{$xs}{
+        height: 650px;
+    }
+
+    &::before{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($black, 0.3);
+        z-index: -1;
+        display: none;
+
+        @media #{$md}{
+            display: block;
+        }
+        @media #{$xs}{
+            display: block;
+        }
+    }
+}
+
+.slider-content-6{
+    & p{
+        color: $black;
+        font-size: 16px;
+
+        @media #{$md}{
+            color: $white;
+        }
+        @media #{$xs}{
+            color: $white;
+        }
+    }
+    & .slider-text{
+        padding-top: 20px;
+
+        & .text{
+            font-size: 170px;
+            line-height: 145px;
+            color: #fabb98;
+            background-image: -moz-linear-gradient(180deg,star 0,#fabb98 100%);
+            background-image: -webkit-linear-gradient(180deg,#93ddff 0,#fabb98 100%);
+            // background-image: -ms-linear-gradient(180deg,#93ddff 0,#fabb98 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: -5px;
+            margin-left: -10px;
+
+            @media #{$desktop}{
+                font-size: 250px;
+                line-height: 200px;
+            }
+            @media #{$lg}{
+                font-size: 110px;
+                line-height: 90px;
+            }
+            @media #{$md}{
+                font-size: 110px;
+                line-height: 90px;
+            }
+            @media #{$xs}{
+                font-size: 70px;
+                line-height: 65px;
+            }
+
+            &.text-2{
+                color: #ea5f72;
+                background-image: -moz-linear-gradient(180deg,star 0,#fabb98 100%);
+                background-image: -webkit-linear-gradient(180deg,#ea5f72 0,#fabb98 100%);
+                background-image: -ms-linear-gradient(180deg,#ea5f72 0,#fabb98 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+
+    & .slider-btn{
+        padding-top: 20px;
+        position: relative;
+        z-index: 5;
+
+        & .main-btn{
+            padding: 0 55px;
+            margin-top: 10px;
+            text-transform: capitalize;
+            border: 3px solid rgba(35,35,36,0.2);
+            background-color: transparent;
+            color: $black;
+            height: 60px;
+            line-height: 56px;
+
+            @media #{$md}{
+                border-color: $white;
+                color: $white;
+            }
+            @media #{$xs}{
+                border-color: $white;
+                color: $white;
+                padding: 0 30px;
+                height: 46px;
+                line-height: 40px;
+            }
+
+            &:hover{
+                background-color: $theme-color;
+                border-color: $theme-color;  
+                color: $white;              
+            }
+        }
+    }
+}
+
+
+/*====  Slider 7 Start  =====*/
+
+.slider-07{
+    & .single-slider{
+        height: 700px;
+
+        @media #{$lg}{
+            height: 500px;
+        }
+        @media #{$md}{
+            height: 450px;
+        }
+        @media #{$xs}{
+            height: 300px;
+        }
+    }
+}
+
+.slider-content-7{
+    width: 60%;
+
+    @media #{$xs}{
+        width: 100%;
+    }
+    @media #{$sm}{
+        width: 60%;
+    }
+
+    & .title{
+        font-size: 40px;
+        font-weight: 700;
+        color: $black;
+        overflow: hidden;
+        line-height: 72px;
+        display: inline-block;
+
+        @media #{$md}{
+            font-size: 28px;
+            line-height: 40px;
+        }
+        @media #{$xs}{
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+    & .text{
+        margin-top: -14px;
+
+        @media #{$md}{
+            margin-top: -7;
+        }
+        @media #{$xs}{
+            margin-top: 0;
+        }
+        
+        & p{
+            overflow: hidden;
+            font-size: 14px;
+            color: #8a8a8a;
+            display: inline-block;
+        }
+    }
+
+    & .slider-btn{
+        padding-top: 10px;
+
+        & .main-btn{
+            padding: 0 50px;
+            margin-top: 10px;
+            text-transform: capitalize;
+            border: 3px solid rgba($black, 0.2);
+            height: 60px;
+            line-height: 54px;
+            background-color: transparent;
+            color: $black;
+
+            &:hover{
+                background-color: $black;
+                border-color: $black; 
+                color: $white;               
+            }
+
+            @media #{$xs}{
+                height: 46px;
+                line-height: 40px;
+                padding: 0 20px;
+            }
+        }
+    }
+}
+
+
+/*====  Slider 8 Start  =====*/
+
+.slider-08{
+    height: 800px;
+    padding-top: 0;
+
+    @media #{$laptop}{
+        height: 700px;
+    }
+    @media #{$lg}{
+        height: 500px;
+    }
+    @media #{$md}{
+        height: 450px;
+    }
+    @media #{$xs}{
+        height: 500px;
+    }
+}
+
+.slider-content-8{
+    & img{
+        @media #{$xs}{
+            width: 100px;
+        }
+    }
+    & .title{
+        font-size: 72px;
+        line-height: 72px;
+        font-weight: 400;
+        font-family: $font-1;
+        color: $white;
+        margin-top: 10px;
+
+        @media #{$xs}{
+            font-size: 30px;
+        }
+        @media #{$sm}{
+            font-size: 48px;
+        }
+    }
+    & p{
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 400;
+        color: $white;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+
+        @media #{$xs}{
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+    }
+    & .play{
+        width: 66px;
+        height: 66px;
+        line-height: 66px;
+        font-size: 14px;
+        color: $black;
+        background-color: $white;
+        text-align: center;
+        border-radius: 50%;
+        margin-top: 50px;
+    }
+}
+
+
+/*====  Slider 10 Start  =====*/
+
+.slider-10{
+    padding-top: 0;
+
+    & .single-slider{
+        height: 820px;
+
+        @media #{$lg}{
+            height: 620px;
+        }
+        @media #{$md}{
+            height: 550px;
+        }
+        @media #{$xs}{
+            height: 350px;
+        }
+        @media #{$sm}{
+            height: 450px;
+        }
+    }
+}
+
+.slider-content-10{
+    width: 35%;
+    margin-left: auto;
+
+    @media #{$md}{
+        width: 50%;
+    }
+    @media #{$xs}{
+        width: 80%;
+    }
+    @media #{$sm}{
+        width: 45%;
+    }
+
+    & .title{
+        font-size: 80px;
+        line-height: 85px;
+        color: $white;
+        font-weight: 700;
+        overflow: hidden;
+        display: inline-block;
+        letter-spacing: -5px;
+
+        @media #{$lg}{
+            font-size: 60px;
+            line-height: 55px;
+        }
+        @media #{$md}{
+            font-size: 56px;
+            line-height: 55px;
+        }
+        @media #{$xs}{
+            font-size: 46px;
+            line-height: 55px;
+            letter-spacing: -3px;
+        }
+    }
+    & p{
+        font-size: 36px;
+        line-height: 40px;
+        color: $white;
+        font-weight: 700;
+        overflow: hidden;
+        display: inline-block;
+        margin-top: -5px;
+        position: relative;
+
+        @media #{$lg}{
+            font-size: 30px;
+            line-height: 38px;
+        }
+        @media #{$xs}{
+            font-size: 20px;
+            line-height: 26px;
+        }
+    }
+    & .slider-btn{
+        padding-top: 30px;
+
+        & .main-btn{
+            padding: 0 50px;
+            margin-top: 10px;
+            border: 2px solid $white;
+            line-height: 46px;
+            background-color: $white;
+            color: $black;
+            height: 60px;
+            line-height: 56px;
+
+            &:hover{
+                background-color: $black;
+                border-color: $black; 
+                color: $white;               
+            }
+
+            @media #{$xs}{
+                height: 40px;
+                line-height: 36px;
+                padding: 0 30px;
+            }
+        }
+    }
+}
+
+
+/*====  Slider 11 Start  =====*/
+
+.slider-11{
+    padding-top: 0;
+
+    & .single-slider{
+        height: 850px;
+
+        @media #{$md}{
+            height: 580px;
+        }
+        @media #{$xs}{
+            height: 400px;
+        }
+        @media #{$sm}{
+            height: 530px;
+        }
+    }
+}
+
+
+.slider-content-11{
+    position: relative !important;
+
+    & .content{
+        display: inline-block;
+        text-align: center; 
+
+        & .line{
+            width: 0;
+            height: 10px;
+            background-color: #f5b324;
+            display: block;
+            @include transition(0.6s);
+
+            &.lineLeft{
+                width: 150px;
+
+                @media #{$xs}{
+                    width: 100px;
+                    height: 8px;
+                }
+            }
+        }
+        & .title{
+            z-index: 6;
+            font-size: 80px;
+            line-height: 80px;
+            font-weight: 700;
+            color: $white;
+            display: inline-block;
+            overflow: hidden;
+
+            @media #{$md}{
+                font-size: 60px;
+            }
+            @media #{$xs}{
+                font-size: 30px;
+                line-height: 45px;
+            }
+            @media #{$sm}{
+                font-size: 40px;
+                line-height: 50px;
+            }
+        }
+    }
+}
+
+
+/*====  Slider 12 Start  =====*/
+
+.slider-12{
+    & .single-slider{
+        height: 800px;
+
+        @media #{$lg}{
+            height: 500px;
+        }
+        @media #{$md}{
+            height: 450px;
+        }
+        @media #{$xs}{
+            height: 300px;
+        }
+    }
+}
+
+
+
+/*====  Slider 13 Start  =====*/
+
+.slider-13{
+    padding-top: 0;
+
+    & .slick-arrow{
+        & i{
+            color: $white;
+        }
+    }
+
+    & .single-slider{
+        @media #{$desktop}{
+            height: 905px;
+        }
+        @media #{$xs}{
+            height: 550px;
+        }
+    }
+}
+
+.slider-content-13-1{
+    position: relative !important;
+
+    & .slider-banner{
+        display: inline-block;
+
+        @media #{$lg}{
+            width: 220px;
+        }
+        @media #{$md}{
+            width: 220px;
+        }
+        @media #{$xs}{
+            width: 160px;
+        }
+    }
+
+    & .slider-title{           
+        & .title{           
+            font-size: 180px;
+            line-height: 180px;
+            font-weight: 700;
+            color: $white;
+            letter-spacing: -10px;            
+            overflow: hidden;
+            display: inline-block;
+
+            @media #{$lg}{
+                font-size: 120px;
+                line-height: 110px;
+            }
+            @media #{$md}{
+                font-size: 90px;
+                line-height: 100px;
+                letter-spacing: -3px;
+            }
+            @media #{$xs}{
+                font-size: 40px;
+                line-height: 60px;
+                letter-spacing: 0px;
+            }
+            @media #{$sm}{
+                font-size: 60px;
+                line-height: 70px;
+            }
+        }
+    }
+    & .text{
+        & p{                
+            font-size: 18px;
+            line-height: 20px;
+            font-weight: 700;
+            color: $white;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            overflow: hidden;   
+            display: inline-block;     
+            
+            @media #{$lg}{
+                font-size: 16px;
+            }
+            @media #{$md}{
+                font-size: 16px;
+            }
+            @media #{$xs}{
+                font-size: 14px;
+                letter-spacing: 5px;
+            }
+        }
+    }
+    & .slider-btn{
+        margin-top: 30px;
+        
+        & .main-btn{
+            padding: 0 55px;
+            height: 54px;
+            line-height: 54px;
+            background-color: $white;
+            color: $black;
+
+            @media #{$xs}{
+                padding: 0 30px;
+                height: 45px;
+                line-height: 45px;
+            }
+
+            &:hover{
+                background-color: $black;
+                color: $white;
+            }
+        }
+    }    
+}
+
+
+.slider-content-13-2{
+    position: relative !important;
+    
+    & .slider-banner{
+        display: inline-block;
+    }
+
+    & .slider-title{           
+        & .title{           
+            font-size: 180px;
+            line-height: 180px;
+            font-weight: 700;
+            color: $white;
+            letter-spacing: -10px;            
+            overflow: hidden;
+            display: inline-block;
+            font-family: $font-1;
+
+            @media #{$lg}{
+                font-size: 120px;
+                line-height: 110px;
+            }
+            @media #{$md}{
+                font-size: 90px;
+                line-height: 100px;
+                letter-spacing: -3px;
+            }
+            @media #{$xs}{
+                font-size: 40px;
+                line-height: 60px;
+                letter-spacing: 0px;
+            }
+            @media #{$sm}{
+                font-size: 60px;
+                line-height: 70px;
+            }
+        }
+    }
+    & .text{
+        & p{                
+            font-size: 18px;
+            line-height: 20px;
+            font-weight: 700;
+            color: $white;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            overflow: hidden;   
+            display: inline-block;  
+            margin-top: 25px;
+
+            @media #{$lg}{
+                font-size: 16px;
+            }
+            @media #{$md}{
+                font-size: 16px;
+            }
+            @media #{$xs}{
+                font-size: 14px;
+                letter-spacing: 5px;
+            }
+        }
+    }
+    & .slider-btn{
+        margin-top: 50px;
+
+        & .main-btn{
+            padding: 0 55px;
+            background-color: $white;
+            color: $black;
+
+            &:hover{
+                background-color: $black;
+                color: $white;
+            }
+        }
+    }    
+}
+
+
+/*====  Slider 14 Start  =====*/
+
+.slider-14{
+    padding-top: 0;
+
+    & .slick-arrow{
+        & i{
+            color: $white;
+        }
+    }
+    
+    & .single-slider{
+        
+        @media #{$desktop}{
+            height: 950px;
+        }
+
+        @media #{$xs}{
+            height: 600px;
+        }
+    }
+}
+
+.slider-content-14-1{
+    & .slider-banner{
+        display: inline-block;
+
+        @media #{$lg}{
+            width: 220px;
+        }
+        @media #{$md}{
+            width: 200px;
+        }
+        @media #{$xs}{
+            width: 180px;
+        }
+    }
+    & .slider-title{
+        & .title{            
+            font-size: 46px;
+            line-height: 70px;
+            font-weight: 400;
+            color: rgb(255, 255, 255);
+            font-family: $font-3;   
+            display: inline-block;
+            overflow: hidden;     
+            
+            @media #{$xs}{
+                font-size: 28px;
+                line-height: 45px;
+            }
+            @media #{$sm}{
+                font-size: 34px;
+                line-height: 50px;
+            }
+        }
+    }
+    & .slider-btn{
+        margin-top: 30px;
+
+        @media #{$xs}{
+            margin-top: 10px;
+        }
+
+        & .shop-btn{
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 700;
+            color: $white;
+            border-bottom: 2px solid $white;
+            @include box-shadow (rgb(153, 153, 153) 0px 0px 0px 0px);
+            cursor: pointer;
+            padding: 5px 0px;    
+            text-transform: uppercase;        
+        }
+    }
+}
+
+.slider-content-14-2{
+    & .slider-title-wrapper{
+        position: relative;
+        display: inline-block;
+
+        & .slider-banner{
+            display: inline-block;
+            margin-top: -40px;
+            margin-bottom: -40px;
+
+            @media #{$xs}{
+                width: 120px;
+            }
+            @media #{$sm}{
+                width: 160px;
+            }
+        }
+        & .slider-title{
+            & .title{      
+                font-size: 150px;
+                line-height: 155px;
+                font-weight: 400;
+                color: $white;
+                font-family: $font-3;    
+                display: inline-block;
+                overflow: hidden;   
+                margin: -18px 0;  
+                
+                @media #{$lg}{
+                    font-size: 130px;
+                    line-height: 135px;
+                }
+                @media #{$md}{
+                    font-size: 110px;
+                    line-height: 135px;
+                }
+                @media #{$xs}{
+                    font-size: 70px;
+                    line-height: 100px;
+                }
+                @media #{$sm}{
+                    font-size: 100px;
+                    line-height: 130px;
+                }
+            }
+        }
+    }
+    & .slider-btn{
+        & .shop-btn{
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 700;
+            color: $white;
+            border-bottom: 2px solid $white;
+            @include box-shadow (rgb(153, 153, 153) 0px 0px 0px 0px);
+            cursor: pointer;
+            padding: 5px 0px;    
+            text-transform: uppercase;        
+        }
+    }
+}
+
+
+/*====  Slider 15 Start  =====*/
+
+.slider-15{
+    padding-top: 0;
+
+    & .single-slider{}
+    
+    & .slick-arrow{
+        & i{
+            color: $white;
+        }
+    }
+    
+    & .single-slider{
+        
+        @media #{$desktop}{
+            height: 870px;
+        }
+        @media #{$md}{
+            height: 580px;
+        }
+        @media #{$xs}{
+            height: 400px;
+        }
+    }
+}
+
+.slider-content-15-1{
+    & .slider-sub-title{
+        & .sub-title{
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 400;
+            color: $black;
+            font-family: $font-1;      
+            overflow: hidden;
+            display: inline-block;  
+            
+            @media #{$xs}{
+                font-size: 12px;
+            }
+            @media #{$sm}{
+                font-size: 16px;
+            }
+        }
+    }
+    & .slider-main-title{
+        & .main-title{
+            font-size: 40px;
+            line-height: 40px;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: $black;
+            font-family: $font-1;      
+            overflow: hidden;
+            display: inline-block; 
+            margin-top: 10px;
+
+            @media #{$md}{
+                font-size: 32px;
+                line-height: 35px;
+                letter-spacing: 3px;
+            }
+            @media #{$xs}{
+                font-size: 16px;
+                line-height: 35px;
+                letter-spacing: 0px;
+            }
+            @media #{$sm}{
+                font-size: 24px;
+                line-height: 35px;
+            }
+        }
+    }
+    & .slider-btn{
+        margin-top: 55px;
+        display: inline-block;
+        overflow: hidden;
+
+        @media #{$xs}{
+            margin-top: 30px;
+        }
+
+        & .main-btn{
+            background-color: $white;
+            color: $black;
+            padding: 0 50px;
+            height: 60px;
+            line-height: 60px;
+
+            @media #{$xs}{
+                width: auto;
+                height: 46px;
+                line-height: 46px;
+                padding: 0 30px;
+            }
+
+            &:hover{
+                background-color: #d6c49f;
+                color: $white;
+            }
+        }
+    } 
+    
+    & .slider-price{
+        & .price{
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 400;
+            color: $black;
+            margin-top: 15px;
+            display: inline-block;
+            overflow: hidden;
+        }
+    }
+}
+
+
+.slider-content-15-2{
+    width: 50%;
+    margin-left: auto;
+
+    @media #{$xs}{
+        width: 100%;
+    }
+    @media #{$sm}{
+        width: 50%;
+    }
+
+    & .slider-title-wrapper{
+        position: relative;
+        display: inline-block;
+        
+        & .slider-title{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+
+            @media #{$md}{
+                top: 44%;
+            }
+            @media #{$xs}{
+                top: 40%;
+            }
+
+            & .title{
+                font-size: 28px;
+                line-height: 30px;
+                font-weight: 400;
+                color: $black;
+                font-family: $font-1;   
+                overflow: hidden;
+                display: inline-block;     
+                
+                @media #{$md}{
+                    font-size: 24px;
+                }
+                @media #{$xs}{
+                    font-size: 20px;
+                }
+            }
+        }    
+    }    
+    & .slider-btn{
+        margin-top: 45px;  
+
+        & .main-btn{
+            background-color: $white;
+            color: $black;
+            padding: 0 50px;
+            @include box-shadow (5px 5px 0 #d6c49f !important);
+            height: 60px;
+            line-height: 60px;
+
+            @media #{$xs}{
+                width: auto;
+                height: 46px;
+                line-height: 46px;
+                padding: 0 30px;
+            }
+
+            &:hover{
+                background-color: #d6c49f;
+                color: $white;
+            }
+        }
+    }    
+}
+
+
+.slider-content-15-3{
+    width: 50%;
+    margin-left: auto;
+
+    @media #{$xs}{
+        width: 100%;
+        text-align: center;
+    }
+    @media #{$sm}{
+        width: 50%;
+        text-align: left;
+    }
+    
+    & .slider-sub-title{
+        & .sub-title{
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 400;
+            color: $black;
+            font-family: $font-1;      
+            overflow: hidden;
+            display: inline-block;    
+            
+            @media #{$xs}{
+                font-size: 13px;
+            }
+        }
+    }
+    & .slider-main-title{
+        & .main-title{
+            font-size: 40px;
+            line-height: 40px;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: $black;
+            font-family: $font-1;      
+            overflow: hidden;
+            display: inline-block; 
+            margin-top: 15px;
+
+            @media #{$md}{
+                font-size: 34px;
+            }
+            @media #{$xs}{
+                font-size: 30px;
+                margin-top: 0;
+            }
+        }
+    }
+    & .slider-btn{
+        margin-top: 45px;
+        display: inline-block;
+        overflow: hidden;
+
+        @media #{$xs}{
+            margin-top: 30px;
+        }
+
+        & .main-btn{
+            background-color: $white;
+            color: $black;
+            height: 60px;
+            line-height: 60px;
+            padding: 0 50px;
+
+            @media #{$xs}{
+                height: 46px;
+                line-height: 46px;
+                padding: 0 30px;
+            }
+
+            &:hover{
+                background-color: $black;
+                color: $white;
+            }
+        }
+    } 
+    
+    & .slider-price{
+        & .price{
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 400;
+            color: $black;
+            margin-top: 15px;
+            display: inline-block;
+            overflow: hidden;
+
+            @media #{$xs}{
+                font-size: 20px;
+            }
+        }
+    }
+}

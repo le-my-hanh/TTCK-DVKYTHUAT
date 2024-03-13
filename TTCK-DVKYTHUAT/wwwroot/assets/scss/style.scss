@@ -1,0 +1,452 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: Zyra – Clean, Minimal HTML Template
+    Template URI: site.com
+    Description: Zyra – Clean, Minimal HTML Template
+    Author: HasTech
+    Author URI: https://themeforest.net/user/hastech
+    Support: https://hasthemes.com/contact-us/
+    Version: 1.0
+
+-----------------------------------------------------------------------------------
+
+    CSS INDEX
+    ===================
+
+     01.Common
+     02.Header
+     03.Off Canvas Menu
+     04.Search
+     05.Cart
+     06.Slider
+     07.Category
+     08.Collections
+     09.Product
+     10.Banner
+     11.Features
+     12.Blog
+     13.Brand
+     14.Footer
+     15.Video
+     16.Newsletter
+     17.Shop Banner
+     18.Menu Sidebar
+     19.Menu Sidebar
+     20.Categories
+     21.Countdown
+     22.Counter
+     23.Instagram
+     24.Why Choose
+     25.Offer
+     26.Event
+     27.Product Quick View
+     28.Page Banner
+     29.Shop Sidebar
+     30.Shop Page
+     31.Look Book
+     32.Product Simple
+     33.Login Register
+     33.Cart Page
+     34.Checkout Page
+     35.Order Tracking Page
+     36.My Account Page
+     37.About
+     38.Team
+     39.Skill Progress Bar
+     40.Service
+     41.FAQs
+     42.Call to Action
+     43.Coming Soon
+     44.Contact
+     45.Blog Sidebar Page
+     46.Blog Details Page
+
+-----------------------------------------------------------------------------------*/
+
+@import 'variables';
+@import 'mixin';
+
+
+/*===========================
+     01.Common css 
+===========================*/
+
+@import 'common';
+
+
+/*===========================
+     02.Header css 
+===========================*/
+
+@import 'header/header';
+
+
+/*===========================
+     03.Off Canvas Menu css 
+===========================*/
+
+@import 'off-canvas/off-canvas';
+@import 'off-canvas/off-canvas-sidebar';
+
+
+/*===========================
+     04.Search css 
+===========================*/
+
+@import 'search/search';
+
+
+/*===========================
+     05.Cart css 
+===========================*/
+
+@import 'cart/off-canvas-cart';
+
+
+/*===========================
+     06.Slider css 
+===========================*/
+
+@import 'slider/slider';
+
+
+/*===========================
+     07.Category css 
+===========================*/
+
+@import 'category/category';
+
+
+/*===========================
+     08.Collections css 
+===========================*/
+
+@import 'collections/collection';
+
+
+/*===========================
+     09.Product css 
+===========================*/
+
+@import 'product/product';
+
+
+/*===========================
+     10.Banner css 
+===========================*/
+
+@import 'banner/banner';
+
+
+/*===========================
+     11.Features css 
+===========================*/
+
+@import 'features/features';
+
+
+/*===========================
+     12.Blog css 
+===========================*/
+
+@import 'blog/blog';
+
+
+/*===========================
+     13.Brand css 
+===========================*/
+
+@import 'brand/brand';
+
+
+/*===========================
+     14.Footer css 
+===========================*/
+
+@import 'footer/footer';
+
+
+/*===========================
+     15.Video css 
+===========================*/
+
+@import 'video/video';
+
+
+/*===========================
+     16.Newsletter css 
+===========================*/
+
+@import 'newsletter/newsletter';
+
+
+/*===========================
+     17.Shop Banner css 
+===========================*/
+
+@import 'Shop-banner/Shop-banner';
+
+
+/*===========================
+     18.Menu Sidebar css 
+===========================*/
+
+@import 'menu-sidebar/menu-sidebar';
+
+
+/*===========================
+     19.Menu Sidebar css 
+===========================*/
+
+@import 'testimonial/testimonial';
+
+
+/*===========================
+     20.Categories css 
+===========================*/
+
+@import 'categories/categories';
+
+
+
+/*===========================
+     21.Countdown css 
+===========================*/
+
+@import 'countdown/countdown';
+
+
+
+/*===========================
+     22.Counter css 
+===========================*/
+
+@import 'counter/counter';
+
+
+
+/*===========================
+     23.Instagram css 
+===========================*/
+
+@import 'instagram/instagram';
+
+
+
+/*===========================
+     24.Why Choose css 
+===========================*/
+
+@import 'why-choose/why-choose';
+
+
+
+/*===========================
+     25.Offer css 
+===========================*/
+
+@import 'offer/offer';
+
+
+
+/*===========================
+     26.Event css 
+===========================*/
+
+@import 'event/event';
+
+
+
+
+/*===========================
+     27.Product Quick View css 
+===========================*/
+
+@import 'product-quick-view/product-quick-view';
+
+
+
+
+/*===========================
+     28.Page Banner css 
+===========================*/
+
+@import 'page-banner/page-banner';
+
+
+
+
+/*===========================
+     29.Shop Sidebar css 
+===========================*/
+
+@import 'shop-sidebar/shop-sidebar';
+
+
+
+
+/*===========================
+     30.Shop Page css 
+===========================*/
+
+@import 'shop-page/shop-page';
+
+
+
+
+/*===========================
+     31.Look Book css 
+===========================*/
+
+@import 'look-book/look-book';
+
+
+
+
+/*===========================
+     32.Product Simple css 
+===========================*/
+
+@import 'product-simple/product-simple';
+
+
+
+
+/*===========================
+     33.Login Register css 
+===========================*/
+
+@import 'login-register/login-register';
+
+
+
+
+/*===========================
+     33.Cart Page css 
+===========================*/
+
+@import 'cart/cart-page';
+
+
+
+
+/*===========================
+     34.Checkout Page css 
+===========================*/
+
+@import 'checkout/checkout';
+
+
+
+
+/*===========================
+     35.Order Tracking Page css 
+===========================*/
+
+@import 'order-tracking/order-tracking';
+
+
+
+
+/*===========================
+     36.My Account Page css 
+===========================*/
+
+@import 'my-account/my-account';
+
+
+
+
+/*===========================
+     37.About css 
+===========================*/
+
+@import 'about/about';
+
+
+
+
+/*===========================
+     38.Team css 
+===========================*/
+
+@import 'team/team';
+
+
+
+
+/*===========================
+     39.Skill Progress Bar css 
+===========================*/
+
+@import 'skill-progress-bar/skill-progress-bar';
+
+
+
+
+/*===========================
+     40.Service css 
+===========================*/
+
+@import 'services-page/services-page';
+
+
+
+
+/*===========================
+     41.FAQs css 
+===========================*/
+
+@import 'faqs/faqs';
+
+
+
+
+/*===========================
+     42.Call to Action css 
+===========================*/
+
+@import 'call-to-action/call-to-action';
+
+
+
+
+/*===========================
+     43.Coming Soon css 
+===========================*/
+
+@import 'coming-soon/coming-soon';
+
+
+
+
+/*===========================
+     44.Contact css 
+===========================*/
+
+@import 'contact/contact';
+
+
+
+/*===========================
+     45.Blog Sidebar Page css 
+===========================*/
+
+@import 'blog-sidebar/blog-sidebar';
+
+
+
+/*===========================
+     46.Blog Details Page css 
+===========================*/
+
+@import 'blog-details-page/blog-details-page';
+
+
+
+
+
+
+
+
+

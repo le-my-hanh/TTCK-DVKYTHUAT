@@ -1,0 +1,150 @@
+﻿@model TTCK_DVKYTHUAT.Models.News
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<News> lsnews = ViewBag.tintuc;
+}
+
+
+<!--====== Page Banner Start ======-->
+
+<section class="page-banner bg_cover" style="background-image: url(~/assets/images/page-banner-4.jpg);">
+    <div class="container">
+        <div class="page-banner-content text-center">
+            <h2 class="title">Nicholas K Spring 2020 Runway</h2>
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.html">Blog</a></li>
+                <li class="breadcrumb-item active">Nicholas K Spring 2023 Runway</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== Blog Details Start ======-->
+
+<section class="blog-details-page pt-80">
+    <div class="container">
+        <div class="blog-details-content text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <ul class="blog-meta">
+                       @*  <li><a href="#">By <span> Jon Smith</span></a></li> *@
+                        <li><a href="#"><i class="fal fa-clock"></i> @Model.CreatedDate</a></li>
+                        <li><a href="#"><span>Photography</span></a></li>
+                    </ul>
+@*                     <p>Donec laoreet bibendum rutrum. Nulla facilisi. Proin in lacinia dolor. Cras arcu lacus, pulvinar at molestie luctus, blandit at libero. Vivamus semper congue mauris, et lobortis mauris ultrices nec. Nulla et sodales leo. Praesent facilisis elit nec ornare feugiat <br> <br> Donec eu neque blandit, vestibulum felis accumsan, ullamcorper ipsum. Nunc rhoncus, augue interdum sagittis dignissim, nibh tortor sodales ex, pretium maximus libero turpis varius purus. Pellentesque condimentu</p>
+ *@                </div>
+            </div>
+            <div class="blog-details-image">
+                <div class="row">
+                    <div class="col-md-12 image-col">
+                        <div class="image">
+                            <img src="~/images/@Model.Image" alt="@Model.NewsId">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+           
+            <div class="details-wrapper text-center">
+                <h2 class="title">@Model.Title</h2>
+                <p>  @Model.Desciption</p>
+            </div>
+          
+           
+        </div>
+       
+    </div>
+</section>
+
+<!--====== Blog Details Ends ======-->
+<!--====== Related Post Start ======-->
+
+<section class="blog-area pt-135 pb-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center pb-50">
+                    <h2 class="title">Tin Tức Liên Quan !</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @if (lsnews != null)
+            {
+                foreach (var item in lsnews)
+                {
+                      <div class="col-lg-4 col-md-7">
+                        <div class="single-blog mt-30">
+                            <div class="blog-image">
+                                <a asp-action="Details" asp-controller="News" asp-route-Id="@item.NewsId">
+                                    <img src="~/images/@item.Image" alt="blog">
+                                    <i class="fal fa-search-plus"></i>
+                                </a>
+                            </div>
+                            <div class="blog-content">
+                                <ul class="blog-category">
+                                   @*  <li><a href="#">Style</a></li> *@
+                                </ul>
+                                <h4 class="title"><a asp-action="Details" asp-controller="News" asp-route-Id="@item.NewsId">@item.Title</a></h4>
+                                <ul class="blog-meta">
+                                    <li><a href="#">By <span> Jon Smith</span></a></li>
+                                    <li><a href="#"><i class="fal fa-clock"></i> @item.CreatedDate</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+           
+        </div>
+    </div>
+</section>
+
+<!--====== Related Post Ends ======-->
+@* <h1>Details</h1>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Desciption)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Desciption)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.CategoryId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.NewsId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@

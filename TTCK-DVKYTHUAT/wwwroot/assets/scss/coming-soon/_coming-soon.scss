@@ -1,0 +1,125 @@
+
+
+
+/*====  Coming Soon Start  =====*/
+
+.coming-soon-page{
+    height: 100vh;
+}
+
+
+.coming-soon-content{
+    & .sub-title{
+        font-size: 24px;
+        font-weight: 400;
+        color: $body-color;
+        position: relative;
+        font-family: $font-1;
+        display: inline-block;
+
+        @media #{$xs}{
+            font-size: 20px;
+        }
+
+        &::after,
+        &::before{
+            width: 50px;
+            position: absolute;
+            content: '';
+            height: 1px;
+            top: 50%;
+            @include transform(translateY(-50%));
+            background-color: $body-color;
+            left: -70px;
+
+            @media #{$xs}{
+                width: 30px;
+                left: -40px;
+            }
+        }
+
+        &::after{
+            left: auto;
+            right: -70px;
+
+            @media #{$xs}{
+                right: -40px;
+            }
+        }
+    }
+    & .main-title{
+        font-size: 72px;
+        line-height: 80px;
+        font-weight: 400;
+        color: $black;
+        position: relative;
+        font-family: $font-1;
+        margin-top: 10px;
+
+        @media #{$xs}{
+            font-size: 40px;
+        }
+    }
+
+    & .coming-soon-countdown{
+        margin-top: 25px;
+
+        @media #{$xs}{
+            margin-top: 0;
+        }
+
+        & .countdown{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            padding-top: 25px;
+    
+            & .single-countdown{
+                width: 25%;
+                position: relative;
+    
+                & + .single-countdown{
+                    &::before{
+                        content: "";
+                        border-left: 2px solid;
+                        position: absolute;
+                        left: -1px;
+                        height: 20px;
+                        opacity: .5;
+                        width: 0;
+                        top: 50%;
+                        @include transform(translateY(-50%));           
+                    }
+                }
+    
+                & .count{
+                    font-size: 36px;
+                    font-weight: 400;
+                    color: $black;
+                    letter-spacing: -1px;
+                    line-height: 1;
+                    display: block;
+                    font-family: $font-1;
+    
+                    @media #{$xs}{
+                        font-size: 24px;
+                        line-height: 1.8;
+                    }
+                    @media #{$sm}{
+                        font-size: 28px;
+                        line-height: 1.8;
+                    }
+                }
+                & .value{
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $body-color;
+                    display: block;
+                    line-height: 1.4;
+                }
+            }
+        }
+    }
+}

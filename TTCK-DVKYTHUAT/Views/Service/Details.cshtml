@@ -1,0 +1,305 @@
+﻿@model TTCK_DVKYTHUAT.Models.Service
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Service> lsservices = ViewBag.dichvu;
+   
+}
+
+<!--====== Page Banner Start ======-->
+
+<section class="page-banner bg_cover" style="background-image: url(~/assets/images/page-banner.jpg);">
+    <div class="container">
+        <div class="page-banner-content text-center">
+            <h2 class="title">Product simple</h2>
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="shop-sidebar.html">Shop</a></li>
+                <li class="breadcrumb-item active">Oversized Check Dress</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== Product Simple Start ======-->
+
+<section class="product-simple-area pt-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product-simple-image flex-wrap mt-50">
+                    <button class="product-gallery-popup" data-hint="Click to enlarge" data-images='[
+                            {"src": "~/assets/images/product/product-37.jpg", "w": 600, "h": 743},
+                            {"src": "~/assets/images/product/product-38.jpg", "w": 600, "h": 743},
+                            {"src": "~/assets/images/product/product-25.jpg", "w": 600, "h": 743},
+                            {"src": "~/assets/images/product/product-26.jpg", "w": 600, "h": 743}
+                        ]'>
+                        <i class="far fa-search-plus"></i>
+                    </button>
+
+                    <div class="product-simple-preview-image">
+                        <img class="product-zoom" src="~/images/@Model.Image" alt="@Model.ServiceId">
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product-simple-details mt-50">
+                    <h4 class="title">@Model.Name</h4>
+                  @*   <p class="sku-id">REF. 1104693 - TOMY <span>9987 in stock</span></p> *@
+
+                    <p class="review">
+                        <i class="fas fa-star review-on"></i>
+                        <i class="fas fa-star review-on"></i>
+                        <i class="fas fa-star review-on"></i>
+                        <i class="fas fa-star review-on"></i>
+                        <i class="fas fa-star review-on"></i>
+                        <a href="#">(3 customer reviews)</a>
+                    </p>
+
+                    <div class="product-price">
+                        <span class="price">$ @Model.Price.Value.ToString("#,##0") VND</span>
+                    </div>
+                    <div class="product-quantity-cart-wishlist-compare flex-wrap">
+                        <form asp-action="AddtoCart" asp-controller="Cart" asp-route-id="@Model.ServiceId">
+                            @* <div class="product-quantity d-flex">
+                                <button type="button" class="sub"><i class="fal fa-minus"></i></button>
+                                <input type="text" value="1" />
+                                <button type="button" class="add"><i class="fal fa-plus"></i></button>
+                            </div> *@
+                            <div class="product-cart">
+                                <button class="main-btn">Đặt dịch vụ</button>
+                            </div>
+                        </form>
+                        <a href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" class="product-wishlist"><i class="far fa-heart"></i></a>
+                        <a href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" class="product-compare"><i class="far fa-repeat-alt"></i></a>
+                    </div>
+
+                    @* <div class="product-description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elementum turpis in leo eleifend ultrices. Fusce egestas vehi</p>
+
+                        <ul class="description-list">
+                            <li>Cotton-blend fabric</li>
+                            <li>Check-pattern</li>
+                            <li>Removable belt at the waist</li>
+                            <li>High waist</li>
+                        </ul>
+                    </div> *@
+
+                    <div class="product-meta">
+                        <p>Categories: @Model.Category.Name @* <a href="#">Metro,</a> <a href="">Women</a> *@</p>
+@*                         <p>Tags: <a href="#">Dress,</a> <a href="#">Fashion</a> <a href="#">Furniture,</a> <a href="#">Lookbook</a></p>
+ *@                    </div>
+
+                    <div class="product-share">
+                        <ul class="social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Product Simple Ends ======-->
+<!--====== Product Description & Review Start ======-->
+
+<section class="product-description-review pt-150">
+    <div class="container">
+        <div class="product-simple-tab-menu">
+            <ul class="nav justify-content-center">
+                <li><a class="active" data-bs-toggle="tab" href="#description">Description</a></li>
+                <li><a data-bs-toggle="tab" href="#review">Review (3)</a></li>
+            </ul>
+        </div>
+        <div class="tab-content pt-30">
+            <div class="tab-pane fade show active" id="description">
+                @* <div class="product-description">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="description">
+                                <p>Donec laoreet bibendum rutrum. Nulla facilisi. Proin in lacinia dolor. Cras arcu lacus, pulvinar at molestie luctus, blandit at libero. Vivamus semper congue mauris, et lobortis mauris ultrices nec. Nulla et sodales leo. Praesent facilisis elit nec ornare feugiat <br> <br>  Donec eu neque blandit, vestibulum felis accumsan, ullamcorper ipsum. Nunc rhoncus, augue interdum sagittis dignissim, nibh tortor sodales ex, pretium maximus libero turpis varius purus. Pellentesque condimentum, lacus vel accumsan consequat, velit augue</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image text-md-end">
+                                <img src="~/assets/images/pd-1.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+                <div class="product-description">
+                    <div class="row flex-md-row-reverse">
+                        <div class="col-md-6">
+                            <div class="description">
+                                <p> @Model.Description <br> <br>  </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image text-md-left ">
+                                <img src="~/images/@Model.Image" alt="@Model.ServiceId" style=“width:400px;height:350px;”>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="review">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="product-review pt-20">
+                            <div class="review-comment">
+                                <ul class="comment">
+                                    <li>
+                                        <div class="single-review-comment">
+                                            <div class="review-author">
+                                                <img src="~/assets/images/auhtor-1.jpg" alt="">
+                                            </div>
+                                            <div class="review-content">
+                                                <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
+                                                <div class="review-name-rating">
+                                                    <h6 class="review-name">Rosie Silva</h6>
+                                                    <ul class="review-rating">
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-review-comment">
+                                            <div class="review-author">
+                                                <img src="~/assets/images/auhtor-2.png" alt="">
+                                            </div>
+                                            <div class="review-content">
+                                                <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
+                                                <div class="review-name-rating">
+                                                    <h6 class="review-name">Rosie Silva</h6>
+                                                    <ul class="review-rating">
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-review-comment">
+                                            <div class="review-author">
+                                                <img src="~/assets/images/auhtor-3.png" alt="">
+                                            </div>
+                                            <div class="review-content">
+                                                <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
+                                                <div class="review-name-rating">
+                                                    <h6 class="review-name">Rosie Silva</h6>
+                                                    <ul class="review-rating">
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="review-form mt-45">
+                                <h2 class="form-title">Add a review </h2>
+
+                                <form action="#">
+                                    <div class="rating-star">
+                                        <a href="javascript:void(0)" class="star-1"></a>
+                                        <a href="javascript:void(0)" class="star-2"></a>
+                                        <a href="javascript:void(0)" class="star-3"></a>
+                                        <a href="javascript:void(0)" class="star-4"></a>
+                                        <a href="javascript:void(0)" class="star-5"></a>
+                                    </div>
+                                    <div class="review-textarea">
+                                        <label>Your Review *</label>
+                                        <textarea></textarea>
+                                    </div>
+                                    <div class="review-btn">
+                                        <a href="#" class="main-btn">Submit</a>
+                                    </div>
+                                    <div class="review-checkbok">
+                                        <input type="checkbox" id="checkbox">
+                                        <label for="checkbox"><span></span> NOTIFY ME OF NEW POSTS BY EMAIL.</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Product Description & Review Ends ======-->
+<!--====== Related Products Start ======-->
+
+<section class="product-area pt-160 pb-145">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="section-title text-center">
+                    <h2 class="title">Related Products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row-wrapper product-active">
+            @if (lsservices != null)
+                        {
+                foreach (var item in lsservices)
+                {
+                    <div class="custom-col">
+                        <div class="single-product mt-50">
+                            <div class="product-image">
+                                <div class="image">
+                                    <img class="product-1" src="~/images/@item.Image" alt="product">
+                                    @* <img class="product-2" src="~/assets/images/product/product-8.jpg" alt="product"> *@
+                                    <a class="link" href="product-simple-01.html"></a>
+                                </div>
+                                <ul class="product-meta text-center">
+                                    <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
+                                    <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                                    <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
+                                    <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                                </ul>
+                               @*  <span class="discount">40%</span> *@
+                            </div>
+                            <div class="product-content d-flex justify-content-between">
+                                <div class="product-title">
+                                    <h4 class="title"><a asp-action="Details" asp-controller="Service" asp-route-Id="@item.ServiceId">@item.Name</a> </h4>
+
+                   
+                                </div>
+                                <div class="product-price">
+                                   @*  <span class="regular-price">£250.00</span> *@
+                                    <span class="sale-price">$ @item.Price.Value.ToString("#,##0") VND</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            
+        </div>
+    </div>
+</section>
+
+<!--====== Related Products Ends ======-->

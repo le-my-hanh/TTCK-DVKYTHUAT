@@ -1,0 +1,140 @@
+
+
+
+/*====  Page Banner Start  =====*/
+
+.page-banner{
+    padding-top: 200px;
+    padding-bottom: 160px;
+    background-position: top center;
+
+    @media #{$md}{
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    @media #{$xs}{
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    &.banner-02{
+        padding-top: 300px;
+        padding-bottom: 300px;
+
+        @media #{$lg}{
+            padding-top: 230px;
+            padding-bottom: 230px;
+        }
+        @media #{$md}{
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        @media #{$xs}{
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+    }
+    &.banner-03{
+        padding-top: 250px;
+        padding-bottom: 270px;
+
+        @media #{$lg}{
+            padding-bottom: 250px;
+        }
+        @media #{$md}{
+            padding-top: 180px;
+            padding-bottom: 100px;
+        }
+        @media #{$xs}{
+            padding-top: 180px;
+            padding-bottom: 100px;
+        }
+    }
+}
+
+.page-banner-content{
+    & .title{
+        font-size: 110px;
+        font-family: $font-1;
+        color: $black;
+        text-transform: capitalize;
+        font-weight: 400;
+
+        @media #{$lg}{
+            font-size: 80px;
+        }
+        @media #{$md}{
+            font-size: 50px;
+        }
+        @media #{$xs}{
+            font-size: 24px;
+        }
+        @media #{$sm}{
+            font-size: 32px;
+        }
+    }
+    & .breadcrumb{
+        margin-bottom: 0;
+        border-radius: 0;
+        padding: 0;
+        background: none;
+        margin-top: 10px;
+
+        & .breadcrumb-item{
+            font-size: 12px;
+            line-height: 22px;
+            font-weight: 700;
+            color: $black;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            
+            & a{
+                color: $black;
+                @include transition(0.3s);
+
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+            & + .breadcrumb-item{
+                &::before{
+                    content: '/';
+                    color: $black;
+                    font-size: 12px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+}
+
+
+.page-banner-content-2{
+    
+    & .title{
+        color: $white;
+    }
+
+    & .breadcrumb{
+        & .breadcrumb-item{
+            color: $white;
+            
+            & a{
+                color: $white;
+
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+            & + .breadcrumb-item{
+                &::before{
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+
+
+

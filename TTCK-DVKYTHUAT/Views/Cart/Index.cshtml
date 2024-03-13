@@ -1,0 +1,133 @@
+﻿@model IEnumerable<TTCK_DVKYTHUAT.ModelsView.CartItem>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+   <!--====== Page Banner Start ======-->
+
+    <section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
+        <div class="container">
+            <div class="page-banner-content text-center">
+                <h2 class="title">Cart</h2>
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Cart</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!--====== Page Banner Ends ======-->
+    <!--====== Cart Start ======-->
+
+    <section class="cart-page pt-80 pb-80">
+        <div class="container">
+            <div class="cart-table table-responsive">
+                @if(Model!=null&& Model.Count()>0)
+              {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="delete"></th>
+                            <th class="product">Dịch Vụ</th>
+                            <th class="price">Đơn Giá</th>
+                            <th class="quantity">Số Lần</th>
+                            <th class="Total">Thành Tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @if (Model != null && Model.Count() > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="delete">
+                                        <a class="product-delete" asp-action="Remove" asp-route-serviesID="@item.ServiceId"><i class="far fa-trash-alt"></i></a>
+                                    </td>
+                                    <td class="product">
+                                        <div class="cart-product">
+                                            <div class="product-image">
+                                                <img src="~/images/@item.Anh" alt="@item.TenDV">
+                                            </div>
+                                            <div class="product-content">
+                                                <h5 class="title"><a href="product-simple-01.html">@item.TenDV</a></h5>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="price">
+                                        <p class="cart-price">$@item.DonGia.ToString("#,##0") VNĐ</p>
+                                    </td>
+                                    <td class="quantity">
+                                        <div class="product-quantity d-inline-flex">
+                                            <a asp-action="Decrease" asp-controller="Cart" asp-route-id=@item.ServiceId> <button type="button" class="sub"><i class="fal fa-minus"></i></button></a>
+                                           
+                                            <input type="number"  value="@item.SoLuong" />
+                                            <a asp-action="Increase" asp-controller="Cart" asp-route-id=@item.ServiceId><button type="button" class="add"><i class="fal fa-plus"></i></button></a>
+                                        </div>
+                                    </td>
+                                    <td class="Total">
+                                        <p class="cart-price">$@item.ThanhTien.ToString("#,##0") VNĐ</p>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+
+
+
+
+                    </tbody>
+                </table>
+               
+            }
+            else
+            {
+                <h4>Chưa có Dịch vụ !</h4>
+            }
+                         
+            </div>
+        <div class="cart-btn">
+            <div class="cart-btn-left">
+                <a asp-action="Index" asp-controller="Service" class="main-btn">Dịch Vụ</a>
+            </div>
+            @* <div class="cart-btn-right">
+                <a class="main-btn btnDeleteAll" asp-action="DeleteAll" asp-controller="Cart">Xóa giỏ hàng</a>
+                <a asp-action="Update" class="main-btn main-btn-2">Cập Nhật Giỏ Hàng</a> 
+            </div> *@
+        </div>
+
+            <div class="row">
+              
+                <div class="col-lg-4">
+                    <div class="cart-totals mt-45">
+                        <div class="cart-title">
+                            <h4 class="title">Tổng đơn hàng</h4>
+                        </div>
+                        <div class="cart-total-table mt-25">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p class="value">Tổng tiền</p>
+                                        </td>
+                                        <td>
+                                        <p class="price">@Model.Sum(x=>x.ThanhTien).ToString("#,##0") VNĐ</p>
+                                        </td>
+                                    </tr>
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cart-total-btn mt-20">
+                            <a href="#" class="main-btn btn-block">Thanh Toán</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+

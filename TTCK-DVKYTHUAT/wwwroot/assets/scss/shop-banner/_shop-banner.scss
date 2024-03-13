@@ -1,0 +1,1315 @@
+
+
+
+
+/*==== Shop Banner 1 & 2 Start  =====*/
+
+.Shop-banner-area{
+    overflow: hidden;
+
+    & .Shop-banner-wrapper{
+        margin-left: -5px;
+        margin-right: -5px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+
+        & .Shop-banner-col{
+            padding: 0 5px;
+            width: 50%;
+
+            @media #{$md}{
+                width: 100%;
+            }
+            @media #{$xs}{
+                width: 100%;
+            }
+        }
+
+        & .Shop-banner-col-full{
+            padding: 0 5px;
+            width: 100%;
+        }
+    }
+}
+
+.single-Shop-banner{
+    margin-top: 10px;
+    height: 580px;
+    position: relative;
+    background-color: #f5f5f5;
+
+    &.Shop-banner-bg{
+        background-color: #e6e6e4;
+    }
+
+    @media #{$laptop}{
+        height: 380px;
+    } 
+    @media #{$lg}{
+        height: 380px;
+    }  
+
+    @media #{$md}{
+        width: 100%;
+        height: 320px;
+    }
+    @media #{$xs}{
+        width: 100%;
+        height: auto;
+    }
+    @media #{$sm}{
+        width: 100%;
+        height: 350px;
+    }
+
+    & .Shop-banner-content{
+        width: 60%;
+        height: 100%;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        @media #{$xs}{
+            width: 100%;
+        }
+        @media #{$sm}{
+            width: 50%;
+        }
+        
+        & .content{
+            max-width: 520px;
+            width: 100%;
+            margin-left: auto;
+            padding: 30px;
+
+            @media #{$md}{
+                max-width: 420px;
+            }
+
+            & .title{
+                & a{
+                    font-size: 24px;
+                    font-weight: 700;
+                    color: $black;
+
+                    @media #{$lg}{
+                        font-size: 18px;
+                    }
+                    @media #{$xs}{
+                        font-size: 20px;
+                    }
+                }
+            }
+            & .price{
+                display: block;
+                margin-top: 15px;
+                font-size: 24px;
+                font-weight: 400;
+                color: $black;
+            }
+            & .main-btn{
+                background-color: transparent;
+                color: $black;
+                border: 3px solid rgba(35,35,36,0.2);
+                height: 54px;
+                line-height: 48px;
+                padding: 0 40px;
+                margin-top: 45px;
+
+                @media #{$xs}{
+                    height: 45px;
+                    line-height: 41px;
+                    padding: 0 30px;
+                    margin-top: 35px;
+                }
+
+                &:hover{
+                    background-color: $theme-color;
+                    border-color: $theme-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+    & .Shop-banner-image{
+        width: 40%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        
+        @media #{$xs}{
+            width: 100%;
+            position: relative;
+            height: 250px;
+        }
+        @media #{$sm}{
+            width: 50%;
+            position: absolute;
+            height: 100%;
+        }
+    }
+
+    &.Shop-banner-2{
+        & .Shop-banner-content{
+            width: 50%;
+            height: 100%;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-left: auto;
+
+            @media #{$xs}{
+                width: 100%;
+            }
+            @media #{$sm}{
+                width: 50%;
+            }
+        }
+
+        & .Shop-banner-image{
+            right: auto;
+            left: 90px;
+            top: auto;
+            bottom: 0;
+            height: 90%;
+
+            @media #{$laptop}{
+                left: 50px;
+            }
+            @media #{$lg}{
+                left: 30px;
+            }
+            @media #{$xs}{
+                left: 0px;
+                height: 250px;
+            }
+        }
+    }
+}
+
+
+/*===== Shop Banner 3 Start =====*/
+
+.single-Shop-banner-3{
+    margin-top: 10px;
+    height: 650px;
+    position: relative;
+    background-color: #f5f5f5;
+
+    @media #{$desktop}{
+        height: 880px;
+    }
+    @media #{$lg}{
+        height: 600px;
+    }
+    @media #{$md}{
+        height: 450px;
+    }
+    @media #{$xs}{
+        height: auto;
+    }
+
+    & .Shop-banner-content{
+        padding: 50px;
+        width: 50%;
+        height: 100%;
+        display: table;
+        margin-left: auto;
+
+        @media #{$md}{
+            padding: 30px 20px;
+        }
+        @media #{$xs}{
+            padding: 50px 30px;
+            width: 100%;
+        }
+        @media #{$sm}{
+            padding: 50px 30px;
+            width: 50%;
+        }
+
+        & .content{
+            display: table-cell;
+            vertical-align: middle;
+
+            & .text{
+                font-size: 200px;
+                line-height: 130px;     
+                font-weight: 700;
+                color: $black;
+                position: relative;
+                z-index: 3;
+
+                @media #{$desktop}{
+                    font-size: 250px;
+                    line-height: 160px; 
+                }
+                @media #{$lg}{
+                    font-size: 150px;
+                    line-height: 120px; 
+                }
+                @media #{$md}{
+                    font-size: 100px;
+                    line-height: 80px; 
+                }
+                @media #{$xs}{
+                    font-size: 82px;
+                    line-height: 65px; 
+                }
+
+                &.text-2{
+                    color: $theme-color;
+                    z-index: 2;
+                }
+            }
+            & .main-btn{
+                background-color: transparent;
+                color: $black;
+                border: 3px solid rgba(35,35,36,0.2);
+                height: 54px;
+                line-height: 48px;
+                padding: 0 40px;
+                margin-top: 45px;
+                position: relative;
+                z-index: 9;
+
+                @media #{$xs}{
+                    height: 45px;
+                    line-height: 41px;
+                    width: auto;
+                    margin-top: 35px;
+                }
+
+                &:hover{
+                    background-color: $theme-color;
+                    border-color: $theme-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    & .Shop-banner-image{
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        @media #{$lg}{
+            width: 50%;
+        }
+        @media #{$xs}{
+            width: 100%;
+            position: relative;
+            height: 250px;
+        }
+        @media #{$sm}{
+            width: 50%;
+            position: absolute;
+            height: 100%;
+        }
+    }
+}
+
+
+/*===== Shop Banner 4 Start =====*/
+
+.shop-banner-4{
+    overflow: hidden;
+    padding-top: 40px;
+
+    & .row{
+        @media #{$desktop}{
+            margin-left: -35px;
+            margin-right: -35px;
+        }       
+
+        & .shop-col{
+            @media #{$desktop}{
+                padding-left: 35px;
+                padding-right: 35px;
+            }            
+        }
+    }
+}
+
+
+.single-shop-banner{
+    position: relative;
+    overflow: hidden;
+
+    & a{
+        display: block;
+    }
+
+    & img{
+        width: 100%;
+        @include transition(0.7s);
+    }
+    & .Shop-banner-content-4{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        @include transform(translateY(-50%));
+        padding: 30px 50px;
+
+        @media #{$lg}{
+            padding: 20px;
+        }
+        @media #{$md}{
+            padding: 15px;
+        }
+        @media #{$xs}{
+            padding: 20px;
+        }
+
+        & p{
+            font-size: 12px;
+            color: $black;
+            font-weight: 700;
+            text-transform: uppercase;
+
+            @media #{$md}{
+                font-size: 10px;
+                line-height: 16px;
+            }
+        }
+        & .title{
+            font-size: 72px;
+            line-height: 72px;
+            color: $black;
+            font-weight: 700;
+            margin-top: 10px;
+
+            @media #{$lg}{
+                font-size: 48px;
+                line-height: 42px;
+            }
+            @media #{$md}{
+                font-size: 30px;
+                line-height: 30px;
+            }
+            @media #{$xs}{
+                font-size: 40px;
+                line-height: 38px;
+            }
+            @media #{$sm}{
+                font-size: 48px;
+                line-height: 55px;
+            }
+        }
+        & .shop-btn{
+            font-size: 12px;
+            color: $black;
+            font-weight: 700;
+            margin-top: 15px;
+
+            @media #{$md}{
+                margin-top: 5px;
+            }
+
+            & i{
+                margin-left: 10px;
+            }
+        }
+    }
+
+    &:hover{
+        & img{
+            width: 100%;
+            @include transform(scale(1.1));
+        }
+    }
+}
+
+
+/*===== Shop Banner 5 Start =====*/
+
+
+.Shop-banner-5{
+    padding-top: 155px;
+    padding-bottom: 230px;
+
+    @media #{$md}{
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    @media #{$xs}{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    @media #{$sm}{
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+}
+
+.Shop-banner-content-5{
+    max-width: 650px;
+
+    & .banner-heading{
+        position: relative;
+
+        & .custom-heading{
+            font-size: 150px;
+            font-weight: bold;
+            letter-spacing: -2px;
+            line-height: 120px;
+            display: inline-block;
+            left: -34px;
+            position: relative;
+            color: #fabb98;
+            background-image: -moz-linear-gradient(180deg,star 0,#fabb98 100%);
+            background-image: -webkit-linear-gradient(180deg,#93ddff 0,#fabb98 100%);
+            background-image: -ms-linear-gradient(180deg,#93ddff 0,#fabb98 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;   
+            
+            @media #{$lg}{
+                font-size: 110px;
+                line-height: 90px;
+                left: 0;
+            }
+            @media #{$md}{
+                font-size: 110px;
+                line-height: 85px;
+                left: 0;
+            }
+            @media #{$xs}{
+                font-size: 66px;
+                line-height: 60px;
+                left: 0;
+            }
+            @media #{$sm}{
+                font-size: 80px;
+                line-height: 75px;
+                left: 0;
+            }
+        }
+
+        & .title{
+            font-size: 24px;
+            color: $black;
+            font-weight: 700;
+            line-height: 1.2;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            z-index: 5;
+            @include transform(translateY(-50%));
+
+            @media #{$xs}{
+                font-size: 18px;
+            }
+            @media #{$sm}{
+                font-size: 22px;
+            }
+        }
+    }
+    & p{
+        font-size: 14px;
+        color: $black;
+    }
+    & .shop-btn{
+        font-size: 14px;
+        color: $black;
+        font-weight: 700;
+        margin-top: 35px;
+        @include transition(0.3s);
+
+        & i{
+            margin-left: 8px;
+            @include transition(0.3s);
+        }
+
+        &:hover{
+            color: $theme-color;
+        }
+    }
+}
+
+
+/*===== Shop Banner 6 Start =====*/
+
+.Shop-banner-6{}
+
+.Shop-banner-6-wrapper{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    & .single-banner-6{
+        position: relative;
+        overflow: hidden;
+        width: 50%;
+
+        @media #{$xs}{
+            width: 100%;
+        }
+        
+
+        & img{
+            width: 100%;
+            @include transition(0.5s);
+        }
+        & .Shop-banner-content-6{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            width: 90%;
+            @include transform(translateY(-50%));
+            padding: 30px 48px;
+            margin: 0 auto;
+
+            @media #{$lg}{
+                padding: 25px;
+            }
+            @media #{$md}{
+                padding: 15px;
+            }
+            @media #{$xs}{
+                padding: 20px;
+            }
+
+            & p{
+                font-size: 12px;
+                color: $black;
+                font-weight: 700;
+                text-transform: uppercase;
+
+                @media #{$lg}{
+                    font-size: 12px;
+                }
+                @media #{$md}{
+                    font-size: 12px;
+                    line-height: 16px;
+                }
+            }
+            & .title{
+                font-size: 72px;
+                line-height: 72px;
+                color: $black;
+                font-weight: 700;
+                margin-top: 10px;
+                letter-spacing: -2px;
+
+                @media #{$lg}{
+                    font-size: 60px;
+                    line-height: 55px;
+                }
+                @media #{$md}{
+                    font-size: 30px;
+                    line-height: 30px;
+                }
+                @media #{$xs}{
+                    font-size: 40px;
+                    line-height: 38px;
+                }
+                @media #{$sm}{
+                    font-size: 72px;
+                    line-height: 72px;
+                }
+            }
+            & .shop-btn{
+                font-size: 12px;
+                color: $black;
+                font-weight: 700;
+                margin-top: 10px;
+                @include transition(0.3s);
+        
+                & i{
+                    margin-left: 8px;
+                    @include transition(0.3s);
+                }
+        
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+
+        &:hover{
+            & img{
+                width: 100%;
+                @include transform(scale(1.1));
+            }
+        }
+    }
+}
+
+
+.shop-banner-area-6{
+    height: 100vh;
+}
+
+.shop-banner-content-6{
+    @media #{$lg}{
+        text-align: center;
+    }
+    @media #{$md}{
+        text-align: center;
+    }
+    @media #{$xs}{
+        text-align: center;
+    }
+
+    & .heading{
+        display: inline-block;
+
+        & .title{
+            text-shadow: 0px 0px 38px rgba(41,44,58,0.09);
+            font-size: 250px;
+            color: #fff;
+            font-weight: bold;
+            letter-spacing: -15px;
+            text-align: center;    
+            line-height: 1;
+
+            @media #{$laptop}{
+                font-size: 160px;
+            }
+            @media #{$lg}{
+                font-size: 150px;
+                letter-spacing: -5px;   
+            }
+            @media #{$md}{
+                font-size: 140px;
+                letter-spacing: 0px;   
+            }
+            @media #{$xs}{
+                font-size: 70px;
+                letter-spacing: 0px;   
+            }
+            @media #{$sm}{
+                font-size: 100px;
+            }
+        }
+    }
+    & .banner-btn{        
+        & .main-btn{
+            padding: 0 53px;
+            text-transform: capitalize;
+            border: 2px solid rgba(35,35,36,0.2);
+            height: 54px;
+            line-height: 50px;
+            background-color: transparent;
+            color: $black;
+
+            &:hover{
+                background-color: $theme-color;
+                border-color: $theme-color; 
+                color: $white;               
+            }
+
+            @media #{$xs}{
+                height: 40px;
+                line-height: 36px;
+                padding: 0 30px;
+            }
+        }
+    }
+}
+
+.banner-section-1{
+    & .shop-banner-content-6{    
+        & .heading{
+            & .title{
+                &.heading-1{}
+                &.heading-2{}
+            }
+        }
+        & .banner-btn{   
+            margin-top: 30px;
+            margin-left: 2%;
+
+            & .main-btn{}
+        }
+    }
+}
+
+.banner-section-2{
+    & .shop-banner-content-6{    
+        padding-top: 20px;
+
+        & .heading{
+            & .title{
+                &.heading-1{}
+                &.heading-2{
+                    text-align: right;
+                }
+            }
+        }
+        & .banner-btn{  
+            margin-top: 50px;
+            margin-left: 70px;
+
+            & .main-btn{}
+        }
+    }
+}
+
+.banner-section-3{
+    & .shop-banner-content-6{    
+        margin-left: 40%;
+
+        @media #{$xs}{
+            text-align: left;
+            margin-left: 20%;
+        }
+        @media #{$sm}{
+            margin-left: 40%;
+        }
+        
+        & .heading{
+            & .title{
+                &.heading-1{}
+                &.heading-2{}
+            }
+        }
+        & .banner-btn{   
+            margin-top: 30px;
+
+            & .main-btn{}
+        }
+    }
+}
+
+.banner-section-4{
+    & .shop-banner-content-6{    
+        margin-left: 15%;
+
+        @media #{$xs}{
+            text-align: left;
+            margin-left: 5%;
+        }
+        @media #{$sm}{
+            margin-left: 15%;
+        }
+
+        & .heading{
+            & .title{
+                &.heading-1{}
+                &.heading-2{}
+            }
+        }
+        & .banner-btn{   
+            margin-top: 30px;
+
+            & .main-btn{}
+        }
+    }
+}
+
+
+/*===== Shop Banner 7 Start =====*/
+
+.shop-banner-area-7{}
+
+.shop-banner-wrapper-7{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    & .single-shop-banner-7{
+        position: relative;
+        width: 33.33%;
+        overflow: hidden;
+
+        @media #{$xs}{
+            width: 100%;
+        }
+
+        & a{
+            display: block;
+
+            & img{
+                width: 100%;
+                @include transition(0.5s);
+            }
+        }
+        & .banner-content-7{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            @include transform(translateY(-50%));
+            padding: 20px 65px;
+
+            @media #{$laptop}{
+                padding: 30px;
+            }
+            @media #{$lg}{
+                padding: 30px;
+            }
+            @media #{$md}{
+                padding: 20px;
+            }
+            @media #{$xs}{
+                padding: 20px;
+            }
+
+            & .sub-title{
+                font-size: 24px;
+                line-height: 30px;
+                color: #1f736c;
+                font-weight: 700;
+                letter-spacing: -1px;
+
+                @media #{$laptop}{
+                    font-size: 20px;
+                    line-height: 26px;
+                }
+                @media #{$lg}{
+                    font-size: 20px;
+                    line-height: 26px;
+                }
+                @media #{$md}{
+                    font-size: 20px;
+                    line-height: 26px;
+                }
+                @media #{$xs}{
+                    font-size: 20px;
+                    line-height: 26px;
+                }
+                @media #{$sm}{
+                    font-size: 24px;
+                    line-height: 30px;
+                }
+            }
+            & .main-title{
+                font-size: 60px;
+                line-height: 60px;
+                font-weight: 700;
+                color: #1f736c;
+                letter-spacing: -2px;
+
+                @media #{$laptop}{
+                    font-size: 40px;
+                    line-height: 45px;
+                }
+                @media #{$lg}{
+                    font-size: 40px;
+                    line-height: 45px;
+                }
+                @media #{$md}{
+                    font-size: 36px;
+                    line-height: 42px;
+                }
+                @media #{$xs}{
+                    font-size: 36px;
+                    line-height: 42px;
+                }
+                @media #{$sm}{
+                    font-size: 60px;
+                    line-height: 60px;
+                }
+            }
+            & .main-btn{
+                display: inline-block;
+                padding: 0 50px;
+                border: 2px solid rgba($black, 0.3);
+                color: $black;
+                height: 60px;
+                line-height: 56px;
+                color: $black;
+                background-color: transparent;
+                margin-top: 30px;
+                text-transform: capitalize;
+                font-size: 13px;
+
+                @media #{$laptop}{
+                    margin-top: 20px;
+                    height: 40px;
+                    line-height: 36px;
+                    padding: 0 20px;
+                }
+                @media #{$md}{
+                    margin-top: 20px;
+                    height: 40px;
+                    line-height: 36px;
+                    padding: 0 20px;
+                }
+                @media #{$xs}{
+                    margin-top: 20px;
+                    height: 40px;
+                    line-height: 36px;
+                    padding: 0 20px;
+                }
+                @media #{$sm}{
+                    margin-top: 30px;
+                    height: 50px;
+                    line-height: 46px;
+                    padding: 0 50px;
+                }
+
+                &:hover{
+                    background-color: $theme-color;
+                    border-color: $theme-color;
+                    color: $white;
+                }
+            }
+
+            &.content-color-1{
+                
+            }
+            &.content-color-2{
+                & .sub-title{
+                    color: #345a75;
+                }
+                & .main-title{
+                    color: #345a75;
+                }
+            }
+            &.content-color-3{
+                & .sub-title{
+                    color: #70422c;
+                }
+                & .main-title{
+                    color: #70422c;
+                }
+            }
+        }
+
+        &:hover{
+            & a{    
+                & img{
+                    @include transform(scale(1.08));
+                }
+            }
+        }
+    }
+}
+
+
+
+/*===== Shop Banner 8 Start =====*/
+
+.shop-banner-area-8{
+    overflow: hidden;
+}
+
+.shop-banner-wrapper-8{
+    padding: 0 10px;
+
+    & .row{
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    & .shop-col{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.single-shop-banner-8{
+    position: relative;
+
+    & .banner-8-image{
+        overflow: hidden;
+
+        & img{
+            @include transition(0.3s);
+            width: 100%;
+        }
+    }
+
+    &:hover{
+        & .banner-8-image{
+            overflow: hidden;
+    
+            & img{
+                @include transform(scale(1.05));
+            }
+        }
+    }
+
+    & .banner-content-8{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        padding: 25px 45px;
+        @include transform(translateY(-50%));
+
+        @media #{$laptop}{
+            padding: 20px;
+        }
+        @media #{$lg}{
+            padding: 20px;
+        }
+        @media #{$xs}{
+            padding: 20px;
+        }
+
+        & .sub-title{
+            font-size: 24px;
+            color: $white;
+            font-weight: 700;
+
+            @media #{$laptop}{
+                font-size: 18px;
+            }
+            @media #{$lg}{
+                font-size: 16px;
+            }
+            @media #{$xs}{
+                font-size: 16px;
+            }
+        }
+        & .main-tilte{
+            font-size: 70px;
+            line-height: 70px;
+            letter-spacing: -3px;
+            color: $white;
+            font-weight: 700;
+            margin-top: 10px;
+            position: relative;
+
+            @media #{$laptop}{
+                font-size: 36px;
+                line-height: 40px;
+            }
+            @media #{$lg}{
+                font-size: 30px;
+                line-height: 35px;
+                letter-spacing: 0;
+            }
+            @media #{$xs}{
+                font-size: 30px;
+                line-height: 35px;
+                letter-spacing: 0;
+            }
+        }
+        & .main-btn{
+            margin-top: 10px;
+            text-transform: capitalize;
+
+            @media #{$lg}{
+                height: 40px;
+                font-size: 12px;
+                line-height: 40px;
+                padding: 0 15px;
+            }
+            @media #{$xs}{
+                height: 40px;
+                font-size: 12px;
+                line-height: 40px;
+                padding: 0 15px;
+            }
+        }
+
+        &.content-style-2{
+            & .sub-title{
+                color: $body-color;
+    
+            }
+            & .main-tilte{
+                color: $black;
+            }
+        }
+
+        &.content-style-3{
+            padding: 50px 90px;
+
+            @media #{$laptop}{
+                padding: 30px;
+            }
+            @media #{$lg}{
+                padding: 30px;
+            }
+            @media #{$xs}{
+                padding: 30px;
+            }
+
+            & .main-tilte{
+                color: $black;
+                text-transform: uppercase;
+                font-size: 180px;
+                line-height: 160px;
+
+                @media #{$laptop}{
+                    font-size: 120px;
+                    line-height: 110px;
+                }
+                @media #{$lg}{
+                    font-size: 90px;
+                    line-height: 100px;
+                }
+                @media #{$xs}{
+                    font-size: 40px;
+                    line-height: 40px;
+                }
+                @media #{$sm}{
+                    font-size: 100px;
+                    line-height: 90px;
+                }
+
+                &::before{
+                    position: absolute;
+                    content: '';
+                    background-image: url(../images/m13-b-4-1.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    width: 140px;
+                    height: 140px;
+                    background-position: 0 0;
+                    top: 18%;
+                    left: 32%;
+
+                    @media #{$laptop}{
+                        width: 100px;
+                        height: 100px;
+                    }
+                    @media #{$xs}{
+                        width: 60px;
+                        height: 60px;
+                        top: 10%;
+                    }
+                    @media #{$sm}{
+                        width: 80px;
+                        height: 80px;
+                    }
+                }
+            }
+
+            & .main-btn{
+                padding: 0 50px;
+                height: 60px;
+                line-height: 60px;
+                margin-left: 10px;
+                margin-top: 20px;
+
+                @media #{$xs}{
+                    padding: 0 30px;
+                    height: 45px;
+                    line-height: 45px;
+                    margin-left: 0;
+                }
+
+                @media #{$sm}{
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+
+/*===== Shop Banner 9 Start =====*/
+
+.hop-banner-area-9{}
+
+.single-shop-banner-9{
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+
+    & .shop-banner-image{
+        overflow: hidden;
+
+        & img{
+            width: 100%;
+            @include transition(0.3s);
+
+            @media #{$xs}{
+                height: 220px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+    & .shop-banner-content{
+        padding: 30px 45px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        @include transform(translateY(-50%));
+
+        @media #{$xs}{
+            padding: 30px;
+        }
+        @media #{$sm}{
+            padding: 30px 45px;
+        }
+        
+        & .sub-title{
+            font-size: 14px;
+            line-height: 1.7;
+            color: $black;
+            font-weight: 500;
+        }
+        & .title{
+            font-size: 46px;
+            line-height: 50px;
+            color: $black;
+            font-weight: 400;
+            font-family: $font-3;
+
+            @media #{$xs}{
+                font-size: 28px;
+            }
+        }
+        & .main-btn{
+            height: 40px;
+            font-size: 10px;
+            padding: 0 20px;
+            margin-top: 10px;
+            line-height: 40px;
+            letter-spacing: 1px;
+
+            @media #{$xs}{
+                margin-top: 0;
+                height: 35px;
+                line-height: 35px;
+            }
+        }
+
+        &.content-2{
+            & .sub-title{
+                color: $white;
+            }
+            & .title{
+                color: $white;
+            }
+        }
+    }
+
+    
+
+    &:hover{
+        & .shop-banner-image{    
+            & img{
+                @include transform(scale(1.05));
+            }
+        }
+    }
+}
+
+
+
+
+

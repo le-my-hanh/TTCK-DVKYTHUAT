@@ -1,0 +1,121 @@
+
+
+
+/*====  Brand Start  =====*/
+
+.brand-logo-area{
+    border-top: 1px solid $border-color;
+}
+
+.brand-row{
+    margin-left: -15px;
+    margin-right: -15px;
+
+    & .brand-col{
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 20% !important;
+
+        @media #{$md}{
+            max-width: 33.33%;
+        }
+        @media #{$xs}{
+            max-width: 50%;
+        }
+        @media #{$sm}{
+            max-width: 33.33%;
+        }
+    }
+}
+
+.single-brand{
+    text-align: center;
+
+    & img{
+        opacity: 0.6;
+        @include transition(0.3s);
+        -webkit-filter: grayscale(100);
+        filter: grayscale(100);
+        display: inline-block;
+    }
+
+    &:hover{
+        & img{
+            opacity: 1;
+            -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+        }
+    }
+}
+
+.brand-2-active,
+.brand-active{
+    & .slick-active{
+        @include animation(slickZoomIn 1s);
+    }
+
+    & .slick-dots{
+        text-align: center;
+        margin-top: 16px;
+
+        & li{
+            display: inline-block;
+            margin: 0 3px;
+
+            & button{
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                border: 0;
+                background-color: rgba($black, 0.5);
+                font-size: 0;
+                @include transition(0.3s);
+            }
+
+            &.slick-active{
+                margin-top: -1px;
+
+                & button{
+                    background-color: $black;
+                    width: 7px;
+                    height: 7px;
+                }
+            }
+        }
+    }
+}
+
+/*====  Brand Start  =====*/
+
+.brand-area{}
+
+.single-brand-2{
+    text-align: center;
+
+    & img{
+        display: inline-block;
+    }
+}
+
+
+.single-brand-3{
+    text-align: center;
+
+    & img{
+        opacity: 0.6;
+        @include transition(0.3s);
+        -webkit-filter: grayscale(100);
+        filter: grayscale(100);
+        display: inline-block;
+    }
+
+    &:hover{
+        & img{
+            opacity: 1;
+            -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+        }
+    }
+}
+
+

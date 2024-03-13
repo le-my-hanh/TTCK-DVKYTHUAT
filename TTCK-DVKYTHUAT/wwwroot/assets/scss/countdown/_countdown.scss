@@ -1,0 +1,123 @@
+
+
+
+/*====  Countdown Start  =====*/
+
+.countdown-area{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #f7f7f7;
+}
+
+
+
+.countdown-image{
+    @media #{$md}{
+        text-align: center;
+    }
+}
+
+.countdown-content{
+    & .title{
+        font-size: 36px;
+        font-weight: 500;
+        color: $black;
+        letter-spacing: -1px;
+        
+        @media #{$xs}{
+            font-size: 26px;
+        }
+        @media #{$sm}{
+            font-size: 30px;
+        }
+    }
+    & .price{
+        font-size: 36px;
+        font-weight: 400;
+        color: $body-color;
+        letter-spacing: -1px;
+        margin-top: 15px;
+
+        @media #{$xs}{
+            font-size: 26px;
+        }
+        @media #{$sm}{
+            font-size: 30px;
+        }
+    }
+
+    & .countdown{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        padding-top: 45px;
+
+        & .single-countdown{
+            width: 25%;
+            position: relative;
+
+            & + .single-countdown{
+                &::before{
+                    content: "";
+                    border-left: 2px solid;
+                    position: absolute;
+                    left: -1px;
+                    height: 20px;
+                    opacity: .5;
+                    width: 0;
+                    top: 50%;
+                    @include transform(translateY(-50%));           
+                }
+            }
+
+            & .count{
+                font-size: 36px;
+                font-weight: 400;
+                color: $black;
+                letter-spacing: -1px;
+                line-height: 1;
+                display: block;
+
+                @media #{$xs}{
+                    font-size: 24px;
+                    line-height: 1.8;
+                }
+                @media #{$sm}{
+                    font-size: 28px;
+                    line-height: 1.8;
+                }
+            }
+            & .value{
+                font-size: 14px;
+                font-family: $font-1;
+                font-weight: 400;
+                color: $body-color;
+                display: block;
+                line-height: 1.4;
+                font-style: italic;
+            }
+        }
+    }
+
+    & .main-btn{
+        margin-top: 55px;   
+        height: 60px;
+        line-height: 60px;
+        padding: 0 50px;   
+        text-transform: capitalize;  
+
+        &:hover{
+            background-color: #f5b324;
+        }
+    }
+}
+
+
+
+
+
+
+
+

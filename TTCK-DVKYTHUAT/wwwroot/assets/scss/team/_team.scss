@@ -1,0 +1,202 @@
+
+
+
+/*====  Team Start  =====*/
+
+
+.single-team{
+    & .team-image{
+        & img{
+            -webkit-filter: grayscale(100%) opacity(80%);
+            filter: grayscale(100%) opacity(80%);
+            @include transition(0.3s);
+            border-radius: 50%;
+        }
+    }
+    & .team-content{
+        padding-top: 25px;
+
+        & .name{
+            & a{
+                font-size: 18px;
+                font-weight: 500;
+                color: $black;
+                @include transition(0.3s);
+
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+        & .designation{
+            font-size: 14px;
+            font-weight: 400;
+            font-family: $font-1;
+            color: $body-color;
+            margin-top: 5px;
+        }
+        & .social{
+            margin-top: 5px;
+
+            & li{
+                display: inline-block;
+                
+                & a{
+                    font-size: 14px;
+                    margin: 0 10px;
+                    color: $body-color;
+                    @include transition(0.3s);
+
+                    &:hover{
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &:hover{
+        & .team-image{
+            & img{
+                -webkit-filter: grayscale(0%) opacity(100%);
+                filter: grayscale(0%) opacity(100%);
+            }
+        }
+    }
+}
+
+
+
+/*====  Team 2 Start  =====*/
+
+.team-area-2{
+    overflow: hidden;
+}
+
+.team-wrapper{
+
+}
+
+.single-team-2{
+    position: relative;
+
+    & .team-image{
+        & img{
+            width: 100%;
+            -webkit-filter: grayscale(100%) opacity(80%);
+            filter: grayscale(100%) opacity(80%);
+            @include transition(0.3s);            
+        }
+    }
+    & .team-content{
+        position: absolute;
+        bottom: -50px;
+        width: 100%;
+        left: 0;
+        padding: 20px 40px;
+        z-index: 0;
+        visibility: hidden;
+        opacity: 0;
+        @include transition(0.3s);
+        background-color: #93ddff;
+        background-image: -moz-linear-gradient(180deg,star 0,#fabb98 100%);
+        background-image: -webkit-linear-gradient(180deg,#93ddff 0,#fabb98 100%);
+        background-image: -ms-linear-gradient(180deg,#93ddff 0,#fabb98 100%);
+        
+        @media #{$laptop}{
+            padding: 15px 20px;
+        }
+        @media #{$lg}{
+            padding: 15px 20px;
+        }
+        @media #{$xs}{
+            padding: 15px 20px;
+        }
+        
+        & .name{
+            & a{
+                font-size: 18px;
+                font-weight: 500;
+                color: $black;
+                @include transition(0.3s);
+
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+        & .team-designation-social{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: space-between;
+            -ms-flex-pack: space-between;
+            justify-content: space-between;
+
+            @media #{$laptop}{
+                display: block;
+            }
+            @media #{$lg}{
+                display: block;
+            }
+            @media #{$xs}{
+                display: block;
+            }
+
+            & .designation{
+                font-size: 14px;
+                font-weight: 400;
+                font-family: $font-1;
+                color: $black;
+                margin-top: 5px;
+            }
+            & .social{
+                margin-top: 5px;
+
+                & li{
+                    display: inline-block;
+
+                    & + li{
+                        margin-left: 15px;
+                    }
+
+                    & a{
+                        font-size: 14px;
+                        color: $black;
+                        @include transition(0.3s);
+
+                        &:hover{
+                            color: $theme-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &:hover{
+        & .team-image{
+            & img{
+                -webkit-filter: grayscale(0%) opacity(100%);
+                filter: grayscale(0%) opacity(100%);
+            }
+        }
+
+        & .team-content{
+            opacity: 1;
+            visibility: visible;
+            bottom: 0;
+        }
+    }
+}
+
+
+
+
+
+

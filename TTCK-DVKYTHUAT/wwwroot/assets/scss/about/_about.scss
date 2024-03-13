@@ -1,0 +1,189 @@
+
+
+
+/*====  About 01 Start  =====*/
+
+
+.about-area{}
+
+.about-image{
+    @media #{$md}{
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @media #{$xs}{
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    & img{
+        width: 100%;
+    }
+}
+
+.about-content{
+    & .title{
+        font-family: $font-1;
+        font-size: 48px;
+        line-height: 50px;
+        color: $black;
+
+        @media #{$xs}{
+            font-size: 28px;
+        }
+        @media #{$sm}{
+            font-size: 36px;
+        }
+
+        & img{
+            @media #{$xs}{
+                width: 80px;
+            }
+        }
+    }
+    & p{
+        font-size: 14px;
+        margin-top: 25px;
+    }
+    & .about-signature{
+        padding-top: 20px;
+        
+        & img{
+            @media #{$xs}{
+                width: 125px;
+            }
+        }
+        & p{
+            margin-top: -25px;
+            position: relative;
+            padding-left: 50px;
+            color: $black;
+
+            @media #{$xs}{
+                padding-left: 30px;
+                margin-top: -15px;                
+            }
+        }
+    }
+}
+
+
+/*====  About 02 Start  =====*/
+
+.about-area-2{
+    height: 750px;
+
+    @media #{$desktop}{
+        height: 1115px;
+    }
+    @media #{$lg}{
+        height: 700px;
+    }
+    @media #{$md}{
+        height: 650px;
+    }
+    @media #{$xs}{
+        height: 550px;
+    }
+    
+}
+
+.about-content-2{
+    padding-right: 50px;
+    padding-bottom: 100px;
+
+    @media #{$lg}{
+        padding-bottom: 0;
+    }
+    @media #{$md}{
+        padding-bottom: 0;
+        padding-right: 0;
+    }
+    @media #{$xs}{
+        padding-bottom: 0;
+        padding-right: 0;
+    }
+
+    & img{
+        width: 100%;
+    }
+    & .about-play{
+        position: relative;
+        margin-top: -66px;
+        z-index: 9;
+
+        @media #{$xs}{
+            margin-top: 30px;
+        }
+
+        & .play{
+            width: 66px;
+            height: 66px;
+            line-height: 66px;
+            font-size: 12px;
+            color: $black;
+            background-color: $white;
+            text-align: center;
+            border-radius: 50%;
+
+            @media #{$xs}{
+                width: 55px;
+                height: 55px;
+                line-height: 55px;
+            }
+        }
+    }
+}
+
+
+.about-area-3{}
+
+.about-content-3{
+    & .logo{}
+    & p{
+        font-size: 14px;
+        color: $white;
+        margin-top: 25px;
+    }
+    & .about-signature{
+        padding-top: 20px;
+        
+        & img{
+            @media #{$xs}{
+                width: 125px;
+            }
+        }
+        & p{
+            margin-top: -25px;
+            position: relative;
+            padding-left: 70px;
+            color: $white;
+
+            @media #{$xs}{
+                padding-left: 30px;
+                margin-top: 0;                
+            }
+        }
+    }
+}
+
+
+.about-counter-wrapper{}
+
+.about-counter{
+    margin-top: 25px;
+
+    & .count{
+        font-size: 36px;
+        line-height: 40px;
+        color: $white;
+        font-weight: 400;
+        font-family: $font-1;
+    }
+    & p{
+        color: $white;
+        font-size: 14px;
+    }
+}

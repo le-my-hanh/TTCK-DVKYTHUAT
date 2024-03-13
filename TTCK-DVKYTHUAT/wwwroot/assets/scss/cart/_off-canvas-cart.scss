@@ -1,0 +1,175 @@
+
+
+/*====  Search Start  =====*/
+
+.off-canvas-cart-wrapper{
+    position: fixed;
+    top: 0;
+    right: -430px;    
+    width: 420px;
+    height: 100%;
+    z-index: 999999;
+    background-color: $white;
+    overflow: auto;
+    @include transition(0.3s);
+    padding: 50px;
+
+    @media #{$lg}{
+        padding: 30px;
+        width: 380px;
+    }
+    @media #{$md}{
+        padding: 30px;
+        width: 340px;
+    }
+    @media #{$xs}{
+        padding: 15px;
+        width: 260px;
+    }
+
+    &.open{
+        right: 0;
+    }
+
+    & .off-canvas-cart-box{
+        padding-top: 50px;
+        position: relative;
+
+        & .cart-close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            line-height: 35px;
+            @include transition(0.3s);
+            font-size: 30px;
+            color: rgba($black, 0.6);
+
+            &:hover{
+                @include transform(rotate(90deg));
+            }
+        }
+        & .off-canvas-cart-content{
+            & .cart-title{
+                & .title{
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: $black;
+                }
+            }
+            & .cart-product-widget{
+                padding-top: 20px;
+
+                & ul{
+                    max-height: calc(100vh - 375px);
+                    max-height: -webkit-calc(100vh - 375px);
+                    overflow: auto;
+
+                    @media #{$lg}{
+                        max-height: calc(100vh - 335px);
+                        max-height: -webkit-calc(100vh - 335px);
+                    }
+                    @media #{$xs}{
+                        max-height: calc(100vh - 300px);
+                        max-height: -webkit-calc(100vh - 300px);
+                    }
+                    @media #{$md}{
+                        max-height: calc(100vh - 330px);
+                        max-height: -webkit-calc(100vh - 330px);
+                    }
+
+                    & li{
+                        & .cart-product {
+                            margin-top: 30px;
+                            position: relative;
+
+                            & .product-cancel{
+                                position: absolute;
+                                top: 0;
+                                right: 15px;
+                                z-index: 5;
+                                font-size: 16px;
+                                color: $body-color;
+                            }
+
+                            & .cart-product-image{
+                                & img{
+                                    width: 70px;
+                                }
+                            }
+                            & .cart-product-content{
+                                padding-left: 15px;
+                                padding-right: 25px;
+            
+                                & .title{
+                                    & a{
+                                        color: #8a8a8a;
+                                        font-size: 16px;
+                                        font-weight: 400;
+                                    }
+                                }
+                                & .price{
+                                    color: #8a8a8a;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    margin-top: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                & .cart-product-total{
+                    display: -webkit-flex;
+                    display: -moz-flex;
+                    display: -ms-flex;
+                    display: -o-flex;
+                    display: flex;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    -webkit-box-pack: space-between;
+                    -ms-flex-pack: space-between;
+                    justify-content: space-between;
+                    padding-top: 30px;
+                    
+                    & .value{
+                        font-size: 15px;
+                        font-weight: 400;
+                        color: $black;
+                    }
+                    & .price{
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: $black;
+                    }
+                }                
+            }     
+            & .cart-product-btn{
+                padding-top: 22px;
+
+                & .main-btn{}
+            }       
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

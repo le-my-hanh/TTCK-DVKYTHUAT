@@ -1,0 +1,139 @@
+﻿@model TTCK_DVKYTHUAT.Models.Category
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- Bottom Breadcrumb card start -->
+<div class="card">
+    <div class="card-block">
+        <div class="breadcrumb-header">
+            <h5>Quản Lý Danh Mục</h5>
+        </div>
+        <div>
+            <ul class="breadcrumb-title">
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                        <i class="icofont icofont-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="AdminCategories" asp-action="Index">Danh Sách Danh Mục</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="AdminCategories" asp-action="Delete">Xóa Danh Mục</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Bottom Breadcrumb card end -->
+<div class="card">
+    <div class="card-header">
+        <h5>Add Category</h5>
+
+        <div class="card-header-right">
+            <i class="icofont icofont-spinner-alt-5"></i>
+        </div>
+
+        <div class="card-header-right">
+            <i class="icofont icofont-spinner-alt-5"></i>
+        </div>
+
+    </div>
+    <div class="card-block">
+
+        <form asp-action="Delete" asp-route-id="@Model.CategoryId" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="CategoryId" />
+            <div class="form-group row">
+                <label asp-for="Name" class="col-sm-2 col-form-label">Name Category</label>
+                <div class="col-sm-10">
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Name...">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Type" class="col-sm-2 col-form-label">
+                    Type
+                </label>
+                <div class="col-sm-10">
+                    <input asp-for="Type" type="text" class="form-control"
+                           placeholder="Type..."
+                           autocomplete="off">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                 <label class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-10">
+                    <img src="~/images/@Model.Image" style="width: 100px; height: 100px;" />
+                    @* <input type="file" class="form-control-file" Name="file"> *@
+                </div>
+               
+            </div>
+            <div class="form-group row">
+                <label asp-for="ShortDesc" class="col-sm-2 col-form-label">ShortDesc</label>
+                <div class="col-sm-10">
+                    <textarea asp-for="ShortDesc" rows="5" cols="5" class="form-control"
+                              placeholder="Text..."></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminCategories" asp-route-id="@Model?.CategoryId">Back Home</a>
+              @*   <a asp-action="Index"> <button class="btn btn-inverse">Back Home</button></a> *@
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+@* <h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShortDesc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShortDesc)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CategoryId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+ *@

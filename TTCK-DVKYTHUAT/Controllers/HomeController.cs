@@ -26,8 +26,16 @@ namespace TTCK_DVKYTHUAT.Controllers
                 var pageSize = 3;
                 var lsCategory = _context.Categories
                     .AsNoTracking().OrderByDescending(X => X.CreatedDate);
+
+                ViewData["Services"] = _context.Services
+                                .OrderByDescending(b => b.CreatedDate)
+                               
+                                .Take(4)
+                                .ToList();
                 PagedList<Category> models = new PagedList<Category>(lsCategory, pageNumber, pageSize);
+             
                 ViewBag.CurrentPage = pageNumber;
+
                 return View(models);
             }
             catch

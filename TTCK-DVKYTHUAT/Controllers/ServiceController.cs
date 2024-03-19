@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using System.Drawing.Printing;
+using System.Security.Claims;
 using TTCK_DVKYTHUAT.Data;
 using TTCK_DVKYTHUAT.Models;
 
@@ -44,7 +45,7 @@ namespace TTCK_DVKYTHUAT.Controllers
         //    return View(servicesId);
         //}
 
-        public IActionResult Details(int? Id)
+        public async Task<IActionResult> Details(int? Id)
         {
             try
             {
@@ -66,8 +67,10 @@ namespace TTCK_DVKYTHUAT.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-        }
+            
 
+        }
+       
 
 
     }

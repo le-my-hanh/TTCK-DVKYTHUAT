@@ -93,6 +93,7 @@ namespace TTCK_DVKYTHUAT.Controllers
                     Customer khachhang = new Customer
                     {
                         Name = taikhoan.FullName,
+                        //Address= taikhoan.
                         Phone = taikhoan.Phone.Trim().ToLower(),
                         Email = taikhoan.Email.Trim().ToLower(),
                         Password = (taikhoan.Password + salt.Trim()).ToMD5(),
@@ -185,7 +186,7 @@ namespace TTCK_DVKYTHUAT.Controllers
                     ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                     await HttpContext.SignInAsync(claimsPrincipal);
                     _notifService.Success("Đăng nhập thành công!");
-                    return RedirectToAction("Dashboard");
+                    return RedirectToAction("Dashboard", "Accounts");
                    
                 }
             }

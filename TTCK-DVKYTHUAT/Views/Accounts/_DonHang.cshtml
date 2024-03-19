@@ -1,0 +1,36 @@
+﻿@model List<Order>
+@if(Model !=null && Model.Count() > 0)
+{
+    <div class="account-table text-center mt-30 table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="no">STT</th>
+                    <th class="name">Tên Khách Hàng</th>
+                    <th class="date">Ngày Đặt</th>
+                    <th class="status">Ngày Hẹn</th>
+                    <th class="total">Tổng Hóa Đơn</th>
+                    <th class="action">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.OrderId</td>
+                        <td>@item.Customer.Name</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.AppDate</td>
+                        <td>@item.TotalMoney.Value.ToString("#,##0") VNĐ</td>
+                        <td><a href="#">Xem Chi Tiết</a></td>
+                    </tr>
+                }
+              
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h4>Chưa Lịch Hẹn !</h4>
+}

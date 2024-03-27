@@ -4,12 +4,13 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Service> lsservices = ViewBag.dichvu;
+    var reviews = ViewData["Conments"] as List<Conment>;
    
 }
 
 <!--====== Page Banner Start ======-->
 
-<section class="page-banner bg_cover" style="background-image: url(~/assets/images/page-banner.jpg);">
+@* <section class="page-banner bg_cover" style="background-image: url(~/assets/images/page-banner.jpg);">
     <div class="container">
         <div class="page-banner-content text-center">
             <h2 class="title">Product simple</h2>
@@ -20,12 +21,12 @@
             </ol>
         </div>
     </div>
-</section>
+</section> *@
 
 <!--====== Page Banner Ends ======-->
 <!--====== Product Simple Start ======-->
 
-<section class="product-simple-area pt-20">
+<section class="product-simple-area pt-20" style="margin-top: 100px">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -48,15 +49,25 @@
             <div class="col-lg-6">
                 <div class="product-simple-details mt-50">
                     <h4 class="title">@Model.Name</h4>
-                  @*   <p class="sku-id">REF. 1104693 - TOMY <span>9987 in stock</span></p> *@
+                
 
                     <p class="review">
-                        <i class="fas fa-star review-on"></i>
-                        <i class="fas fa-star review-on"></i>
-                        <i class="fas fa-star review-on"></i>
-                        <i class="fas fa-star review-on"></i>
-                        <i class="fas fa-star review-on"></i>
-                        <a href="#">(3 customer reviews)</a>
+                        @for (var i = 1; i <= 5; i++)
+                        {
+                            if (i <= Model.AverageRating)
+                            {
+                                <i class="fas fa-star star-fill" style="color: #ffd700;"></i>
+                            }
+                            else if (i - 0.5 <= Model.AverageRating)
+                            {
+                                <i class="fas fa-star-half-alt" style="color: #ffd700;"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-star" style="color: #d3d3d3;"></i>
+                            }
+                        }
+                        <span class="ml-3 text-dark">@Model.AverageRating</span>
                     </p>
 
                     <div class="product-price">
@@ -114,8 +125,8 @@
     <div class="container">
         <div class="product-simple-tab-menu">
             <ul class="nav justify-content-center">
-                <li><a class="active" data-bs-toggle="tab" href="#description">Description</a></li>
-                <li><a data-bs-toggle="tab" href="#review">Review (3)</a></li>
+                <li><a class="active" data-bs-toggle="tab" href="#description">Mô tả</a></li>
+                <li><a data-bs-toggle="tab" href="#review">Nhận xét</a></li>
             </ul>
         </div>
         <div class="tab-content pt-30">
@@ -155,90 +166,105 @@
                         <div class="product-review pt-20">
                             <div class="review-comment">
                                 <ul class="comment">
-                                    <li>
-                                        <div class="single-review-comment">
-                                            <div class="review-author">
-                                                <img src="~/assets/images/auhtor-1.jpg" alt="">
-                                            </div>
-                                            <div class="review-content">
-                                                <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
-                                                <div class="review-name-rating">
-                                                    <h6 class="review-name">Rosie Silva</h6>
-                                                    <ul class="review-rating">
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                    </ul>
+                                    @foreach (var item in reviews)
+                                    {
+                                        <li>
+                                            <div class="single-review-comment">
+                                                <div class="review-author" style="width:40px;height:40px;">
+                                                  @*  <img src="~/assets/images/auhtor-1.jpg" alt=""> *@
+                                                    <img src="~/images/nguoidung.png" alt="" />
+                                                </div>
+                                                <div class="review-content">
+                                                   
+                                                    <div class="review-name-rating mt-0">
+                                                       <div class="col">
+                                                            <h6 class="review-name">@item.Customer.Name</h6>
+                                                            <ul class="review-rating">
+                                                                @for (int i = 1; i <= 5; i++)
+                                                                {
+
+                                                                    <li class="@(i <= item.Rating ? "rating-on" : "rating-off")">
+                                                                        <i class="fas fa-star"></i>
+                                                                    </li>
+                                                                }
+
+                                                            </ul>
+                                                       </div>
+                                                        <p class="review-created-at">@item.CreateDate.Value.ToString("dd/MM/yyyy")</p>
+                                                    </div>
+
+                                                   
+                                               
+                                                    <p style="white-space: pre-line;">"@item.Message"</p>
+
+                                                <!-- Hiển thị phần reply -->
+                                                    <div class="reply-section">
+                                                    @if (ViewData["Replies"] is Dictionary<int, List<Reply>> replies && replies.ContainsKey(item.ConmentId))
+                                                    {
+                                                        var rep = replies[item.ConmentId];
+
+                                                        foreach (var replyItem in rep)
+                                                        {
+                                                            <div class="card mt-2">
+                                                                <div class="card-body">
+                                                                    <div class="w-100">
+                                                                        @* <p>@replyItem.ReplyAt</p> *@
+                                                                        <div class="review-name-rating mt-0">
+                                                                            <div class="col">
+                                                                                <h6 class="review-name">Phản hồi từ cửa hàng</h6>
+
+                                                                            </div>
+                                                                            <p>@replyItem.RepDate</p>
+                                                                        </div>
+                                                                        <p class="text-secondary mb-0">@replyItem.Reply1</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
+                                                 </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-review-comment">
-                                            <div class="review-author">
-                                                <img src="~/assets/images/auhtor-2.png" alt="">
-                                            </div>
-                                            <div class="review-content">
-                                                <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
-                                                <div class="review-name-rating">
-                                                    <h6 class="review-name">Rosie Silva</h6>
-                                                    <ul class="review-rating">
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-review-comment">
-                                            <div class="review-author">
-                                                <img src="~/assets/images/auhtor-3.png" alt="">
-                                            </div>
-                                            <div class="review-content">
-                                                <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
-                                                <div class="review-name-rating">
-                                                    <h6 class="review-name">Rosie Silva</h6>
-                                                    <ul class="review-rating">
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    }
+                                   
                                 </ul>
                             </div>
                             <div class="review-form mt-45">
-                                <h2 class="form-title">Add a review </h2>
+                                <h2 class="form-title">Nhận Xét </h2>
 
-                                <form action="#">
+                                <form asp-controller="Service" asp-action="CreateReview" method="post">
+                                    <input type="hidden" name="serviceId" value="@Model.ServiceId" />
                                     <div class="rating-star">
-                                        <a href="javascript:void(0)" class="star-1"></a>
-                                        <a href="javascript:void(0)" class="star-2"></a>
-                                        <a href="javascript:void(0)" class="star-3"></a>
-                                        <a href="javascript:void(0)" class="star-4"></a>
-                                        <a href="javascript:void(0)" class="star-5"></a>
+                                        <div id="rating">
+                                        <input type="radio" id="star5" name="rating" value="5" />
+                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
+
+                                        <input type="radio" id="star4" name="rating" value="4" />
+                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+
+
+                                        <input type="radio" id="star3" name="rating" value="3" />
+                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
+
+                                        <input type="radio" id="star2" name="rating" value="2" />
+                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+
+                                        <input type="radio" id="star1" name="rating" value="1" />
+                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                        </div>
                                     </div>
                                     <div class="review-textarea">
-                                        <label>Your Review *</label>
-                                        <textarea></textarea>
+                                        @* <label>Your Review *</label> *@
+                                        <textarea id="comment" name="comment"></textarea>
                                     </div>
                                     <div class="review-btn">
-                                        <a href="#" class="main-btn">Submit</a>
+                                        <button type="submit" class="main-btn">Gửi</button>
                                     </div>
-                                    <div class="review-checkbok">
+                                    @* <div class="review-checkbok">
                                         <input type="checkbox" id="checkbox">
                                         <label for="checkbox"><span></span> NOTIFY ME OF NEW POSTS BY EMAIL.</label>
-                                    </div>
+                                    </div> *@
                                 </form>
                             </div>
                         </div>
@@ -257,7 +283,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="section-title text-center">
-                    <h2 class="title">Related Products</h2>
+                    <h2 class="title">Dịch Vụ Liên Quan</h2>
                 </div>
             </div>
         </div>
@@ -276,9 +302,9 @@
                                 </div>
                                 <ul class="product-meta text-center">
                                     <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                                    <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                                  @*   <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
                                     <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                                    <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                                    <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li> *@
                                 </ul>
                                @*  <span class="discount">40%</span> *@
                             </div>
@@ -303,3 +329,7 @@
 </section>
 
 <!--====== Related Products Ends ======-->
+<section>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+    <link href="~/css/rating.css" rel="stylesheet" />
+</section>

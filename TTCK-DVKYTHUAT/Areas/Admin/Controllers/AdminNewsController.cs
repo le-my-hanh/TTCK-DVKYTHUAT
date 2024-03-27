@@ -22,17 +22,17 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminNews
-        public IActionResult Index(int page = 1, int CategoryID = 0)
+        public async Task<IActionResult> Index(int page = 1, int CategoryNewsID = 0)
         {
             var pageNumber = page;
             var pageSize = 5;
             List<News> lsNews = new List<News>();
-            if (CategoryID != 0)
+            if (CategoryNewsID != 0)
             {
                 lsNews = _context.News
                     .AsNoTracking()
-                    .Where(x => x.CategoryId == CategoryID)
-                    .Include(x => x.Category)
+                    .Where(x => x.CategorynewId == CategoryNewsID)
+                    .Include(x => x.Categorynew)
                     .OrderByDescending(x => x.CreatedDate).ToList();
 
             }
@@ -41,16 +41,34 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
                 lsNews = _context.News
                     .AsNoTracking()
 
-                    .Include(x => x.Category)
+                    .Include(x => x.Categorynew)
                     .OrderByDescending(x => x.CreatedDate).ToList();
             }
             PagedList<News> models = new PagedList<News>(lsNews.AsQueryable(), pageNumber, pageSize);
             ViewBag.CurrentPage = pageNumber;
             return View(models);
-            //var applicationDbContext = _context.Services.Include(s => s.Category);
+            //var applicationDbContext = _context.News.Include(n => n.Categorynew);
             //return View(await applicationDbContext.ToListAsync());
         }
-        
+
+        // GET: Admin/AdminNews/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.News == null)
+            {
+                return NotFound();
+            }
+
+            var news = await _context.News
+                .Include(n => n.Categorynew)
+                .FirstOrDefaultAsync(m => m.NewsId == id);
+            if (news == null)
+            {
+                return NotFound();
+            }
+
+            return View(news);
+        }
         public string Upload(IFormFile file)
         {
             string uploadFileName = null;
@@ -67,29 +85,10 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             }
             return uploadFileName;
         }
-        // GET: Admin/AdminNews/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.News == null)
-            {
-                return NotFound();
-            }
-
-            var news = await _context.News
-                .Include(n => n.Category)
-                .FirstOrDefaultAsync(m => m.NewsId == id);
-            if (news == null)
-            {
-                return NotFound();
-            }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
-            return View(news);
-        }
-
         // GET: Admin/AdminNews/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
+            ViewData["CategorynewId"] = new SelectList(_context.CategoryNews, "CategorynewId", "Name");
             return View();
         }
 
@@ -98,17 +97,16 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NewsId,Title,Image,Desciption,CategoryId,CreatedDate")] News news, IFormFile file)
+        public async Task<IActionResult> Create([Bind("NewsId,Title,Image,Desciption,CreatedDate,CategorynewId")] News news, IFormFile file)
         {
             if (ModelState.IsValid)
             {
                 news.Image = Upload(file);
-                news.CreatedDate = DateTime.Now;
                 _context.Add(news);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", news.CategoryId);
+            ViewData["CategorynewId"] = new SelectList(_context.CategoryNews, "CategorynewId", "Name", news.CategorynewId);
             return View(news);
         }
 
@@ -125,7 +123,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", news.CategoryId);
+            ViewData["CategorynewId"] = new SelectList(_context.CategoryNews, "CategorynewId", "Name", news.CategorynewId);
             return View(news);
         }
 
@@ -134,7 +132,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NewsId,Title,Image,Desciption,CategoryId,CreatedDate")] News news, IFormFile file)
+        public async Task<IActionResult> Edit(int id, [Bind("NewsId,Title,Image,Desciption,CreatedDate,CategorynewId")] News news, IFormFile file)
         {
             if (id != news.NewsId)
             {
@@ -149,7 +147,6 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
                     {
                         news.Image = Upload(file);
                     }
-                    news.CreatedDate = DateTime.Now;
                     _context.Update(news);
                     await _context.SaveChangesAsync();
                 }
@@ -166,7 +163,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", news.CategoryId);
+            ViewData["CategorynewId"] = new SelectList(_context.CategoryNews, "CategorynewId", "Name", news.CategorynewId);
             return View(news);
         }
 
@@ -179,13 +176,13 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             }
 
             var news = await _context.News
-                .Include(n => n.Category)
+                .Include(n => n.Categorynew)
                 .FirstOrDefaultAsync(m => m.NewsId == id);
             if (news == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
+
             return View(news);
         }
 

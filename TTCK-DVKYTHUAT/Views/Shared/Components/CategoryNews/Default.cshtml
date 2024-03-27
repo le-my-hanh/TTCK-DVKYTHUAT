@@ -1,0 +1,11 @@
+﻿@model List<CategoryNews>
+
+
+
+@foreach (var category in Model as List<CategoryNews>)
+{
+    <li>
+        <a asp-area="" asp-controller="CategoryNews" asp-action="Index" asp-route-categoreNewsId="@category.CategorynewId">@category.Name</a>
+    </li>
+}
+

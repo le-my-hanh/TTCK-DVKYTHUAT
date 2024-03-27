@@ -24,6 +24,9 @@ public partial class Conment
 
     public double? Rating { get; set; }
 
+    [Column(TypeName = "datetime")]
+    public DateTime? CreateDate { get; set; }
+
     [ForeignKey("CustomerId")]
     [InverseProperty("Conments")]
     public virtual Customer? Customer { get; set; }

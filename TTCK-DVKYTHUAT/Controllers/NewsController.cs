@@ -42,7 +42,7 @@ namespace TTCK_DVKYTHUAT.Controllers
         {
             try
             {
-                var news = _context.News.Include(x => x.Category).FirstOrDefault(x => x.NewsId == Id);
+                var news = _context.News.Include(x => x.Categorynew).FirstOrDefault(x => x.NewsId == Id);
                 if (news == null)
                 {
                     return RedirectToAction("Index");
@@ -50,7 +50,7 @@ namespace TTCK_DVKYTHUAT.Controllers
 
                 var lsnews = _context.News
                 .AsNoTracking()
-                .Where(x => x.CategoryId == news.CategoryId && x.NewsId != Id)
+                .Where(x => x.CategorynewId == news.CategorynewId && x.NewsId != Id)
                 .Take(3).OrderByDescending(x => x.CreatedDate).ToList();
                 ViewBag.tintuc = lsnews;
                 return View(news);

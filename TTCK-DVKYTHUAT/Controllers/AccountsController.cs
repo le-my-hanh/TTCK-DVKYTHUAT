@@ -62,7 +62,7 @@ namespace TTCK_DVKYTHUAT.Controllers
                 var khachhang = _context.Customers.AsNoTracking().SingleOrDefault(x => x.CustomerId == Convert.ToInt32(taikhoanID));
                 if (khachhang != null)
                 {
-                    var lsDonHang = _context.Orders
+                    var lsDonHang = _context.Orders.Include(t => t.TransactStatus)
                         .AsNoTracking()
                         .Where(x => x.CustomerId == khachhang.CustomerId)
                         .OrderByDescending(x => x.CreatedDate)
@@ -93,6 +93,7 @@ namespace TTCK_DVKYTHUAT.Controllers
                     Customer khachhang = new Customer
                     {
                         Name = taikhoan.FullName,
+                        //Address= taikhoan.
                         Phone = taikhoan.Phone.Trim().ToLower(),
                         Email = taikhoan.Email.Trim().ToLower(),
                         Password = (taikhoan.Password + salt.Trim()).ToMD5(),
@@ -184,8 +185,9 @@ namespace TTCK_DVKYTHUAT.Controllers
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity(claim, "login");
                     ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                     await HttpContext.SignInAsync(claimsPrincipal);
-                    _notifService.Success("Đăng nhập thành công!");
-                    return RedirectToAction("Dashboard");
+                    // _notifService.Success("Đăng nhập thành công!");
+                    TempData["success"] = "Đăng nhập thành công";
+                    return RedirectToAction("Dashboard", "Accounts");
                    
                 }
             }

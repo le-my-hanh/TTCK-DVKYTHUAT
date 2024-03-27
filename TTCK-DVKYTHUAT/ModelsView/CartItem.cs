@@ -12,7 +12,7 @@ namespace TTCK_DVKYTHUAT.ModelsView
         public int ServiceId { get; set; }
         public string TenDV { get; set; }
         public string Anh { get; set; }
-        public double DonGia { get; set; }
+        public int DonGia { get; set; }
         public int SoLuong { get; set; }
         public double ThanhTien => SoLuong * DonGia;
 

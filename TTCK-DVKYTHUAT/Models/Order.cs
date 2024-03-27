@@ -31,6 +31,9 @@ public partial class Order
 
     public double? TotalMoney { get; set; }
 
+    [Column("TransactStatusID")]
+    public int? TransactStatusId { get; set; }
+
     [ForeignKey("CustomerId")]
     [InverseProperty("Orders")]
     public virtual Customer? Customer { get; set; }
@@ -41,4 +44,8 @@ public partial class Order
     [ForeignKey("PaymentId")]
     [InverseProperty("Orders")]
     public virtual Payment? Payment { get; set; }
+
+    [ForeignKey("TransactStatusId")]
+    [InverseProperty("Orders")]
+    public virtual TransactStatus? TransactStatus { get; set; }
 }

@@ -21,13 +21,13 @@ public partial class News
 
     public string? Desciption { get; set; }
 
-    [Column("CategoryID")]
-    public int? CategoryId { get; set; }
-
     [Column(TypeName = "datetime")]
     public DateTime? CreatedDate { get; set; }
 
-    [ForeignKey("CategoryId")]
+    [Column("CategorynewID")]
+    public int? CategorynewId { get; set; }
+
+    [ForeignKey("CategorynewId")]
     [InverseProperty("News")]
-    public virtual Category? Category { get; set; }
+    public virtual CategoryNews? Categorynew { get; set; }
 }

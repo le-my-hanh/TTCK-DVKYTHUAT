@@ -1,0 +1,143 @@
+﻿@model TTCK_DVKYTHUAT.ModelsView.DatLichDVVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<TTCK_DVKYTHUAT.ModelsView.CartItem> Carts = ViewBag.GioHang;
+}
+
+<!--====== Page Banner Start ======-->
+@* 
+<section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
+    <div class="container">
+        <div class="page-banner-content text-center">
+            <h2 class="title">Checkout</h2>
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Checkout</li>
+            </ol>
+        </div>
+    </div>
+</section> *@
+
+<!--====== Page Banner Ends ======-->
+<!--====== Checkout Start ======-->
+
+<section class="checkout-page pt-50 pb-80" style="margin-top: 100px">
+    <div class="container">
+
+        <form asp-action="Index" asp-controller="Checkout" method="post"  >
+            <input hidden asp-for="CustomerId" />
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="checkout-form mt-30">
+
+                        <div class="checkout-title">
+                            <h4 class="title">Thông Tin Khách Hàng</h4>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="single-form">
+                                    <label>Tên Khách Hàng *</label>
+                                    <input asp-for="FullName" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="single-form">
+                                    <label>Số Điện Thoại *</label>
+                                    <input asp-for="Phone" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="single-form">
+                                    <label>Email *</label>
+                                    <input asp-for="Email" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="single-form">
+                                    <label>Địa Chỉ *</label>
+                                    <input asp-for="Address" type="text" placeholder="Address" class="form-control">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="single-form">
+                                    <label>Lịch Hẹn (Ngày/ Tháng/ Năm) *</label>
+                                    <input asp-for="AppServices" type="date" placeholder="Lịch hẹn..." class="form-control">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="single-form checkout-note">
+                            <label>Ghi Chú *</label>
+                            <textarea asp-for="Note" placeholder="Ghi chú..." class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="checkout-review-order mt-30">
+                        <div class="checkout-title">
+                            <h4 class="title">Thông Tin Lịch Đặt</h4>
+                        </div>
+
+                        <div class="checkout-review-order-table table-responsive mt-15">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="Product-name">Dịch Vụ</th>
+                                        <th class="Product-price">Thành Tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                   @*  @if (Carts.Count() > 0) *@
+                                    @if (Carts != null && Carts.Count > 0)
+                                    {
+                                        foreach (var item in Carts)
+                                        {
+                                            <tr>
+                                                <td class="Product-name">
+                                                    <p>@item.TenDV  × @item.SoLuong</p>
+                                                </td>
+                                                <td class="Product-price">
+                                                    <p>$ @item.ThanhTien.ToString("#,##0") VNĐ</p>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="Product-name">
+                                            <p>TỔNG HÓA ĐƠN</p>
+                                        </td>
+                                        <td class="total-price">
+                                            @* <p>$ @Carts.Sum(x=>x.ThanhTien).ToString("#,##0") VNĐ</p> *@
+                                            <p>$ @(Carts != null ? Carts.Sum(x => x.ThanhTien).ToString("#,##0") : "0") VNĐ</p>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="checkout-payment">
+
+
+                            <div class="checkout-btn">
+                                <button class="main-btn btn-block" type="submit">Xác Nhận Đặt Lịch</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+<!--====== Checkout Ends ======-->

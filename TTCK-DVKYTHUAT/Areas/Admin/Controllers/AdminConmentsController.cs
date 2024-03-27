@@ -27,6 +27,40 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> AddReply(int reviewId, string replyComment, int serviceId)
+        {
+            try
+            {
+                // Kiểm tra xem review có tồn tại không
+                var existingReview = await _context.Conments.FindAsync(reviewId);
+                if (existingReview == null)
+                {
+                    return NotFound("Review not found");
+                }
+
+                // Tạo một đối tượng Reply từ dữ liệu nhận được
+                var reply = new Reply
+                {
+                    Reply1 = replyComment,
+                };
+
+                // Gán ReviewID cho reply
+                reply.ConmentId = reviewId;
+                reply.RepDate = DateTime.Now;
+                // Thêm reply vào cơ sở dữ liệu
+                _context.Replys.Add(reply);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "AdminConments", new { area = "Admin", serviceId = serviceId });
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi ở đây
+                return StatusCode(500, "Internal server error");
+            }
+        }
         // GET: Admin/AdminConments/Details/5
         public async Task<IActionResult> Details(int? id)
         {

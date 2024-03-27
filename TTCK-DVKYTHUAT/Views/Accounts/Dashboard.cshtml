@@ -3,11 +3,13 @@
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    TTCK_DVKYTHUAT.ModelsView.ChangePasswordViewModel changePassword = new TTCK_DVKYTHUAT.ModelsView.ChangePasswordViewModel();
+    List<Order> DanhSachDonHang = ViewBag.DonHang;
+     TTCK_DVKYTHUAT.ModelsView.ChangePasswordViewModel changePassword = new TTCK_DVKYTHUAT.ModelsView.ChangePasswordViewModel();
+
 }
 
 <!--====== Page Banner Start ======-->
-
+@* 
 <section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
     <div class="container">
         <div class="page-banner-content text-center">
@@ -18,12 +20,12 @@
             </ol>
         </div>
     </div>
-</section>
+</section> *@
 
 <!--====== Page Banner Ends ======-->
 <!--====== My Account Start ======-->
 
-<section class="my-account-page pt-50 pb-80">
+<section class="my-account-page pt-50 pb-80" style="margin-top: 100px">
     <div class="container">
         <div class="row">
             <div class="col-xl-3 col-md-4">
@@ -35,15 +37,7 @@
                         <li>
                             <a data-bs-toggle="pill" href="#pills-order"><i class="far fa-Shopping-cart"></i> Đơn Hàng</a>
                         </li>
-                       @*  <li>
-                            <a data-bs-toggle="pill" href="#pills-download"><i class="far fa-cloud-download"></i> Download</a>
-                        </li> 
-                        <li>
-                            <a data-bs-toggle="pill" href="#pills-payment"><i class="fal fa-credit-card"></i> Payment Method</a>
-                        </li>
-                        <li>
-                            <a data-bs-toggle="pill" href="#pills-address"><i class="far fa-map-marker-alt"></i> Address</a>
-                        </li>*@
+                     
                         <li>
                             <a data-bs-toggle="pill" href="#pills-account"><i class="far fa-user"></i> Thay đổi mật khẩu</a>
                         </li>
@@ -66,126 +60,42 @@
                          
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-order">
-                        <div class="my-account-order account-wrapper">
-                            <h4 class="account-title">Danh sách đơn hàng</h4>
-                            <div class="account-table text-center mt-30 table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th class="no">No</th>
-                                            <th class="name">Name</th>
-                                            <th class="date">Date</th>
-                                            <th class="status">Status</th>
-                                            <th class="total">Total</th>
-                                            <th class="action">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mostarizing Oil</td>
-                                            <td>Aug 22, 2020</td>
-                                            <td>Pending</td>
-                                            <td>$100</td>
-                                            <td><a href="#">View</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Katopeno Altuni</td>
-                                            <td>July 22, 2020</td>
-                                            <td>Approved</td>
-                                            <td>$45</td>
-                                            <td><a href="#">View</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Murikhete Paris</td>
-                                            <td>June 22, 2020</td>
-                                            <td>On Hold</td>
-                                            <td>$99</td>
-                                            <td><a href="#">View</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                    
-                    <div class="tab-pane fade" id="pills-account">
+                            @await  Html.PartialAsync("_DonHang", DanhSachDonHang )
+                        
+                        
+                   
+                    
                         @await Html.PartialAsync("_ChangePassword", changePassword)
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!--====== My Account Ends ======-->
-@* <h1>Dashboard</h1>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(".xemdonhang").click(function () {
+                var madonhang = $(this).attr("data-madonhang")
+                $.ajax({
+                    url: '/DonHang/Details',
+                    datatype: "json",
+                    type: "POST",
+                    data: { id: madonhang },
+                    async: true,
+                    success: function (results) {
+                        $("#records_table").html("");
+                        $("#records_table").html("results");
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+            });
+        });
+    </script>
+}
 
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CraetedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CraetedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Salt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Salt)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.CustomerId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
- *@
+

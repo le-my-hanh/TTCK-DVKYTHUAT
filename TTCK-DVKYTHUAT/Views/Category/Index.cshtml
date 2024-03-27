@@ -9,24 +9,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--====== Page Banner Start ======-->
-
-<section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-2.jpg);">
-    <div class="container">
-        <div class="page-banner-content text-center">
-            <h2 class="title">Shop Masonry</h2>
-            <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Shop</li>
-            </ol>
-        </div>
-    </div>
-</section>
-
-<!--====== Page Banner Ends ======-->
 <!--====== Shop Masonry Start ======-->
 
-<section class="shop-page pt-50 pb-80">
+<section class="shop-page pt-50 pb-80" style="margin-top: 100px">
     <div class="container-fluid custom-container">
         <div class="row product-row">
             @foreach (var item in services)
@@ -41,10 +26,10 @@
                                 <a class="link" href="product-simple-01.html"></a>
                             </div>
                             <ul class="product-meta text-center">
-                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" asp-action="AddtoCart" asp-controller="Cart" asp-route-id="@item.ServiceId"><i class="fal fa-Shopping-cart"></i></a></li>
-                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
+                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Đặt dịch vụ" data-id="@item.ServiceId" class="ajax-add-to-cart"><i class="fal fa-Shopping-cart"></i></a></li>
+                               @*  <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
                                 <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
+                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li> *@
                             </ul>
                         </div>
                         <div class="product-content d-flex justify-content-between">
@@ -78,3 +63,40 @@
 </section>
 
 <!--====== Shop Masonry Ends ======-->
+@section scripts{
+
+
+    <script>
+        $(document).ready(function () {
+            $(".ajax-add-to-cart").click(function () {
+                $.ajax({
+                    url: "/Cart/AddToCart",
+                    data: {
+                        id: $(this).data("id"),
+                        SoLuong: 1,
+                        type: "ajax"
+                    },
+                    success: function (data) {
+                        // Swal.fire({
+                        //     icon: 'success',
+                        //     title: 'Thêm dịch vụ thành công',
+                        //     showConfirmButton: false,
+                        //     timer: 2500
+                        // });
+                        console.log(data.soLuong);
+                        $("#cart_count").html(data.soLuong);
+                    },
+                    error: function () {
+                        // Swal.fire({
+                        //     icon: 'error',
+                        //     title: 'Thêm dịch vụ thất bại',
+                        //     text: 'Vui lòng thử lại',
+                        //     showConfirmButton: false,
+                        //     timer: 2500
+                        // });
+                    }
+                });
+            });
+        });
+    </script>
+}

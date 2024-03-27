@@ -257,12 +257,30 @@
 
                       
                             <ul class="pcoded-item pcoded-left-item">
-                                <li>
-                                    <a asp-area="Admin" asp-controller="AdminNews" asp-action="Index">
+                                <li class="pcoded-hasmenu">
+                                    <a @* asp-area="Admin" asp-controller="AdminNews" asp-action="Index" *@>
                                         <span class="pcoded-micon"><i class="ti-book"></i><b>FC</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.form-components.main">News</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a asp-area="Admin" asp-controller="AdminCategoryNews" asp-action="Index">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Danh Mục Tin Tức</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a asp-area="Admin" asp-controller="AdminNews" asp-action="Index">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tin Tức</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
                                 </li>
                                 <li>
                                     <a asp-area="Admin" asp-controller="AdminConments" asp-action="Index">

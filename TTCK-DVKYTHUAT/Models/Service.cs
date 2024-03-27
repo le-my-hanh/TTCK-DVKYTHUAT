@@ -30,7 +30,8 @@ public partial class Service
 
     [Column(TypeName = "datetime")]
     public DateTime? CreatedDate { get; set; }
-
+    [NotMapped]
+    public double AverageRating { get; set; }
     [ForeignKey("CategoryId")]
     [InverseProperty("Services")]
     public virtual Category? Category { get; set; }

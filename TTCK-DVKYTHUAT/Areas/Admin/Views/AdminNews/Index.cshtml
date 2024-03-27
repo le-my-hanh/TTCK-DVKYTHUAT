@@ -46,7 +46,7 @@
         width: 25%;
     }
 
-    
+
 
 
 
@@ -100,16 +100,16 @@
                         <th>Ngày tạo</th>
                         <th>Ảnh</th>
                         <th>Mô tả</th>
-                       <th>#</th>
+                        <th>#</th>
                     </tr>
                 </thead>
                 <tbody>
-                     @if (Model != null)
+                    @if (Model != null)
                     {
                         foreach (var item in Model)
                         {
                             <tr>
-                                
+
                                 <th scope="row">@item.NewsId</th>
                                 <td>@item.Title</td>
                                 <td>@item.CreatedDate</td>
@@ -132,7 +132,7 @@
 
                         }
                     }
-                   
+
                 </tbody>
             </table>
             <div aria-label="Page navigation example">
@@ -144,57 +144,3 @@
     </div>
 </div>
 <!-- Basic table card end -->
-@* <h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Desciption)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desciption)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.NewsId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NewsId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.NewsId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
- *@

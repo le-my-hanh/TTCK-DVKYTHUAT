@@ -1,0 +1,65 @@
+﻿@using PagedList.Core.Mvc;
+@using PagedList.Core;
+
+@model TTCK_DVKYTHUAT.Models.CategoryNews
+@{
+    ViewData["Title"] = "Index";
+    var news = ViewData["News"] as IPagedList<News>;
+    var category = ViewData["CategoryNews"] as CategoryNews;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="slider-area slider-02 slider-active">
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner8.jpg); width:800px;height:300px; " data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+        <div class="container">
+        </div>
+    </div>
+
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== Blog Start ======-->
+
+<section class="blog-page site-bg pt-50 pb-100">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in news)
+            {
+                <div class="col-lg-6">
+                    <div class="single-blog blog-5 mt-50">
+                        <div class="blog-image">
+                            <a asp-action="Details" asp-controller="News" asp-route-Id="@item.NewsId">
+                                <img src="~/images/@item.Image" alt="blog">
+                                <i class="fal fa-search-plus"></i>
+                            </a>
+                        </div>
+                        <div class="blog-content text-center">
+                            <h4 class="title"><a asp-action="Details" asp-controller="News" asp-route-Id="@item.NewsId">@item.Title</a></h4>
+                            <ul class="blog-meta">
+                                <li><a href="#">By <span> Jon Smith</span></a></li>
+                                <li><a href="#"><i class="fal fa-clock"></i> @item.CreatedDate</a></li>
+                            </ul>
+
+                            <a asp-action="Details" asp-controller="News" asp-route-Id="@item.NewsId" class="main-btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="pagination-items mt-80">
+            <ul class="pagination justify-content-center">
+                <li><a class="prev" href="#">Previous</a></li>
+                <pager class="pager-container" options="@PagedListRenderOptions.Bootstrap4PageNumbersOnly" list="@Model" asp-area="" asp-controller="News" asp-action="Index"></pager>
+
+                @*  <li><a href="#">1</a></li>
+                <li><a class="active" href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li> *@
+                <li><a class="next" href="#">Next</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--====== Blog Ends ======-->

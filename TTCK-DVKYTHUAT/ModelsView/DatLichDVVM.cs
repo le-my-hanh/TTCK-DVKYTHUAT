@@ -11,11 +11,13 @@ namespace TTCK_DVKYTHUAT.ModelsView
         [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
         public string Phone { get; set; }
         [Required(ErrorMessage = "Địa chỉ nhận hàng")]
-
-        public DateTime AppServices { get; set; }
         public string Address { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập ngày đặt hàng.")]
+        [Display(Name = "Ngày Đặt Hàng")]
+        public DateTime? AppServices { get; set; }
+       
         
-        public int PaymentID { get; set; }
+       // public int PaymentID { get; set; }
         public string Note { get; set; }
     }
 }

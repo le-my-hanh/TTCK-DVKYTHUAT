@@ -2,12 +2,15 @@
 using AspNetCoreHero.ToastNotification.Notyf;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Net;
 using TTCK_DVKYTHUAT.Data;
 using TTCK_DVKYTHUAT.Helpers;
 using TTCK_DVKYTHUAT.Models;
 using TTCK_DVKYTHUAT.ModelsView;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace TTCK_DVKYTHUAT.Controllers
 {
@@ -234,6 +237,91 @@ namespace TTCK_DVKYTHUAT.Controllers
             return RedirectToAction("Index");
         }
 
+
+        //[HttpPost]
+        //public async Task<IActionResult> CreateOrder()
+        //{
+        //    // Lấy giỏ hàng từ session
+        //    var cart = HttpContext.Session.Get<List<CartItem>>("GioHang");
+        //    var customerId = HttpContext.Session.GetString("CustomerId");
+
+        //    if (string.IsNullOrEmpty(customerId))
+        //    {
+        //        // Người dùng chưa đăng nhập, thực hiện xử lý phù hợp, ví dụ: chuyển hướng đến trang đăng nhập
+        //        return RedirectToAction("Login", "Accounts");
+        //    }
+        //    return View();
+
+        //    //try
+        //    //{
+        //    //    if (cart != null && cart.Any())
+        //    //    {
+        //    //        // Kiểm tra xem người dùng đã đăng nhập chưa
+        //    //        var taikhoanID = HttpContext.Session.GetString("CustomerId");
+        //    //        if (!string.IsNullOrEmpty(taikhoanID))
+        //    //        {
+        //    //            var customer = await _context.Customers
+        //    //                .AsNoTracking()
+        //    //                .FirstOrDefaultAsync(c => c.CustomerId == Convert.ToInt32(taikhoanID));
+
+        //    //            if (customer != null)
+        //    //            {
+        //    //                // Tạo đơn hàng mới
+        //    //                var order = new Order
+        //    //                {
+        //    //                    CustomerId = customer.CustomerId,
+        //    //                    CreatedDate = DateTime.Now,
+        //    //                    AppDate = DateTime.Now, // Cần cập nhật ngày được chọn từ form đặt hàng
+        //    //                    Status = "Chưa xác nhận", // Trạng thái đơn hàng có thể cần điều chỉnh
+        //    //                    TotalMoney = cart.Sum(x => x.ThanhTien) // Tính tổng tiền đơn hàng
+        //    //                };
+
+        //    //                _context.Orders.Add(order);
+        //    //                await _context.SaveChangesAsync();
+
+        //    //                // Thêm chi tiết đơn hàng
+        //    //                foreach (var item in cart)
+        //    //                {
+        //    //                    var orderDetail = new OrderDetail
+        //    //                    {
+        //    //                        OrderId = order.OrderId,
+        //    //                        ServiceId = item.ServiceId,
+        //    //                        Quantity = item.SoLuong,
+        //    //                        Total = item.ThanhTien
+        //    //                    };
+        //    //                    _context.OrderDetails.Add(orderDetail);
+        //    //                }
+        //    //                await _context.SaveChangesAsync();
+
+        //    //                // Xóa giỏ hàng sau khi tạo đơn hàng thành công
+        //    //                HttpContext.Session.Remove("GioHang");
+
+        //    //                // Hiển thị thông báo thành công
+        //    //                TempData["SuccessMessage"] = "Đơn hàng đã được tạo thành công.";
+
+        //    //                // Chuyển hướng đến trang cần hiển thị sau khi tạo đơn hàng thành công
+        //    //                return RedirectToAction("Index", "Home"); // Điều chỉnh đường dẫn và action tùy thuộc vào yêu cầu của ứng dụng của bạn
+        //    //            }
+        //    //        }
+        //    //        else
+        //    //        {
+        //    //            // Nếu người dùng chưa đăng nhập, có thể chuyển hướng đến trang đăng nhập hoặc thực hiện các xử lý khác
+        //    //            // Trong trường hợp này, bạn có thể thêm code để xử lý hoặc chuyển hướng đến trang đăng nhập
+        //    //            return RedirectToAction("Login", "Accounts"); // Điều chỉnh đường dẫn và action tùy thuộc vào yêu cầu của ứng dụng của bạn
+        //    //        }
+        //    //    }
+
+        //    //    // Nếu giỏ hàng trống, có thể hiển thị thông báo lỗi hoặc chuyển hướng đến trang cần thiết
+        //    //    TempData["ErrorMessage"] = "Giỏ hàng của bạn đang trống.";
+        //    //    return RedirectToAction("Index", "Home"); // Điều chỉnh đường dẫn và action tùy thuộc vào yêu cầu của ứng dụng của bạn
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    // Xử lý ngoại lệ nếu có
+        //    //    TempData["ErrorMessage"] = "Đã xảy ra lỗi khi tạo đơn hàng.";
+        //    //    return RedirectToAction("Index", "Home"); // Điều chỉnh đường dẫn và action tùy thuộc vào yêu cầu của ứng dụng của bạn
+        //    //}
+        //}
 
     }
 }

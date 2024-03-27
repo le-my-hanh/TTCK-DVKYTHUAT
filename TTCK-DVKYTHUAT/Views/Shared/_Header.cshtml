@@ -30,6 +30,12 @@
                         </li>
                         <li>
                             <a asp-controller="News" asp-action="Index">Tin Tức</a>
+                            <ul class="sub-menu" style="width: 300px !important;">
+                                <li>
+                                    @await Component.InvokeAsync("CategoryNews")
+                                </li>
+
+                            </ul>
                            
                         </li>
                       
@@ -46,11 +52,11 @@
                             <li class="nav-item dropdown">
                             
                                 <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" asp-action="Dashboard" asp-controller="Accounts">
-                                   Xin Chào, @User.Identity.Name!
+                                   Xin Chào, @User.Identity.Name
                                 </a>
                                                                     
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" asp-action="Dashboard" asp-controller="Accounts">My Accuont</a></li>
+                                    <li><a class="dropdown-item" asp-action="Dashboard" asp-controller="Accounts">My Accuont</a></li> 
                                     <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Accounts">Đăng Xuất</a></li>
                                 </ul>
                                 </li>

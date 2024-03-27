@@ -9,7 +9,7 @@
 }
 
 <!--====== Page Banner Start ======-->
-
+@* 
 <section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
     <div class="container">
         <div class="page-banner-content text-center">
@@ -20,12 +20,12 @@
             </ol>
         </div>
     </div>
-</section>
+</section> *@
 
 <!--====== Page Banner Ends ======-->
 <!--====== My Account Start ======-->
 
-<section class="my-account-page pt-50 pb-80">
+<section class="my-account-page pt-50 pb-80" style="margin-top: 100px">
     <div class="container">
         <div class="row">
             <div class="col-xl-3 col-md-4">
@@ -60,20 +60,42 @@
                          
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-order">
-                        <div class="my-account-order account-wrapper">
-                            <h4 class="account-title">Danh sách đơn hàng</h4>
+                   
                             @await  Html.PartialAsync("_DonHang", DanhSachDonHang )
                         
-                        </div>
-                    </div>
+                        
                    
-                    <div class="tab-pane fade" id="pills-account">
+                    
                         @await Html.PartialAsync("_ChangePassword", changePassword)
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(".xemdonhang").click(function () {
+                var madonhang = $(this).attr("data-madonhang")
+                $.ajax({
+                    url: '/DonHang/Details',
+                    datatype: "json",
+                    type: "POST",
+                    data: { id: madonhang },
+                    async: true,
+                    success: function (results) {
+                        $("#records_table").html("");
+                        $("#records_table").html("results");
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+            });
+        });
+    </script>
+}
+
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using TTCK_DVKYTHUAT.Models;
-using TTCK_DVKYTHUAT.ModelsView;
 
 namespace TTCK_DVKYTHUAT.Data;
 
@@ -19,6 +18,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<CategoryNews> CategoryNews { get; set; }
+
     public virtual DbSet<Conment> Conments { get; set; }
 
     public virtual DbSet<Customer> Customers { get; set; }
@@ -34,6 +35,8 @@ public partial class ApplicationDbContext : DbContext
     public virtual DbSet<Reply> Replys { get; set; }
 
     public virtual DbSet<Service> Services { get; set; }
+
+    public virtual DbSet<TransactStatus> TransactStatuses { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -59,9 +62,9 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<News>(entity =>
         {
-            entity.HasOne(d => d.Category).WithMany(p => p.News)
+            entity.HasOne(d => d.Categorynew).WithMany(p => p.News)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_News_Categories");
+                .HasConstraintName("FK_News_CategoryNews");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -73,6 +76,10 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.Payment).WithMany(p => p.Orders)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Orders_Payment");
+
+            entity.HasOne(d => d.TransactStatus).WithMany(p => p.Orders)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_Orders_TransactStatus");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
@@ -104,8 +111,4 @@ public partial class ApplicationDbContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    public DbSet<TTCK_DVKYTHUAT.ModelsView.RegisterVM> RegisterVM { get; set; } = default!;
-
-    public DbSet<TTCK_DVKYTHUAT.ModelsView.ChangePasswordViewModel> ChangePasswordViewModel { get; set; } = default!;
 }

@@ -5,7 +5,45 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style>
+    table {
+        table-layout: fixed;
+        width: 120%;
+        /*    border: 1px solid red; */
+    }
 
+    thead th:nth-child(1) {
+        width: 5%;
+    }
+
+    thead th:nth-child(2) {
+        width: 10%;
+    }
+
+    thead th:nth-child(3) {
+        width: 10%;
+    }
+
+    thead th:nth-child(4) {
+        width: 10%;
+    }
+
+    thead th:nth-child(5) {
+        width: 10%;
+    }
+
+    thead th:nth-child(6) {
+        width: 20%;
+    }
+
+   
+    td {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 10px;
+    }
+</style>
 
 <!-- Bottom Breadcrumb card start -->
 <div class="card">
@@ -61,12 +99,22 @@
                                 <td>@item.Customer.Name</td>
                                 <td>@item.Service.Name</td> 
                                 <td>@item.Message</td>
-                                <td>@item.Rating</td>
+                               @*  <td>@item.Rating</td>
+                                 *@
+                                <td>
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <i class="ti-star @((i <= item.Rating) ? "text-warning" : "") me-2"></i>
+                                    }
+                                </td>
                                 
                                 <td>
 
                                     <a asp-area="Admin" asp-controller="AdminConments" asp-action="Details" asp-route-id="@item.ConmentId">
                                         <button class="btn btn-info">Details</button>
+                                    </a>
+                                    <a asp-area="Admin" asp-controller="AdminConments" asp-action="Edit" asp-route-id="@item.ConmentId">
+                                        <button class="btn btn-warning">Reply</button>
                                     </a>
                                 </td>
 
@@ -81,51 +129,5 @@
     </div>
 </div>
 <!-- Basic table card end -->
-@* <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Message)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Service)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Message)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service.ServiceId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ConmentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ConmentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ConmentId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
- *@
+

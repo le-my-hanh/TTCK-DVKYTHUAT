@@ -9,24 +9,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--====== Page Banner Start ======-->
-
-<section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-2.jpg);">
-    <div class="container">
-        <div class="page-banner-content text-center">
-            <h2 class="title">Shop Masonry</h2>
-            <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Shop</li>
-            </ol>
-        </div>
-    </div>
-</section>
-
-<!--====== Page Banner Ends ======-->
 <!--====== Shop Masonry Start ======-->
 
-<section class="shop-page pt-50 pb-80">
+<section class="shop-page pt-50 pb-80" style="margin-top: 100px">
     <div class="container-fluid custom-container">
         <div class="row product-row">
             @foreach (var item in services)

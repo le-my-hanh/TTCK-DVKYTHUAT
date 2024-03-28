@@ -72,7 +72,7 @@ namespace TTCK_DVKYTHUAT.Controllers
                 double averageRating = (double)(service.Conments.Any() ? service.Conments.Average(r => r.Rating) : 0);
                 service.AverageRating = Math.Round(averageRating, 1);
 
-                // Lấy danh sách đánh giá cho nhà hàng
+                // Lấy danh sách đánh giá cho dịch vụ
                 var reviews = await _context.Conments
                     .Include(r => r.Customer)
                     .Where(r => r.ServiceId == Id)

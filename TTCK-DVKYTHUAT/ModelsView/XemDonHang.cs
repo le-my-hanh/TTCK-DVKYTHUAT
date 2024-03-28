@@ -1,6 +1,4 @@
 ﻿
-
-
 using TTCK_DVKYTHUAT.Models;
 
 namespace TTCK_DVKYTHUAT.ModelsView

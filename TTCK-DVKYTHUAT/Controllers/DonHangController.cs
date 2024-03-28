@@ -17,42 +17,97 @@ namespace TTCK_DVKYTHUAT.Controllers
             _context = context;
             _notifService = notifService;
         }
-        public async Task<IActionResult> Details(int? id)
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
+
+            var order = _context.Orders
+                .Include(o => o.Customer)
+                .Include(o=>o.TransactStatus)// Nếu có quan hệ với Customer
+                .FirstOrDefault(o => o.OrderId == id);
+
+            if (order == null)
             {
-                return NotFound();
+                return NotFound(); // Trả về NotFound nếu không tìm thấy đơn hàng
             }
-            try
-            {
-                var taikhoanID = HttpContext.Session.GetString("CustomerId");
-                if (string.IsNullOrEmpty(taikhoanID)) return RedirectToAction("Login", "Accounts");
-                var khachhang = _context.Customers.AsNoTracking().SingleOrDefault(x => x.CustomerId == Convert.ToInt32(taikhoanID));
-                var donhang = await _context.Orders
-                    .Include(x => x.TransactStatus)
-                    .FirstOrDefaultAsync(m => m.OrderId == id && Convert.ToInt32(taikhoanID) == m.CustomerId);
-                if (donhang == null)
+
+            var orderDetails = _context.OrderDetails
+                .Where(od => od.OrderId == id)
+                .Select(od => new
                 {
-                    return NotFound();
-                }
+                    OrderDetailId = od.OrderDetailId,
+                    ServiceName = od.Service.Name, // Thay "Name" bằng tên thuộc tính chứa tên dịch vụ
+                    Quantity = od.Quantity,
+                    UnitPrice = od.Service.Price,
+                    TotalPrice = od.Quantity * od.Service.Price
+                })
+                .ToList();
 
-                var chitietdonhang = _context.OrderDetails
-                    .Include(x => x.Service)
-                    .AsNoTracking()
-                    .Where(x => x.OrderId == id)
-                    .OrderBy(x => x.OrderDetailId).ToList();
-
-                XemDonHang donHang = new XemDonHang();
-                donHang.DonHang = donhang; 
-                donHang.ChiTietDonHang = chitietdonhang; 
-                return PartialView("Details", donHang);
-                    
-            }
-            catch 
+            var response = new
             {
+                DonHang = new
+                {
+                    OrderId = order.OrderId,
+                    CustomerName = order.Customer != null ? order.Customer.Name : "Unknown", // Kiểm tra null để tránh lỗi
+                    CreatedDate = order.CreatedDate, // Thay bằng tên thuộc tính chứa ngày tạo đơn hàng
+                    Status = order.TransactStatus.Status, // Thêm trạng thái đơn hàng
+                    OrderDate = order.AppDate // Thêm ngày đặt đơn hàng
+                },
+                ChiTietDonHang = orderDetails
+            };
 
-            }
-            return NotFound();
+            return Json(response); // Trả về dữ liệu dưới dạng JSON
         }
+        // if (id == null)
+        // {
+        //     return NotFound();
+        // }
+        // try
+        // {
+        //     var taikhoanID = HttpContext.Session.GetString("CustomerId");
+
+        //     if (string.IsNullOrEmpty(taikhoanID)) return RedirectToAction("Login", "Accounts");
+
+        //     var convertedTaikhoanID = Convert.ToInt32(taikhoanID);
+        //     var khachhang = _context.Customers.AsNoTracking().SingleOrDefault(x => x.CustomerId == convertedTaikhoanID);
+        //     var donhang = await _context.Orders
+        //         .Include(x => x.TransactStatus)
+        //         .FirstOrDefaultAsync(m => m.OrderId == id && convertedTaikhoanID == m.CustomerId);
+        //     if (donhang == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     //var chitietdonhang =  _context.OrderDetails
+        //     //    .Include(x => x.Service)
+        //     //    .AsNoTracking()
+        //     //    .Where(x => x.OrderId == id)
+        //     //    .OrderBy(x => x.OrderDetailId).ToList();
+        //     var chitietdonhang = await _context.OrderDetails
+        //.Include(x => x.Service)
+        //.AsNoTracking()
+        //.Where(x => x.OrderId == id)
+        //.OrderBy(x => x.OrderDetailId)
+        //.ToListAsync();
+
+        //     XemDonHang donHang = new XemDonHang();
+        //     donHang.DonHang = donhang; 
+        //     donHang.ChiTietDonHang = chitietdonhang;
+
+        //     // return PartialView("Details",donHang);
+
+        //         return View("Details", donHang); 
+        //         //return Json(donHang);
+
+
+        // }
+        // catch (Exception ex)
+        // {
+        //     Console.WriteLine(ex.Message);
+        //     return StatusCode(500);
+        // }
+        // return NotFound();
     }
+    
 }

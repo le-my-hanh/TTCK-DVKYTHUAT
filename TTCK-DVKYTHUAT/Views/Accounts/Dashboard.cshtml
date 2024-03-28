@@ -74,28 +74,112 @@
     </div>
 </section>
 
-@section Scripts{
-    <script>
-        $(document).ready(function () {
-            $(".xemdonhang").click(function () {
-                var madonhang = $(this).attr("data-madonhang")
-                $.ajax({
-                    url: '/DonHang/Details',
-                    datatype: "json",
-                    type: "POST",
-                    data: { id: madonhang },
-                    async: true,
-                    success: function (results) {
-                        $("#records_table").html("");
-                        $("#records_table").html("results");
-                    },
-                    error: function (xhr) {
-                        alert('error');
-                    }
-                });
-            });
+<script>
+    function openModal(orderId) {
+        // AJAX request to fetch order details based on OrderId
+        $.ajax({
+            url: '/DonHang/Details',
+            type: 'GET',
+            data: { id: orderId },
+            success: function (response) {
+                console.log('Dữ liệu đơn hàng: ');
+                console.log(response);
+
+                // Handle the response data here
+                if (response !== null) {
+                    // Example: Accessing the order details
+                    var order = response.donHang;
+                    var orderDetails = response.chiTietDonHang;
+
+                    // Example: Display order details in the modal
+                    $('#orderDetailsModal .modal-title').text('Chi Tiết Đơn Hàng');  // Update modal title if necessary
+
+                    var modalBody = $('#orderDetailsModal .modal-body');
+                    modalBody.empty();
+
+                    // Example: Append order details to the modal body
+                    modalBody.append('<p><strong> ID:</strong> ' + order.orderId + '</p>');
+                    modalBody.append('<p><strong>Tên Khách Hàng:</strong> ' + order.customerName + '</p>');
+                    modalBody.append('<p><strong>Ngày tạo đơn hàng:</strong> ' + order.createdDate + '</p>');
+                    modalBody.append('<p><strong>Ngày đặt lịch:</strong> ' + order.orderDate + '</p>'); // Add Order Date
+                    modalBody.append('<p><strong>Trạng thái đơn hàng:</strong> ' + order.status + '</p>'); // Add Status
+                    // Example: Append order details table to the modal body
+                    modalBody.append('<table class="table">');
+                    var table = modalBody.find('table');
+                   // table.append('<thead><tr><th>Order Detail ID</th><th>Service Name</th><th>Quantity</th></tr></thead>');
+                    table.append('<thead><tr><th>ID</th><th>Tên Dịch Vụ</th><th>Số Lượng</th><th>Đơn Giá</th><th>Thành Tiền</th></tr></thead>');
+                    var tbody = $('<tbody></tbody>');
+                    table.append(tbody);
+
+                    $.each(orderDetails, function (index, detail) {
+                        var row = $('<tr></tr>');
+                        row.append('<td>' + detail.orderDetailId + '</td>');
+                        row.append('<td>' + detail.serviceName + '</td>');
+                        row.append('<td>' + detail.quantity + '</td>');
+                        row.append('<td>' + detail.unitPrice + '</td>'); // Add Unit Price
+                        row.append('<td>' + detail.totalPrice + '</td>'); // Add Total Price
+                        tbody.append(row);
+                        //tbody.append(row);
+                        tbody.append('<td style="border-right: 1px solid #dee2e6;"></td>'); // Vertical line
+                    });
+
+                    // Open the modal
+                    $('#orderDetailsModal').modal('show');
+                }
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.error(error);
+            }
         });
-    </script>
-}
+    }
+</script>
+    
+
+
+@* <script>
+
+    function openModal(orderId) {
+        // AJAX request to fetch order details based on OrderId
+        $.ajax({
+            url: '/DonHang/Details', // Replace with your endpoint to fetch order details
+            type: 'GET', // Change the HTTP method to POST
+            contentType: 'application/json', // Specify the content type as JSON
+            data: JSON.stringify({ id: orderId }), // Convert the data to JSON format
+            success: function (response) {
+                console.log('Dữ liệu đơn hàng: ');
+                console.log(response);
+                // Populate modal with fetched data
+                // $('#orderDetailsModal .modal-body').html(response);
+                // // Open the modal
+                // $('#orderDetailsModal').modal('show');
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.error(error);
+            }
+        });
+    }
+    // function openModal(orderId) {
+    //     // AJAX request to fetch order details based on OrderId
+    //     $.ajax({
+    //         url: '/DonHang/Details', // Replace with your endpoint to fetch order details
+    //         type: 'GET',
+    //         data: { id: orderId },
+    //         success: function (response) {
+    //             console.log('Dữ liệu đơn hàng: ');
+    //             console.log(response);
+    //             // Populate modal with fetched data
+    //             // $('#orderDetailsModal .modal-body').html(response);
+    //             // // Open the modal
+    //             // $('#orderDetailsModal').modal('show');
+    //         },
+    //         error: function (xhr, status, error) {
+    //             // Handle error
+    //             console.error(error);
+    //         }
+    //     });
+    // }
+</script> *@
 
 

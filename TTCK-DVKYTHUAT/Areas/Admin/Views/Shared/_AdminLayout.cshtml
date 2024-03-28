@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -72,8 +73,8 @@
     </div>
     <!-- Pre-loader end -->
     <div id="pcoded" class="pcoded">
-        <div class="pcoded-overlay-box"></div>
-        <div class="pcoded-container navbar-wrapper">
+       <div class="pcoded-overlay-box"></div>
+         <div class="pcoded-container navbar-wrapper">
 
             <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
@@ -105,8 +106,8 @@
                                 </a>
                             </li>
                         </ul>
-                        @* <ul class="nav-right">
-                            <li class="header-notification">
+                         <ul class="nav-right">
+                           @*  <li class="header-notification">
                                 <a href="#!">
                                     <i class="ti-bell"></i>
                                     <span class="badge bg-c-pink"></span>
@@ -147,15 +148,16 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </li>
+                        </li>  *@
                             <li class="user-profile header-notification">
-                                <a href="#!">
-                                    <img src="~/adminassets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                                    <span>John Doe</span>
+                                <a href="#">
+                                   
+                                    <img src="~/adminassets/images/user.png" class="img-radius" alt="User-Profile-Image">
+                                    <span>Xin Chào, Quản Lý   </span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
-                                    <li>
+                                    @* <li>
                                         <a href="#!">
                                             <i class="ti-settings"></i> Settings
                                         </a>
@@ -174,15 +176,15 @@
                                         <a href="#">
                                             <i class="ti-lock"></i> Lock Screen
                                         </a>
-                                    </li>
+                                    </li> *@
                                     <li>
-                                        <a href="auth-normal-sign-in.html">
-                                            <i class="ti-layout-sidebar-left"></i> Logout
+                                        <a asp-area="Admin" asp-controller="AdminAccounts" asp-action="LogOut">
+                                            <i class="ti-layout-sidebar-left"></i> Đăng Xuất
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                        </ul> *@
+                        </ul>
                     </div>
                 </div>
             </nav>
@@ -296,10 +298,36 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                               
-                               
+
+
+                                @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+                                @{
+                                    var username = HttpContextAccessor.HttpContext.Session.GetString("Username");
+                                    var isAdmin = (username == "Admin");
+                                }
+                                <li class="pcoded-item pcoded-left-item">
+                                    @if (isAdmin)
+                                    {
+                                        <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Index">
+                                            <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Người Dùng</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    }
                                 </li>
                                 
+                              
+                                  @*   <li>
+                                        <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Index">
+                                            <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Người Dùng</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li> *@
+                                
+                               
+                                
+
                             </ul>
 
                            
@@ -310,19 +338,21 @@
                             <div class="main-body">
                                 @RenderBody()
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                             </div>
+                         </div>
                     </div>
                 </div>
+                  
+             </div>
+         </div>
                 <div class="fixed-button">
                     <a href="https://codedthemes.com/item/guru-able-admin-template/" target="_blank" class="btn btn-md btn-primary">
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
                     </a>
                 </div>
-            </div>
-        </div>
+    </div>
+         
+    
 
         <!-- Warning Section Starts -->
         <!-- Older IE warning message -->

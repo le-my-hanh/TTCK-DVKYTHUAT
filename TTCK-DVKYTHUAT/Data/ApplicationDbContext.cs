@@ -16,6 +16,8 @@ public partial class ApplicationDbContext : DbContext
     {
     }
 
+    public virtual DbSet<Account> Accounts { get; set; }
+
     public virtual DbSet<Category> Categories { get; set; }
 
     public virtual DbSet<CategoryNews> CategoryNews { get; set; }
@@ -44,6 +46,11 @@ public partial class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Account>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK_Accuont");
+        });
+
         modelBuilder.Entity<Conment>(entity =>
         {
             entity.HasOne(d => d.Customer).WithMany(p => p.Conments)

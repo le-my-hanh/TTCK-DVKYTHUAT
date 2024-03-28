@@ -1,0 +1,159 @@
+﻿@model IEnumerable<TTCK_DVKYTHUAT.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+        /*    border: 1px solid red; */
+    }
+
+    thead th:nth-child(1) {
+        width: 10%;
+    }
+
+    thead th:nth-child(2) {
+        width: 25%;
+    }
+
+    thead th:nth-child(3) {
+        width: 20%;
+    }
+
+    thead th:nth-child(4) {
+        width: 15%;
+    }
+
+   
+
+   
+   /*  td {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 20px;
+    } */
+</style>
+<!-- Bottom Breadcrumb card start -->
+<div class="card">
+    <div class="card-block">
+        <div class="breadcrumb-header">
+            <h5>Quản Lý Người Dùng</h5>
+        </div>
+        <div>
+            <ul class="breadcrumb-title">
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                        <i class="icofont icofont-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Index">Danh Sách Người Dùng</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#!">.....</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Bottom Breadcrumb card end -->
+<!-- Basic table card start -->
+<div class="card">
+    <div class="card-header">
+        @*   <h5>Quản Lý Danh Mục</h5> *@
+
+        <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Create">
+            <button class="btn btn-grd-primary ">Add</button>
+        </a>
+
+
+
+        <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Người Dùng</th>
+                        <th>Mật Khẩu </th>
+                        <th>Roles</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.Id</th>
+                                <td>@item.Username</td>
+                                <td>@item.Password</td>
+                                <td>@item.Roles </td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Edit" asp-route-id="@item.Id">
+                                        <button class="btn hor-grd btn-grd-success">Edit</button>
+                                    </a>
+                                    <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Delete" asp-route-id="@item.Id">
+                                        <button class="btn hor-grd btn-grd-danger ">Delete</button>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Basic table card end -->
+
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roles)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roles)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> *@

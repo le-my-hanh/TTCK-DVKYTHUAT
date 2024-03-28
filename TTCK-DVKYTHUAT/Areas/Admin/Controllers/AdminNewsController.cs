@@ -103,6 +103,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             {
                 news.Image = Upload(file);
                 _context.Add(news);
+                news.CreatedDate = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

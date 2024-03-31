@@ -22,4 +22,7 @@ public partial class Account
 
     [StringLength(100)]
     public string? Roles { get; set; }
+
+    [StringLength(100)]
+    public string? Name { get; set; }
 }

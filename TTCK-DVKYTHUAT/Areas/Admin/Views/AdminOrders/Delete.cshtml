@@ -54,6 +54,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Payment.PaymentId)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TransactStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TransactStatus.TransactStatusId)
+        </dd>
     </dl>
     
     <form asp-action="Delete">

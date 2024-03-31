@@ -322,6 +322,27 @@ namespace TTCK_DVKYTHUAT.Controllers
         //    //    return RedirectToAction("Index", "Home"); // Điều chỉnh đường dẫn và action tùy thuộc vào yêu cầu của ứng dụng của bạn
         //    //}
         //}
+        public IActionResult DeleteAll()
+        {
+            try
+            {
+                // Lấy giỏ hàng từ session
+                List<CartItem> gioHang = Carts;
 
+                // Xóa tất cả các mục trong giỏ hàng
+                gioHang.Clear();
+
+                // Lưu lại giỏ hàng sau khi xóa
+                HttpContext.Session.Set<List<CartItem>>("GioHang", gioHang);
+
+                // Chuyển hướng đến trang giỏ hàng sau khi xóa thành công
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                // Xử lý nếu có lỗi xảy ra trong quá trình xóa giỏ hàng
+                return Json(new { success = false });
+            }
+        }
     }
 }

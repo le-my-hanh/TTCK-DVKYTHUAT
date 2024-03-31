@@ -3,59 +3,152 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    List<OrderDetail> orderDetails = ViewBag.ct;
 }
 
-<h1>Details</h1>
+<!-- Bottom Breadcrumb card start -->
+<div class="card">
+    <div class="card-block">
+        <div class="breadcrumb-header">
+            <h5>Quản Lý Đơn Hàng</h5>
+        </div>
+        <div>
+            <ul class="breadcrumb-title">
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                        <i class="icofont icofont-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="AdminOrders" asp-action="Index">Danh Sách Đơn Hàng</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#!">.....</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Bottom Breadcrumb card end -->
+<!-- Basic Form Inputs card start -->
+<div class="card">
+    <div class="card-header">
+        <h5>Thông Tin Hóa Đơn</h5>
+     
+        <div class="card-header-right">
+            <i class="icofont icofont-spinner-alt-5"></i>
+        </div>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Note)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Note)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AppDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AppDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalMoney)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalMoney)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer.CustomerId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Payment)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Payment.PaymentId)
-        </dd>
-    </dl>
+        <div class="card-header-right">
+            <i class="icofont icofont-spinner-alt-5"></i>
+        </div>
+
+    </div>
+    <div class="card-block">
+        <h4 class="Title">ID: @Model.OrderId</h4>
+        <form>
+            <div class=" row">
+                <label class="col-sm-2 col-form-label">Khách hàng:</label>
+                <div class="col-sm-10">
+                    <div class="form-control-static">
+                       @Model.Customer.Name
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <label class="col-sm-2 col-form-label">Số điện thoại:</label>
+                <div class="col-sm-10">
+                    <div class="form-control-static">
+                        @Model.Customer.Phone
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row">
+                <label class="col-sm-2 col-form-label">Địa chỉ: </label>
+                <div class="col-sm-10">
+                    <div class="form-control-static">
+                       @Model.Customer.Address
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row">
+                <label class="col-sm-2 col-form-label">Ngày lập hóa đơn:</label>
+                <div class="col-sm-10">
+                    <div class="form-control-static">
+                        @Model.CreatedDate
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <label class="col-sm-2 col-form-label">Ngày đặt lịch:</label>
+                <div class="col-sm-10">
+                    <div class="form-control-static">
+                        @Model.AppDate
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <label class="col-sm-2 col-form-label">Trạng Thái:</label>
+                <div class="col-sm-10">
+                    <div class="form-control-static">
+                        @Model.TransactStatus.Status
+                    </div>
+                </div>
+            </div>
+             <div class="card-header">
+        <h5>Chi Tiết Hóa Đơn</h5>
+      
+        <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+    </div>
+            <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Dịch Vụ</th>
+                        <th>Số Lần</th>
+                        <th>Đơn giá</th>
+                        <th>Thành Tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(orderDetails!=null&& orderDetails.Count() > 0)
+                    {
+                        int i = 1;
+                        foreach(var item in orderDetails)
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>@item.Service.Name</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Service.Price.Value.ToString("#,##0") VNĐ</td>
+                               @*  <td>@(item.Quantity * item.Service.Price).ToString("#,##0") VNĐ</td> *@
+                               <td>@string.Format("{0:#,##0} VNĐ", item.Quantity * item.Service.Price)</td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+                   
+                </tbody>
+            </table>
+            <div class="col-sm-12 " style="margin-top: 50px">
+                <h4 class="Title" >Tổng Tiền : @Model.TotalMoney.Value.ToString("#,##0") VNĐ</h4
+            </div>
+        </div>
+    </div>
+     <div class="form-group">
+                <a asp-action="Edit" class="btn hor-grd btn-grd-success" asp-controller="AdminOrders" asp-route-id="@Model?.OrderId"> Edit</a>
+
+                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminOrders" asp-route-id="@Model?.OrderId">Back Home</a>
+            </div>
+        </form>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.OrderId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<!-- Basic Form Inputs card end -->
+
+
+

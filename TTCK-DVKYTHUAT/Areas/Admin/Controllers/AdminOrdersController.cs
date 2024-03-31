@@ -23,9 +23,35 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         // GET: Admin/AdminOrders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Orders.Include(o => o.Customer).Include(o => o.Payment);
-            return View(await applicationDbContext.ToListAsync());
+            //var applicationDbContext = _context.Orders.Include(o => o.Customer).Include(o => o.Payment).Include(o => o.TransactStatus);
+            //return View(await applicationDbContext.ToListAsync());
+            var orders = await _context.Orders.Include(o => o.Customer)
+                                                .Include(o => o.TransactStatus)
+                                                .ToListAsync();
+
+            ViewBag.StatusList = await _context.TransactStatuses.ToListAsync();
+
+            return View(orders);
+
         }
+
+        // POST: Admin/AdminOrders/ChangeStatus
+        [HttpPost]
+        public async Task<IActionResult> ChangeStatus(int orderId, int newStatusId)
+        {
+            var order = await _context.Orders.FindAsync(orderId);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            order.TransactStatusId = newStatusId;
+            _context.Orders.Update(order);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index"); // Trả về mã HTTP 200 OK để chỉ ra rằng yêu cầu đã được xử lý thành công.
+        }
+
 
         // GET: Admin/AdminOrders/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -38,11 +64,19 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             var order = await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.Payment)
+                .Include(o => o.TransactStatus)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (order == null)
             {
                 return NotFound();
             }
+
+            var cthoadon = _context.OrderDetails
+                .AsNoTracking().Include(x=>x.Service)
+                .Where(X => X.OrderId == order.OrderId)
+                .OrderBy(x => x.OrderDetailId).ToList();
+            ViewBag.ct = cthoadon;
+
 
             return View(order);
         }
@@ -52,6 +86,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         {
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
             ViewData["PaymentId"] = new SelectList(_context.Payments, "PaymentId", "PaymentId");
+            ViewData["TransactStatusId"] = new SelectList(_context.TransactStatuses, "TransactStatusId", "TransactStatusId");
             return View();
         }
 
@@ -60,7 +95,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderId,Note,CustomerId,CreatedDate,AppDate,PaymentId,Status,TotalMoney")] Order order)
+        public async Task<IActionResult> Create([Bind("OrderId,Note,CustomerId,CreatedDate,AppDate,PaymentId,Status,TotalMoney,TransactStatusId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -70,6 +105,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
             ViewData["PaymentId"] = new SelectList(_context.Payments, "PaymentId", "PaymentId", order.PaymentId);
+            ViewData["TransactStatusId"] = new SelectList(_context.TransactStatuses, "TransactStatusId", "TransactStatusId", order.TransactStatusId);
             return View(order);
         }
 
@@ -88,6 +124,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
             ViewData["PaymentId"] = new SelectList(_context.Payments, "PaymentId", "PaymentId", order.PaymentId);
+            ViewData["TransactStatusId"] = new SelectList(_context.TransactStatuses, "TransactStatusId", "TransactStatusId", order.TransactStatusId);
             return View(order);
         }
 
@@ -96,7 +133,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,Note,CustomerId,CreatedDate,AppDate,PaymentId,Status,TotalMoney")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderId,Note,CustomerId,CreatedDate,AppDate,PaymentId,Status,TotalMoney,TransactStatusId")] Order order)
         {
             if (id != order.OrderId)
             {
@@ -125,6 +162,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
             ViewData["PaymentId"] = new SelectList(_context.Payments, "PaymentId", "PaymentId", order.PaymentId);
+            ViewData["TransactStatusId"] = new SelectList(_context.TransactStatuses, "TransactStatusId", "TransactStatusId", order.TransactStatusId);
             return View(order);
         }
 
@@ -139,6 +177,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             var order = await _context.Orders
                 .Include(o => o.Customer)
                 .Include(o => o.Payment)
+                .Include(o => o.TransactStatus)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (order == null)
             {

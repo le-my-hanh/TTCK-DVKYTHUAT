@@ -23,7 +23,7 @@ namespace TTCK_DVKYTHUAT.Controllers
             try
             {
                 var pageNumber = page == null || page <= 0 ? 1 : page.Value;
-                var pageSize = 3;
+                var pageSize = 6;
                 var lsCategory = _context.Categories
                     .AsNoTracking().OrderByDescending(X => X.CreatedDate);
 

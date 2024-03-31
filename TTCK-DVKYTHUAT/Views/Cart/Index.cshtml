@@ -95,10 +95,10 @@
             <div class="cart-btn-left">
                 <a asp-action="Index" asp-controller="Service" class="main-btn">Dịch Vụ</a>
             </div>
-            @* <div class="cart-btn-right">
+             <div class="cart-btn-right">
             <a class="main-btn btnDeleteAll" asp-action="DeleteAll" asp-controller="Cart">Xóa giỏ hàng</a>
-            <a asp-action="Update" class="main-btn main-btn-2">Cập Nhật Giỏ Hàng</a>
-            </div> *@
+           
+            </div> 
         </div>
 
         <div class="row">
@@ -126,11 +126,11 @@
                     <div class="cart-total-btn mt-20">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a href="/checkout.html" class="main-btn btn-block">Thanh Toán</a>
+                            <a href="/checkout.html" class="main-btn btn-block">Kiểm Tra Thông Tin</a>
                         }
                         else
                         {
-                            <a href="/dang-nhap.html?returnUrl=/checkout.html" class="main-btn btn-block">Thanh Toán</a>
+                            <a href="/dang-nhap.html?returnUrl=/checkout.html" class="main-btn btn-block">Kiểm Tra Thông Tin</a>
                         }
                        
                     </div>

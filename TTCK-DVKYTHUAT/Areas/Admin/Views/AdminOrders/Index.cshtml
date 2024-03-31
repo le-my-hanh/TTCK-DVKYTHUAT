@@ -44,12 +44,13 @@
                     <tr>
                         <th>ID</th>
                         <th>Khách hàng</th>
-                        <th>SĐT</th>
+                        @*   <th>SĐT</th> *@
                         <th>Địa chỉ</th>
-                        <th>Ngày đặt</th>
+
                         <th>Ngày hẹn</th>
-                      @*   <th>Thanh Toán</th> *@
                         <th>Tổng tiền</th>
+                        <th>Trạng Thái</th>
+                        <th></th>
                         <th>#</th>
                     </tr>
                 </thead>
@@ -61,18 +62,31 @@
                             <tr>
                                 <th scope="row">@item.OrderId</th>
                                 <td>@item.Customer.Name</td>
-                                <td>@item.Customer.Phone</td>
+                                @*   <td>@item.Customer.Phone</td> *@
                                 <td>@item.Customer.Address</td>
-                                <td>@item.CreatedDate</td>
+
                                 <td>@item.AppDate</td>
-                               @*  <td>@item.Payment.Name</td> *@
-                                <td>@item.TotalMoney</td>
+                                <td>@item.TotalMoney.Value.ToString("#,##0") VNĐ</td>
+                                <td>@item.TransactStatus.Status</td>
+                                @*  <td>@item.TransactStatus.Status</td> *@
+                               <td>
+                                <select class="status-dropdown" data-order-id="@item.OrderId">
+                                        @foreach (var status in ViewBag.StatusList)
+                                        {
+                                          @*    <option value="@status.TransactStatusId" selected="@status.TransactStatusId == item.TransactStatusId">@status.Status</option>  *@
+                                            <option value="@status.TransactStatusId">@status.Status</option>
+                                        }
+                                </select>
+                            </td>
+
+                              
                                 <td>
 
                                     <a asp-area="Admin" asp-controller="AdminOrders" asp-action="Details" asp-route-id="@item.OrderId">
                                         <button class="btn btn-info">Details</button>
                                     </a>
-                                    </td>
+                                   
+                                </td>
 
                             </tr>
                         }
@@ -85,68 +99,59 @@
     </div>
 </div>
 <!-- Basic table card end -->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
 
-@* <p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Note)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AppDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalMoney)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Payment)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Note)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AppDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalMoney)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Payment.PaymentId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
-            </td>
-        </tr>
+            // Lặp qua tất cả các dropdown và thiết lập giá trị của chúng
+            $('.status-dropdown').each(function () {
+                var orderId = $(this).data('order-id');
+                //var currentStatusId = $(this).data('current-status-id'); // Giả sử có thuộc tính data chứa trạng thái hiện tại của đơn hàng
+                var currentStatusId = $(this).find('option:selected').val();
+                // Thiết lập giá trị của dropdown bằng với trạng thái hiện tại của đơn hàng
+                $(this).val(currentStatusId);
+            });
+
+            // Xử lý sự kiện khi dropdown thay đổi
+            $('.status-dropdown').change(function () {
+                var orderId = $(this).data('order-id');
+                var newStatusId = $(this).val();
+                var dropdown = $(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '/Admin/AdminOrders/ChangeStatus',
+                    data: { orderId: orderId, newStatusId: newStatusId },
+                    success: function () {
+                        // Cập nhật thành công, bạn có thể thực hiện các hành động sau
+                        location.reload();
+                    },
+                    error: function () {
+                        // Xử lý lỗi nếu có
+                    }
+                });
+            });
+        });
+    </script>
 }
-    </tbody>
-</table>
- *@
+
+@* @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.status-dropdown').change(function () {
+                var orderId = $(this).data('order-id');
+                var newStatusId = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/Admin/AdminOrders/ChangeStatus',
+                    data: { orderId: orderId, newStatusId: newStatusId },
+                    success: function () {
+                        // Cập nhật thành công, bạn có thể thực hiện các hành động sau
+                    },
+                    error: function () {
+                        // Xử lý lỗi nếu có
+                    }
+                });
+            });
+        });
+    </script>
+} *@

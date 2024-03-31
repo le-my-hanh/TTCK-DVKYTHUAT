@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Technical service management </title>
+    <title>Quản Lý Dịch Vụ Kỹ Thuật </title>
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,7 +18,9 @@
       <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
       <meta name="author" content="CodedThemes">
       <!-- Favicon icon -->
-      <link rel="icon" href="~/adminassets/images/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" src="~/images/nguoidung.png" type="image/x-icon">
+     @*  <link rel="icon" href="~/adminassets/images/favicon.ico" type="image/x-icon"> *@
       <!-- Google font-->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
       <!-- Required Fremwork -->
@@ -79,7 +81,7 @@
             <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
 
-                    <div class="navbar-logo">
+                    <div class="navbar-logo" style="background-color: #ff3232;">
                         <a class="mobile-menu" id="mobile-collapse" href="#!">
                             <i class="ti-menu"></i>
                         </a>
@@ -87,7 +89,8 @@
                             <i class="ti-search"></i>
                         </a>
                         <a href="index.html">
-                            <img class="img-fluid" src="~/adminassets/images/logo.png" alt="Theme-Logo" />
+                          
+                            <img class="img-fluid" src="~/images/logo1.png" alt="Theme-Logo" style=“width:60px;height:60px;Margin-right:30px” />
                         </a>
                         <a class="mobile-options">
                             <i class="ti-more"></i>
@@ -106,85 +109,76 @@
                                 </a>
                             </li>
                         </ul>
-                         <ul class="nav-right">
-                           @*  <li class="header-notification">
-                                <a href="#!">
-                                    <i class="ti-bell"></i>
-                                    <span class="badge bg-c-pink"></span>
-                                </a>
-                                <ul class="show-notification">
-                                    <li>
-                                        <h6>Notifications</h6>
-                                        <label class="label label-danger">New</label>
-                                    </li>
-                                    <li>
-                                        <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="~/adminassets/images/avatar-4.jpg" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <h5 class="notification-user">John Doe</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                <span class="notification-time">30 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="~/adminassets/images/avatar-3.jpg" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <h5 class="notification-user">Joseph William</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                <span class="notification-time">30 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="~/adminassets/images/avatar-4.jpg" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <h5 class="notification-user">Sara Soudein</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                <span class="notification-time">30 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                        </li>  *@
-                            <li class="user-profile header-notification">
-                                <a href="#">
-                                   
-                                    <img src="~/adminassets/images/user.png" class="img-radius" alt="User-Profile-Image">
-                                    <span>Xin Chào, Quản Lý   </span>
-                                    <i class="ti-angle-down"></i>
-                                </a>
-                                <ul class="show-notification profile-notification">
-                                    @* <li>
-                                        <a href="#!">
-                                            <i class="ti-settings"></i> Settings
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-user"></i> Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-email"></i> My Messages
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-lock"></i> Lock Screen
-                                        </a>
-                                    </li> *@
-                                    <li>
-                                        <a asp-area="Admin" asp-controller="AdminAccounts" asp-action="LogOut">
-                                            <i class="ti-layout-sidebar-left"></i> Đăng Xuất
-                                        </a>
-                                    </li>
-                                </ul>
+                        
+                  
+                            <ul class="nav-right">
+                                @*  <li class="header-notification">
+                            <a href="#!">
+                            <i class="ti-bell"></i>
+                            <span class="badge bg-c-pink"></span>
+                            </a>
+                            <ul class="show-notification">
+                            <li>
+                            <h6>Notifications</h6>
+                            <label class="label label-danger">New</label>
                             </li>
-                        </ul>
+                            <li>
+                            <div class="media">
+                            <img class="d-flex align-self-center img-radius" src="~/adminassets/images/avatar-4.jpg" alt="Generic placeholder image">
+                            <div class="media-body">
+                            <h5 class="notification-user">John Doe</h5>
+                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                            <span class="notification-time">30 minutes ago</span>
+                            </div>
+                            </div>
+                            </li>
+                            <li>
+                            <div class="media">
+                            <img class="d-flex align-self-center img-radius" src="~/adminassets/images/avatar-3.jpg" alt="Generic placeholder image">
+                            <div class="media-body">
+                            <h5 class="notification-user">Joseph William</h5>
+                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                            <span class="notification-time">30 minutes ago</span>
+                            </div>
+                            </div>
+                            </li>
+                            <li>
+                            <div class="media">
+                            <img class="d-flex align-self-center img-radius" src="~/adminassets/images/avatar-4.jpg" alt="Generic placeholder image">
+                            <div class="media-body">
+                            <h5 class="notification-user">Sara Soudein</h5>
+                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                            <span class="notification-time">30 minutes ago</span>
+                            </div>
+                            </div>
+                            </li>
+                            </ul>
+                            </li>  *@
+
+                           
+
+                                <li class="user-profile header-notification">
+                                    <a href="#">
+
+                                    <img src="~/images/nguoidung.png" class="img-radius" alt="User-Profile-Image">
+                                        @*  <span>Xin Chào, Quản Lý   </span> *@
+                                        <span>Xin chào, Quản Trị Viên </span>
+                                        <i class="ti-angle-down"></i>
+                                    </a>
+                                    <ul class="show-notification profile-notification">
+
+                                        <li>
+                                            <a asp-area="Admin" asp-controller="AdminAccounts" asp-action="LogOut">
+                                                <i class="ti-layout-sidebar-left"></i> Đăng Xuất
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        
+
                     </div>
                 </div>
             </nav>
@@ -195,9 +189,10 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="">
                                 <div class="main-menu-header">
-                                    <img class="img-40 img-radius" src="~/adminassets/images/LOGO.jpg" alt="User-Profile-Image">
+                                    
+                                    <img class="img-40 img-radius" src="~/images/logo3.png" alt="User-Profile-Image">
                                     <div class="user-details">
-                                        <span>TECHNICAL SERVICES</span>
+                                        <span>Quản Lý Dịch Vụ Kỹ Thuật</span>
                                      
                                     </div>
                                 </div>
@@ -208,28 +203,28 @@
                                 <li class="active">
                                     <a asp-area="Admin" asp-controller="Home" asp-action="Index">
                                         <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Home</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Trang Chủ</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="ti-package"></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Products</span>
+                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Dịch Vụ</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
                                             <a asp-area="Admin" asp-controller="AdminCategories" asp-action="Index">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Categories</span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Danh Mục Dịch Vụ</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class=" ">
                                             <a asp-area="Admin" asp-controller="AdminServices" asp-action="Index">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Services</span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Dịch Vụ</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
@@ -243,14 +238,14 @@
                                 <li>
                                     <a asp-area="Admin" asp-controller="AdminCustomers" asp-action="Index">
                                         <span class="pcoded-micon"><i class="ti-user"></i>@* <i class="ti-layers"></i> *@<b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Customers</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Khách Hàng</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a asp-area="Admin" asp-controller="AdminOrders" asp-action="Index">
                                         <span class="pcoded-micon"><i class="ti-truck"></i>@* <i class="ti-layers"></i> *@<b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Orders</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Đơn Hàng</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -262,7 +257,7 @@
                                 <li class="pcoded-hasmenu">
                                     <a @* asp-area="Admin" asp-controller="AdminNews" asp-action="Index" *@>
                                         <span class="pcoded-micon"><i class="ti-book"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">News</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Tin Tức</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -287,14 +282,14 @@
                                 <li>
                                     <a asp-area="Admin" asp-controller="AdminConments" asp-action="Index">
                                         <span class="pcoded-micon"><i class="ti-more-alt"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Conments</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Bình Luận</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a asp-area="Admin" asp-controller="AdminReplies" asp-action="Index">
                                         <span class="pcoded-micon"><i class="ti-share-alt"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Replys</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Phản Hồi</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -434,5 +429,5 @@ var nav = $('.fixed-button');
  });
 </script>
 </body>
-
+@RenderSection("Scripts", required: false)
 </html>

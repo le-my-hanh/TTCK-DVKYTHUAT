@@ -33,4 +33,14 @@
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\ckeditor\.circleci\config.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CKFinder">
+      <HintPath>D:\TTCK\ckfinder\bin\Debug\CKFinder.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

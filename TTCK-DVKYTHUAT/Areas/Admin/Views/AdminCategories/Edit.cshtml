@@ -31,7 +31,7 @@
 <!-- Basic Form Inputs card start -->
 <div class="card">
     <div class="card-header">
-        <h5>Edit Category</h5>
+        <h5>Chỉnh Sửa Danh Mục</h5>
 
         <div class="card-header-right">
             <i class="icofont icofont-spinner-alt-5"></i>
@@ -48,40 +48,31 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <input type="hidden" asp-for="CategoryId" />
             <div class="form-group row">
-                <label asp-for="Name" class="col-sm-2 col-form-label">Name Category</label>
+                <label asp-for="Name" class="col-sm-2 col-form-label">Tên Danh Mục</label>
                 <div class="col-sm-10">
                     <input asp-for="Name" type="text" class="form-control" placeholder="Name...">
                 </div>
             </div>
 
-           @*  <div class="form-group row">
-                <label asp-for="Type" class="col-sm-2 col-form-label">
-                    Type
-                </label>
-                <div class="col-sm-10">
-                    <input asp-for="Type" type="text" class="form-control"
-                           placeholder="Type..."
-                           autocomplete="off">
-                </div>
-            </div> *@
+     
 
 
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Image</label>
+                <label class="col-sm-2 col-form-label">Hình Ảnh</label>
                 <div class="col-sm-10">
                     <input type="file" class="form-control-file" Name="file">
                 </div>
             </div>
             <div class="form-group row">
-                <label asp-for="ShortDesc" class="col-sm-2 col-form-label">ShortDesc</label>
+                <label asp-for="ShortDesc" class="col-sm-2 col-form-label">Mô Tả Ngắn</label>
                 <div class="col-sm-10">
                     <textarea asp-for="ShortDesc" rows="5" cols="5" class="form-control"
                               placeholder="Text..."></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-warning" />
-                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminCategories" asp-route-id="@Model?.CategoryId">Back Home</a>
+                <input type="submit" value="Lưu" class="btn btn-warning" />
+                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminCategories" asp-route-id="@Model?.CategoryId">Quay Lại</a>
 
             </div>
         </form>

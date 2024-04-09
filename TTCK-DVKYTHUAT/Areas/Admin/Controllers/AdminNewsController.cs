@@ -133,22 +133,23 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NewsId,Title,Image,Desciption,CreatedDate,CategorynewId")] News news, IFormFile file)
+        //public async Task<IActionResult> Edit(int id, [Bind("NewsId,Title,Desciption,CreatedDate,CategorynewId")] News news, IFormFile file)
+        public async Task<IActionResult> Edit(int id, [FromForm] News news, IFormFile file)
         {
             if (id != news.NewsId)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
-            {
                 try
                 {
                     if (file != null)
                     {
                         news.Image = Upload(file);
                     }
-                    _context.Update(news);
+                news.CreatedDate = DateTime.Now;
+                _context.Update(news);
+              
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -163,7 +164,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            
             ViewData["CategorynewId"] = new SelectList(_context.CategoryNews, "CategorynewId", "Name", news.CategorynewId);
             return View(news);
         }
@@ -183,7 +184,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["CategorynewId"] = new SelectList(_context.CategoryNews, "CategorynewId", "Name", news.CategorynewId);
             return View(news);
         }
 

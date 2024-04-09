@@ -84,8 +84,8 @@
                                 <button class="main-btn">Đặt dịch vụ</button>
                             </div>
                         </form>
-                        <a href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" class="product-wishlist"><i class="far fa-heart"></i></a>
-                        <a href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" class="product-compare"><i class="far fa-repeat-alt"></i></a>
+                      @*   <a href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" class="product-wishlist"><i class="far fa-heart"></i></a>
+                        <a href="#" data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" class="product-compare"><i class="far fa-repeat-alt"></i></a> *@
                     </div>
 
                     @* <div class="product-description">
@@ -100,7 +100,7 @@
                     </div> *@
 
                     <div class="product-meta">
-                        <p>Categories: @Model.Category.Name @* <a href="#">Metro,</a> <a href="">Women</a> *@</p>
+                        <p>Danh mục: @Model.Category.Name @* <a href="#">Metro,</a> <a href="">Women</a> *@</p>
 @*                         <p>Tags: <a href="#">Dress,</a> <a href="#">Fashion</a> <a href="#">Furniture,</a> <a href="#">Lookbook</a></p>
  *@                    </div>
 
@@ -147,12 +147,12 @@
                 </div> *@
                 <div class="product-description">
                     <div class="row flex-md-row-reverse">
-                        <div class="col-md-6">
-                            <div class="description">
-                                <p> @Model.Description <br> <br>  </p>
+                        <div class="col-md-8">
+                            <div class="description" style="margin-left:0px;">
+                                <p> @Html.Raw(Model.Description) </p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="image text-md-left ">
                                 <img src="~/images/@Model.Image" alt="@Model.ServiceId" style=“width:400px;height:350px;”>
                             </div>
@@ -171,7 +171,7 @@
                                         <li>
                                             <div class="single-review-comment">
                                                 <div class="review-author" style="width:40px;height:40px;">
-                                                  @*  <img src="~/assets/images/auhtor-1.jpg" alt=""> *@
+                                               
                                                     <img src="~/images/nguoidung.png" alt="" />
                                                 </div>
                                                 <div class="review-content">
@@ -270,7 +270,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>i
         </div>
     </div>
 </section>

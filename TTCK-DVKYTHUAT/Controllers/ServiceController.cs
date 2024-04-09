@@ -25,7 +25,7 @@ namespace TTCK_DVKYTHUAT.Controllers
         {
             try
             {
-                var pageNumber = page == null || page <= 0 ? 1 : page.Value;
+                var pageNumber = page.HasValue && page > 0 ? page.Value : 1;
                 var pageSize = 8;
                 var lsServices = _context.Services
                     .AsNoTracking().OrderByDescending(X => X.CreatedDate);
@@ -37,15 +37,27 @@ namespace TTCK_DVKYTHUAT.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
             var servies = _context.Services;
             return View(servies);
+            //try
+            //{
+            //    var pageNumber = page == null || page <= 0 ? 1 : page.Value;
+            //    var pageSize = 8;
+            //    var lsServices = _context.Services
+            //        .AsNoTracking().OrderByDescending(X => X.CreatedDate);
+            //    PagedList<Service> models = new PagedList<Service>(lsServices, pageNumber, pageSize);
+            //    ViewBag.CurrentPage = pageNumber;
+            //    return View(models);
+            //}
+            //catch
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
+            //var servies = _context.Services;
+            //return View(servies);
         }
-        //public async Task<IActionResult> Details(int? Id )
-        //{
-        //    if(Id == null) return RedirectToAction("Index");
-        //    var servicesId = _context.Services.Where(p => p.ServiceId == Id).FirstOrDefault();
-        //    return View(servicesId);
-        //}
+       
 
         public async Task<IActionResult> Details(int? Id)
         {

@@ -25,13 +25,17 @@
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
       <!-- Required Fremwork -->
       <link rel="stylesheet" type="text/css" href="~/adminassets/css/bootstrap/css/bootstrap.min.css">
-      <!-- themify-icons line icon -->o
+      <!-- themify-icons line icon -->
       <link rel="stylesheet" type="text/css" href="~/adminassets/icon/themify-icons/themify-icons.css">
       <!-- ico font -->
       <link rel="stylesheet" type="text/css" href="~/adminassets/icon/icofont/css/icofont.css">
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="~/adminassets/css/style.css">
       <link rel="stylesheet" type="text/css" href="~/adminassets/css/jquery.mCustomScrollbar.css">
+
+    @* <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/ckeditor.js"></script> *@
+    <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
+
   </head>
 
   <body>
@@ -295,9 +299,29 @@
                                 </li>
 
 
+
                                 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
                                 @{
-                                    var username = HttpContextAccessor.HttpContext.Session.GetString("Username");
+                                    var roles = HttpContextAccessor.HttpContext.Session.GetString("Roles");
+                                    var isAdmin = (roles == "QL");
+                                }
+
+                               
+                                    <li class="pcoded-item pcoded-left-item">
+                                        @if (isAdmin)
+                                        {
+                                            <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Index">
+                                                <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.form-components.main">Người Dùng</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        }
+                                    </li>
+                                
+                               @*  @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+                                @{
+                                   // var username = HttpContextAccessor.HttpContext.Session.GetString("Roles");
+                                     var username = HttpContextAccessor.HttpContext.Session.GetString("Username");
                                     var isAdmin = (username == "Admin");
                                 }
                                 <li class="pcoded-item pcoded-left-item">
@@ -309,7 +333,7 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     }
-                                </li>
+                                </li> *@
                                 
                               
                                   @*   <li>
@@ -416,7 +440,8 @@
 <script src="~/adminassets/js/pcoded.min.js"></script>
 <script src="~/adminassets/js/demo-12.js"></script>
 <script src="~/adminassets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script>
+   
+    <script>
 var $window = $(window);
 var nav = $('.fixed-button');
     $window.scroll(function(){

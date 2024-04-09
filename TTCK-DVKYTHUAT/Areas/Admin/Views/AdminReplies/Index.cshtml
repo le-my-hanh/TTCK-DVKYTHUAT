@@ -43,9 +43,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Message</th>
-                        <th>Reply</th>
-                        <th>Ngày Reply</th>
+                        <th>Tên Khách Hàng</th>
+                        <th>Bình Luận</th>
+                        <th>Đánh Giá</th>
+                        <th>Phản Hồi</th>
+                        <th>Ngày Tạo</th>
                         <th>#</th>
                     </tr>
                 </thead>
@@ -55,19 +57,27 @@
                         foreach (var item in Model)
                         {
                             <tr>
+                                
                                 <th scope="row">@item.ReplyId</th>
+                                <th>@item.Conment.Customer.Name</th>
                                 <td>@item.Conment.Message</td>
+                                <th>
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <i class="ti-star @((i <= item.Conment.Rating) ? "text-warning" : "") me-2"></i>
+                                    }
+                                </th>
                                 <td>@item.Reply1</td>
                                 <td>@item.RepDate</td>
                                
 
                                 <td>
 
-                                    <a asp-area="Admin" asp-controller="AdminReplies" asp-action="Details" asp-route-id="@item.ReplyId">
-                                        <button class="btn btn-info">Details</button>
+                                    <a asp-area="Admin" asp-controller="AdminReplies" asp-action="Edit" asp-route-id="@item.ReplyId">
+                                        <button class="btn hor-grd btn-grd-success">Chỉnh Sửa</button>
                                     </a>
                                     <a asp-area="Admin" asp-controller="AdminReplies" asp-action="Delete" asp-route-id="@item.ReplyId">
-                                        <button class="btn hor-grd btn-grd-danger ">Delete</button>
+                                        <button class="btn hor-grd btn-grd-danger ">Xóa</button>
                                     </a>
                                 </td>
 

@@ -25,7 +25,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         public  IActionResult Index(int page=1, int CategoryID = 0)
         {
             var pageNumber = page;
-            var pageSize = 5;
+            var pageSize = 10;
             List<Service> lsServices = new List<Service>();
             if (CategoryID != 0)
             {
@@ -135,15 +135,15 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ServiceId,Name,Description,Price,Quantity,Image,CategoryId,CreatedDate")] Service service, IFormFile file)
+        //public async Task<IActionResult> Edit(int id, [Bind("ServiceId,Name,Description,Price,Quantity,Image,CategoryId,CreatedDate")] Service service, IFormFile file)
+      public async Task<IActionResult> Edit(int id, [FromForm] Service service, IFormFile file)
         {
             if (id != service.ServiceId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+           
                 try
                 {
                     if (file != null)
@@ -166,7 +166,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", service.CategoryId);
             return View(service);
         }

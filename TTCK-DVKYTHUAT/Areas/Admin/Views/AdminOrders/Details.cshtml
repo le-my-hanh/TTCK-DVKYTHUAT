@@ -136,14 +136,14 @@
                 </tbody>
             </table>
             <div class="col-sm-12 " style="margin-top: 50px">
-                <h4 class="Title" >Tổng Tiền : @Model.TotalMoney.Value.ToString("#,##0") VNĐ</h4
+                <h4 class="Title" >Tổng Tiền : @Model.TotalMoney.Value.ToString("#,##0") VNĐ</h4>
             </div>
         </div>
     </div>
      <div class="form-group">
-                <a asp-action="Edit" class="btn hor-grd btn-grd-success" asp-controller="AdminOrders" asp-route-id="@Model?.OrderId"> Edit</a>
+              @*   <a asp-action="Edit" class="btn hor-grd btn-grd-success" asp-controller="AdminOrders" asp-route-id="@Model?.OrderId"> Edit</a> *@
 
-                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminOrders" asp-route-id="@Model?.OrderId">Back Home</a>
+                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminOrders" asp-route-id="@Model?.OrderId">Quay Lại</a>
             </div>
         </form>
     </div>

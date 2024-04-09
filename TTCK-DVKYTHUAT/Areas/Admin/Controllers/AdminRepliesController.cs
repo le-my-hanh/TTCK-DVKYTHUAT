@@ -23,7 +23,8 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         // GET: Admin/AdminReplies
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Replys.Include(r => r.Conment);
+            var applicationDbContext = _context.Replys.Include(r => r.Conment).ThenInclude(c => c.Customer);
+                                    
             return View(await applicationDbContext.ToListAsync());
         }
 

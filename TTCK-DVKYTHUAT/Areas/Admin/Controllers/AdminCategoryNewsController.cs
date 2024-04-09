@@ -79,6 +79,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 categoryNews.Image = Upload(file);
+                categoryNews.CreatedDate = DateTime.Now;
                 _context.Add(categoryNews);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

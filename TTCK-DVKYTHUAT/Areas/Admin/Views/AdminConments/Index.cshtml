@@ -17,15 +17,15 @@
     }
 
     thead th:nth-child(2) {
-        width: 10%;
+        width: 20%;
     }
 
     thead th:nth-child(3) {
-        width: 10%;
+        width: 20%;
     }
 
     thead th:nth-child(4) {
-        width: 10%;
+        width: 15%;
     }
 
     thead th:nth-child(5) {
@@ -69,11 +69,12 @@
     </div>
 </div>
 <!-- Bottom Breadcrumb card end -->
-<!-- Basic table card start -->
+
+
+ <!-- Basic table card start -->
 <div class="card">
     <div class="card-header">
-        @* <h5>Basic table</h5>
-        <span>use class <code>table</code> inside table element</span> *@
+      
         <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
     </div>
     <div class="card-block table-border-style">
@@ -87,7 +88,7 @@
                         <th>Message</th>
                         <th>Rating</th>
                         <th>#</th>
-                      @*   <th>#</th> *@
+                    
                     </tr>
                 </thead>
                 <tbody>
@@ -137,7 +138,7 @@
 
                                     <div class="reply-section mt-2">
                                         <form asp-area="Admin" asp-action="AddReply" asp-controller="AdminConments" method="post">
-                                          @*   <input type="hidden" name="serviceId" value="@ViewData["RestaurantId"]" /> *@
+                                        
                                             <input type="hidden" name="reviewId" value="@item.ConmentId" />
                                             <textarea class="form-control mb-2" id="replyTextarea_@item.ConmentId" name="replyComment" rows="3"></textarea>
                                             <button type="submit" class="btn btn-primary">Trả lời</button>
@@ -154,6 +155,7 @@
     </div>
 </div>
 <!-- Basic table card end -->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     function expandReplySection(commentId) {
@@ -181,4 +183,4 @@
         }
     }
 </script>
-
+ 

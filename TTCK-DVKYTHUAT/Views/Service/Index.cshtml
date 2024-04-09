@@ -1,13 +1,17 @@
 ﻿@using PagedList.Core.Mvc;
-@model IEnumerable<TTCK_DVKYTHUAT.Models.Service>
+@* @model IEnumerable<TTCK_DVKYTHUAT.Models.Service> *@
 
+@model PagedList.Core.IPagedList<TTCK_DVKYTHUAT.Models.Service>
 @{
-    ViewData["Title"] = "Index";
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Index" + CurrentPage;
     Layout = "~/Views/Shared/_Layout.cshtml";
+   
+   
 }
 
 <!--====== Page Banner Start ======-->
-<style>
+@* <style>
     body {
         padding: 20px 20px;
     }
@@ -24,21 +28,22 @@
         padding: 8px;
         color: #ccc;
     }
-</style>
+</style> *@
 <section class="slider-area slider-02 slider-active">
     <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner7.jpg); width:800px;height:300px; " data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
         <div class="container">
             
         </div>
+        <div class="form-group" style="float: right; margin-top: 260px;">
+            <input type="text" class="search form-control" placeholder="Tìm kiếm...." style="width: 250px;">
+        </div>
     </div>
-   
+  
 </section>
 
 <!--====== Page Banner Ends ======-->
 
-<div class="form-group" style="float: right; margin-top: 20px;">
-    <input type="text" class="search form-control" placeholder="Tìm kiếm...." style="width: 250px;">
-</div>
+
 
 <!--====== Shop Masonry Start ======-->
 
@@ -76,18 +81,37 @@
             }
           
         </div>
+       
         <div class="pagination-items mt-45">
             <ul class="pagination justify-content-center">
+                <!-- Previous page link -->
+                @if (Model.HasPreviousPage)
+                {
+                    <li class="page-item" >
+                        <a class="prev" href="@Url.Action("Index", new { page = Model.PageNumber - 1 })">Previous</a>
+                    </li>
+                }
 
-                <li><a class="prev" href="#">Previous</a></li>
+                <!-- Page links -->
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    </li>
+                }
+
+                <!-- Next page link -->
+                @if (Model.HasNextPage)
+                {
+                    <li class="page-item" >
+                        <a class="Next" href="@Url.Action("Index", new { page = Model.PageNumber + 1 })">Next</a>
+                    </li>
+                }
+               @*  <li><a class="prev" href="#">Previous</a></li>
                 <pager class="pager-container" options="@PagedListRenderOptions.Bootstrap4PageNumbersOnly" list="@Model" asp-area="" asp-controller="Service" asp-action="Index"></pager>
 
-                @* <li><a href="#">1</a></li>
-                <li><a class="active" href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li> *@
-                <li><a class="next" href="#">Next</a></li>
+      
+                <li><a class="next" href="#">Next</a></li> *@
             </ul>
         </div>
     </div>

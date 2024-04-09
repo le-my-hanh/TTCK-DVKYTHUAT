@@ -16,7 +16,7 @@
 <style>
     table {
         table-layout: fixed;
-        width: 120%;
+        width: 100%;
         /*    border: 1px solid red; */
     }
 
@@ -25,11 +25,11 @@
     }
 
     thead th:nth-child(2) {
-        width: 10%;
+        width: 12%;
     }
 
     thead th:nth-child(3) {
-        width: 10%;
+        width: 12%;
     }
 
     thead th:nth-child(4) {
@@ -41,12 +41,10 @@
     }
 
     thead th:nth-child(6) {
-        width: 10%;
+        width: 20%;
     }
 
-    thead th:nth-child(7) {
-        width: 15%;
-    }
+  
 
 
 
@@ -86,7 +84,7 @@
 <div class="card">
     <div class="card-header">
         <a asp-area="Admin" asp-controller="AdminServices" asp-action="Create">
-            <button class="btn btn-grd-primary ">Add</button>
+            <button class="btn btn-grd-primary ">+ Thêm Dịch Vụ</button>
         </a>
 
         <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
@@ -99,10 +97,10 @@
                         <th>ID</th>
                         <th>Tên Dịch Vụ</th>
                         <th>Danh Mục</th>
-                        <th>Phí DV</th>
-                        <th>Số Lượng</th>
-                        <th>Ảnh</th>  
-                        <th>Mô Tả</th>
+                        <th>Đơn Giá</th>
+                      @*   <th>Số Lượng</th> *@
+                        <th>Hình Ảnh</th>  
+                        <th>#</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,20 +112,20 @@
                                 <th scope="row">@item.ServiceId</th>
                                 <td>@item.Name</td>
                                 <td>@item.Category.Name</td> 
-                                <td>@item.Price</td>
-                                <td>@item.Quantity</td>
+                                <td>@item.Price.Value.ToString("#,##0") VNĐ</td>
+                              @*   <td>@item.Quantity</td> *@
                                 <td> <img src="~/images/@item.Image" style="width: 50px; height: 50px;" /></td>
-                                <td>@item.Description</td>
+                              @*   <td>@item.Description</td> *@
                                 <td>
                                    
                                     <a asp-area="Admin" asp-controller="AdminServices" asp-action="Details" asp-route-id="@item.ServiceId">
-                                        <button class="btn btn-info">Details</button>
+                                        <button class="btn btn-info">Chi Tiết</button>
                                     </a>
                                     <a asp-area="Admin" asp-controller="AdminServices" asp-action="Edit" asp-route-id="@item.ServiceId">
-                                        <button class="btn hor-grd btn-grd-success">Edit</button>
+                                        <button class="btn hor-grd btn-grd-success">Chỉnh Sửa</button>
                                     </a>
                                     <a asp-area="Admin" asp-controller="AdminServices" asp-action="Delete" asp-route-id="@item.ServiceId">
-                                        <button class="btn hor-grd btn-grd-danger ">Delete</button>
+                                        <button class="btn hor-grd btn-grd-danger ">Xóa</button>
                                     </a>
 
                                 </td>

@@ -53,7 +53,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Login(string Username, string Password)
         {
-            var account = _context.Accounts.FirstOrDefault(a => a.Username == Username && a.Password == Password);
+            var account = _context.Accounts.FirstOrDefault(a => a.Username == Username && a.Password == Password );
 
             if (account != null)
             {
@@ -61,7 +61,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
                 // Lưu thông tin người dùng vào session
                 HttpContext.Session.SetInt32("UserId", account.Id);
                 HttpContext.Session.SetString("Username", account.Username);
-                // HttpContext.Session.SetString("Roles", account.Roles ?? ""); // Đảm bảo rằng Roles không null
+                HttpContext.Session.SetString("Roles", account.Roles ?? ""); // Lưu vai trò của người dùng vào session
 
                 _notifService.Success("Login successful");
                 return RedirectToAction("Index", "Home"); // Redirect to home page
@@ -72,24 +72,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
                 _notifService.Error("Invalid username or password");
                 return RedirectToAction("Index"); // Redirect back to login page with error message
             }
-            //var adminUsername = "Admin";
-            //var adminPassword = "123123";
 
-            //var account = _context.Accounts.FirstOrDefault(a => a.Username == adminUsername && a.Password == adminPassword);
-
-            //if (account != null)
-            //{
-            //    // Admin login successful
-            //    // Perform any necessary actions here, such as setting session variables, generating tokens, or redirecting to another page
-            //    _notifService.Success("Login successful");
-            //    return RedirectToAction("Index", "Home"); // Redirect to admin home page
-            //}
-            //else
-            //{
-            //    // Admin login failed
-            //    _notifService.Error("Invalid username or password");
-            //    return RedirectToAction("Index"); // Redirect back to login page
-            //}
         }
 
 

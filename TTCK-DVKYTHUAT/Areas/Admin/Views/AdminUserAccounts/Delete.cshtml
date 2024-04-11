@@ -5,7 +5,90 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Delete</h1>
+
+<!-- Bottom Breadcrumb card start -->
+<div class="card">
+    <div class="card-block">
+        <div class="breadcrumb-header">
+            <h5>Quản Lý Người Dùng</h5>
+        </div>
+        <div>
+            <ul class="breadcrumb-title">
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                        <i class="icofont icofont-home"></i>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Index">Danh Sách Người Dùng</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#!">.....</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Bottom Breadcrumb card end -->
+<!-- Basic Form Inputs card start -->
+<div class="card">
+    <div class="card-header">
+        <h5>Chỉnh Sửa Người Dùng</h5>
+
+        <div class="card-header-right">
+            <i class="icofont icofont-spinner-alt-5"></i>
+        </div>
+
+        <div class="card-header-right">
+            <i class="icofont icofont-spinner-alt-5"></i>
+        </div>
+
+    </div>
+    <div class="card-block">
+
+        <form asp-controller="AdminUserAccounts" asp-action="Delete" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group row">
+                <label asp-for="Username" class="col-sm-2 col-form-label">UserName</label>
+                <div class="col-sm-10">
+                    <input asp-for="Username" type="text" class="form-control" placeholder="Username...">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Password" class="col-sm-2 col-form-label">Mật Khẩu</label>
+                <div class="col-sm-10">
+                    <input asp-for="Password" type="text" class="form-control" placeholder="Password...">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Roles" class="col-sm-2 col-form-label">Vai Trò</label>
+                <div class="col-sm-10">
+                    <input asp-for="Roles" type="text" class="form-control" >
+                    
+                </div>
+            </div>
+            @*  <div class="form-group row">
+            <label asp-for="Roles" class="col-sm-2 col-form-label">Vai Trò</label>
+            <div class="col-sm-10">
+            <input asp-for="Roles" type="text" class="form-control" placeholder="Roles...">
+            </div>
+            </div> *@
+
+
+            <div class="form-group">
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminUserAccounts" asp-route-id="@Model?.Id">Quay lại</a>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+<!-- Basic Form Inputs card end -->
+
+
+@* <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -37,4 +120,4 @@
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
-</div>
+</div> *@

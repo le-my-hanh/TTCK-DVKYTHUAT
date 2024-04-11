@@ -80,7 +80,7 @@
 
             <div class="form-group">
                 <input type="submit" value="Lưu" class="btn hor-grd btn-grd-primary " />
-                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminUserAccounts" asp-route-id="@Model?.Id">Back Home</a>
+                <a asp-action="Index" class="btn btn-inverse" asp-controller="AdminUserAccounts" asp-route-id="@Model?.Id">Quay lại</a>
 
             </div>
         </form>
@@ -88,39 +88,4 @@
     </div>
 </div>
 <!-- Basic Form Inputs card end -->
-
-@* <h1>Edit</h1>
-
-<h4>Account</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Roles" class="control-label"></label>
-                <input asp-for="Roles" class="form-control" />
-                <span asp-validation-for="Roles" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div> *@
 

@@ -57,9 +57,11 @@
                         <div class="product-image">
                             <div class="image">
                                 
-                                <img class="product-1" src="~/images/@item.Image" alt="product">
+                                    <img class="product-1" src="~/images/@item.Image" alt="product">
+                              
+                               
                                @*  <img class="product-1" src="~/images/@item.Image" alt="product"> *@
-                                <a class="link" href="product-simple-01.html"></a>
+                                <a class="link" asp-action="Details" asp-controller="Service" asp-route-Id="@item.ServiceId"></a>
                             </div>
                             <ul class="product-meta text-center">
                                 <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Đặt dịch vụ" data-id="@item.ServiceId" class="ajax-add-to-cart"><i class="fal fa-Shopping-cart"></i></a></li>

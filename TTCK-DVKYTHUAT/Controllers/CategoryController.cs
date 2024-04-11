@@ -30,7 +30,7 @@ namespace TTCK_DVKYTHUAT.Controllers
             }
             int pageSize = 8;
             int pageNumber = (page ?? 1);
-
+          
             // Lấy danh sách nhà hàng thuộc danh mục và thực hiện phân trang
             var services = _context.Services
                 .Where(r => r.CategoryId == categoreId)

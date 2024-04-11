@@ -10,26 +10,31 @@
                <thead>
                 <tr>
                     <th class="no">STT</th>
-                  @*   <th class="name">Tên Khách Hàng</th> *@
+           
                     <th class="date">Ngày Tạo</th>
                     <th class="status">Lịch Hẹn</th>
                     <th class="total">Tổng Hóa Đơn</th>
                     <th class="Status"> Trạng Thái</th>
                     <th class="action">#</th>
+                    <th class="action"></th>
                 </tr>
              </thead>
             <tbody>
                 @foreach(var item in Model)
                 {
-                    <tr>
-                        <td>@item.OrderId</td>
-                       @*  <td>@item.Customer.Name</td> *@
+                        <tr>
+                        <td >@item.OrderId</td>
                         <td>@item.CreatedDate</td>
                         <td>@item.AppDate</td>
                         <td>@item.TotalMoney.Value.ToString("#,##0") VNĐ</td>
-                        <td>@item.TransactStatus.Status</td>
-                          <td><a href="javascript:void(0);" onclick="openModal('@item.OrderId')">Xem Chi Tiết</a></td>  
-                       
+                        <td >@item.TransactStatus.Status</td>
+                                <td><a href="javascript:void(0);" onclick="openModal('@item.OrderId')" style="width:130px;">Xem Chi Tiết</a></td>
+                                <td> 
+                                    @if (item.TransactStatus.Status != "Đã hủy") // Chỉ hiển thị nút hủy đơn nếu đơn hàng chưa được hủy
+                                    {
+                                        <button class="btn btn-sm btn-danger" onclick="cancelOrder('@item.OrderId')" style="padding: 3px 8px; font-size: 12px; width:80px;">Hủy Đơn</button>
+                                    }
+                       </td>
                     </tr>
                 }
               
@@ -68,7 +73,30 @@ else
     </div>
 </div>
 
-
+<script>
+    function cancelOrder(orderId) {
+        if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?')) {
+            $.ajax({
+                url: '/Checkout/CancelOrder',
+                type: 'POST',
+                data: { orderId: orderId },
+                success: function (result) {
+                    if (result.success) {
+                        // Xóa hàng đơn hàng khỏi bảng
+                        $('#orderRow_' + orderId).remove();
+                        // Reload lại trang để cập nhật danh sách đơn hàng
+                        location.reload();
+                    } else {
+                        alert('Đã có lỗi xảy ra: ' + result.message); // Hiển thị thông báo lỗi nếu có
+                    }
+                },
+                error: function () {
+                    alert('Đã có lỗi xảy ra, vui lòng thử lại sau.');
+                }
+            });
+        }
+    }
+</script>
 
 @* @section Scripts{
     <script>

@@ -117,16 +117,15 @@ namespace TTCK_DVKYTHUAT.Controllers
                     Total = donhang.TotalMoney,
                     };
                    
-                    //ct.Service.Price = item.DonGia;
-                    // ct.Service.Price = (int?)item.DonGia;
+                   
                     _context.Add(ct);
                     _context.SaveChanges();
                 }
                 //Clear giỏ hàng
                 HttpContext.Session.Remove("GioHang");
                 //xuất thông báo
-                // _notifService.Success("Đơn hàng đặt thành công");
-                TempData["success"] = "Đơn hàng đặt thành công";
+                 _notifService.Success("Đơn hàng đặt thành công");
+               
                 //cập nhập thông báo khách hàng
                 return RedirectToAction("Index", "Service");
 
@@ -135,7 +134,26 @@ namespace TTCK_DVKYTHUAT.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CancelOrder(int orderId)
+        {
+            var order = await _context.Orders.FindAsync(orderId);
+            if (order == null)
+            {
+                return NotFound(); // Order not found
+            }
 
+            // Remove order details associated with the order
+            var orderDetails = _context.OrderDetails.Where(od => od.OrderId == orderId);
+            _context.OrderDetails.RemoveRange(orderDetails);
 
+            // Remove the order itself
+            _context.Orders.Remove(order);
+
+            await _context.SaveChangesAsync();
+
+            // Return a JSON response indicating success
+            return Json(new { success = true, message = "Đơn hàng đã được hủy thành công." });
+        }
     }
 }

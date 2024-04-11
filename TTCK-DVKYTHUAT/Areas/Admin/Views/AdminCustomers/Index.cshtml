@@ -100,7 +100,7 @@
                         <th>SĐT</th>
                         <th>Email</th>
                          <th>Địa chỉ</th>
-                        
+                       @*  <th></th> *@
                        
                     </tr>
                 </thead>
@@ -115,8 +115,8 @@
                                 <td>@item.Phone</td>
                                 <td>@item.Email</td>
                                 <td>@item.Address</td>
-                             
 
+                              @*   <td> <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a></td> *@
 
                             </tr>
                         }

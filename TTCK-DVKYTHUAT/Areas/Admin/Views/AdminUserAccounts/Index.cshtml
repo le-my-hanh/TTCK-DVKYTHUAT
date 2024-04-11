@@ -68,7 +68,7 @@
         @*   <h5>Quản Lý Danh Mục</h5> *@
 
         <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Create">
-            <button class="btn btn-grd-primary ">Add</button>
+            <button class="btn btn-grd-primary ">+ Thêm Người Dùng</button>
         </a>
 
 
@@ -99,10 +99,10 @@
                                 <td>@item.Roles </td>
                                 <td>
                                     <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Edit" asp-route-id="@item.Id">
-                                        <button class="btn hor-grd btn-grd-success">Edit</button>
+                                        <button class="btn hor-grd btn-grd-success">Chỉnh sửa</button>
                                     </a>
                                     <a asp-area="Admin" asp-controller="AdminUserAccounts" asp-action="Delete" asp-route-id="@item.Id">
-                                        <button class="btn hor-grd btn-grd-danger ">Delete</button>
+                                        <button class="btn hor-grd btn-grd-danger ">Xóa</button>
                                     </a>
 
                                 </td>

@@ -8,21 +8,7 @@
 
 }
 
-<!--====== Page Banner Start ======-->
-@* 
-<section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
-    <div class="container">
-        <div class="page-banner-content text-center">
-            <h2 class="title">My Account</h2>
-            <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">My Account</li>
-            </ol>
-        </div>
-    </div>
-</section> *@
 
-<!--====== Page Banner Ends ======-->
 <!--====== My Account Start ======-->
 
 <section class="my-account-page pt-50 pb-80" style="margin-top: 100px">
@@ -53,7 +39,7 @@
                         <div class="my-account-dashboard account-wrapper">
                             <h4 class="account-title">Tài khoản của tôi</h4>
                             <div class="welcome-dashboard">
-                                <p>Hello, <strong>@Model.Name</p>
+                                <p>Hello, @Model.Name</p>
                             </div>
                             <p class="mt-25">Email: @Model.Email</p>
                             <p class="mt-25">Số điện thoại: @Model.Phone</p>
@@ -137,49 +123,5 @@
     
 
 
-@* <script>
-
-    function openModal(orderId) {
-        // AJAX request to fetch order details based on OrderId
-        $.ajax({
-            url: '/DonHang/Details', // Replace with your endpoint to fetch order details
-            type: 'GET', // Change the HTTP method to POST
-            contentType: 'application/json', // Specify the content type as JSON
-            data: JSON.stringify({ id: orderId }), // Convert the data to JSON format
-            success: function (response) {
-                console.log('Dữ liệu đơn hàng: ');
-                console.log(response);
-                // Populate modal with fetched data
-                // $('#orderDetailsModal .modal-body').html(response);
-                // // Open the modal
-                // $('#orderDetailsModal').modal('show');
-            },
-            error: function (xhr, status, error) {
-                // Handle error
-                console.error(error);
-            }
-        });
-    }
-    // function openModal(orderId) {
-    //     // AJAX request to fetch order details based on OrderId
-    //     $.ajax({
-    //         url: '/DonHang/Details', // Replace with your endpoint to fetch order details
-    //         type: 'GET',
-    //         data: { id: orderId },
-    //         success: function (response) {
-    //             console.log('Dữ liệu đơn hàng: ');
-    //             console.log(response);
-    //             // Populate modal with fetched data
-    //             // $('#orderDetailsModal .modal-body').html(response);
-    //             // // Open the modal
-    //             // $('#orderDetailsModal').modal('show');
-    //         },
-    //         error: function (xhr, status, error) {
-    //             // Handle error
-    //             console.error(error);
-    //         }
-    //     });
-    // }
-</script> *@
 
 

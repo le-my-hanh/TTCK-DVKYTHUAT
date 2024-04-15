@@ -134,6 +134,27 @@ namespace TTCK_DVKYTHUAT.Controllers
 
         }
 
+        //[HttpPost]
+        //public async Task<IActionResult> CancelOrder(int orderId)
+        //{
+        //    var order = await _context.Orders.FindAsync(orderId);
+        //    if (order == null)
+        //    {
+        //        return NotFound(); // Order not found
+        //    }
+
+        //    // Remove order details associated with the order
+        //    var orderDetails = _context.OrderDetails.Where(od => od.OrderId == orderId);
+        //    _context.OrderDetails.RemoveRange(orderDetails);
+
+        //    // Remove the order itself
+        //    _context.Orders.Remove(order);
+
+        //    await _context.SaveChangesAsync();
+
+        //    // Return a JSON response indicating success
+        //    return Json(new { success = true, message = "Đơn hàng đã được hủy thành công." });
+        //}
         [HttpPost]
         public async Task<IActionResult> CancelOrder(int orderId)
         {
@@ -143,7 +164,12 @@ namespace TTCK_DVKYTHUAT.Controllers
                 return NotFound(); // Order not found
             }
 
-            // Remove order details associated with the order
+            if (order.TransactStatusId != 1) // Kiểm tra nếu đơn hàng không ở trạng thái "chờ xác nhận"
+            {
+                return Json(new { success = false, message = "Bạn không có quyền hủy đơn hàng này." });
+            }
+
+            // Xóa chi tiết đơn hàng liên quan đến đơn hàng
             var orderDetails = _context.OrderDetails.Where(od => od.OrderId == orderId);
             _context.OrderDetails.RemoveRange(orderDetails);
 

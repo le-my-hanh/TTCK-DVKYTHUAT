@@ -8,22 +8,6 @@
    
 }
 
-<!--====== Page Banner Start ======-->
-
-@* <section class="page-banner bg_cover" style="background-image: url(~/assets/images/page-banner.jpg);">
-    <div class="container">
-        <div class="page-banner-content text-center">
-            <h2 class="title">Product simple</h2>
-            <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="shop-sidebar.html">Shop</a></li>
-                <li class="breadcrumb-item active">Oversized Check Dress</li>
-            </ol>
-        </div>
-    </div>
-</section> *@
-
-<!--====== Page Banner Ends ======-->
 <!--====== Product Simple Start ======-->
 
 <section class="product-simple-area pt-20" style="margin-top: 100px">
@@ -71,7 +55,7 @@
                     </p>
 
                     <div class="product-price">
-                        <span class="price">$ @Model.Price.Value.ToString("#,##0") VND</span>
+                        <span class="price"> @Model.Price.Value.ToString("#,##0") VND</span>
                     </div>
                     <div class="product-quantity-cart-wishlist-compare flex-wrap">
                         <form asp-action="AddtoCart" asp-controller="Cart" asp-route-id="@Model.ServiceId">
@@ -298,7 +282,7 @@
                                 <div class="image">
                                     <img class="product-1" src="~/images/@item.Image" alt="product">
                                     @* <img class="product-2" src="~/assets/images/product/product-8.jpg" alt="product"> *@
-                                    <a class="link" href="product-simple-01.html"></a>
+                                    <a class="link" asp-action="Details" asp-controller="Service" asp-route-Id="@item.ServiceId"></a>
                                 </div>
                                 <ul class="product-meta text-center">
                                     <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
@@ -316,7 +300,7 @@
                                 </div>
                                 <div class="product-price">
                                    @*  <span class="regular-price">£250.00</span> *@
-                                    <span class="sale-price">$ @item.Price.Value.ToString("#,##0") VND</span>
+                                    <span class="sale-price"> @item.Price.Value.ToString("#,##0") VND</span>
                                 </div>
                             </div>
                         </div>

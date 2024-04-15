@@ -185,8 +185,8 @@ namespace TTCK_DVKYTHUAT.Controllers
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity(claim, "login");
                     ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                     await HttpContext.SignInAsync(claimsPrincipal);
-                    // _notifService.Success("Đăng nhập thành công!");
-                    TempData["success"] = "Đăng nhập thành công";
+                     _notifService.Success("Đăng nhập thành công!");
+                    //TempData["success"] = "Đăng nhập thành công";
                     return RedirectToAction("Dashboard", "Accounts");
                    
                 }

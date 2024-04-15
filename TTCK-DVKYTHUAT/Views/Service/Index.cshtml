@@ -75,7 +75,7 @@
                                 <h4 class="title"><a asp-action="Details" asp-controller="Service" asp-route-Id="@item.ServiceId">@item.Name</a></h4>
                             </div>
                             <div class="product-price">
-                                <span class="price">$ @item.Price.Value.ToString("#,##0") VND</span>
+                                <span class="price"> @item.Price.Value.ToString("#,##0") VND</span>
                             </div>
                         </div>
                     </div>
@@ -156,6 +156,26 @@
             });
         });
 
+        // $(".search").keyup(function () {
+        //     var searchTerm = $(this).val().trim().toLowerCase();
+        //     if (searchTerm === '') { // Nếu ô tìm kiếm trống
+        //         $('.product-col-2').show(); // Hiển thị tất cả các sản phẩm
+        //         $('.counter').text($('.product-col-2').length + ' items'); // Cập nhật số lượng sản phẩm
+        //         $('.no-result').hide(); // Ẩn thông báo không có kết quả
+        //     } else {
+        //         $.ajax({
+        //             url: window.location.href, // Sử dụng URL hiện tại để tải dữ liệu
+        //             type: 'GET',
+        //             data: { searchTerm: searchTerm }, // Gửi dữ liệu tìm kiếm lên server (nếu cần)
+        //             success: function (data) {
+        //                 $('.product-container').html(data); // Hiển thị dữ liệu nhận được trên trang hiện tại
+        //             },
+        //             error: function () {
+        //                 alert('Đã có lỗi xảy ra, vui lòng thử lại sau.');
+        //             }
+        //         });
+        //     }
+        // });
         $(".search").keyup(function () {
             var searchTerm = $(this).val().trim().toLowerCase();
             $('.product-col-2').each(function () {
@@ -177,27 +197,7 @@
             }
         });
 
-        // $(".search").keyup(function () {
-        //     var searchTerm = $(this).val().trim().toLowerCase();
-
-        //     $('.product-col-2').each(function () {
-        //         var serviceName = $(this).find('.title a').text().toLowerCase();
-        //         if (serviceName.includes(searchTerm)) {
-        //             $(this).show();
-        //         } else {
-        //             $(this).hide();
-        //         }
-        //     });
-
-        //     var visibleItemsCount = $('.product-col-2:visible').length;
-        //     $('.counter').text(visibleItemsCount + ' item');
-
-        //     if (visibleItemsCount == 0) {
-        //         $('.no-result').show();
-        //     } else {
-        //         $('.no-result').hide();
-        //     }
-        // });
+        
     </script>
 }
 

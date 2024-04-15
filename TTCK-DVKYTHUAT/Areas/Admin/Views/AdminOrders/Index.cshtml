@@ -5,7 +5,51 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+        /*    border: 1px solid red; */
+    }
 
+    thead th:nth-child(1) {
+        width: 8%;
+    }
+
+    thead th:nth-child(2) {
+        width: 20%;
+    }
+
+    thead th:nth-child(3) {
+        width: 15%;
+    }
+
+    thead th:nth-child(4) {
+        width: 20%;
+    }
+
+    thead th:nth-child(6) {
+        width: 15%;
+    }
+
+    thead th:nth-child(7) {
+        width: 15%;
+    }
+
+    thead th:nth-child(8) {
+        width: 15%;
+    }
+
+
+
+    th,
+    td {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 20px;
+    }
+</style>
 <!-- Bottom Breadcrumb card start -->
 <div class="card">
     <div class="card-block">
@@ -44,7 +88,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Khách hàng</th>
-                        @*   <th>SĐT</th> *@
+                       
                         <th>Địa chỉ</th>
 
                         <th>Ngày hẹn</th>

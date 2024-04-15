@@ -21,7 +21,7 @@ namespace TTCK_DVKYTHUAT.Controllers
             try
             {
                 var pageNumber = page == null || page <= 0 ? 1 : page.Value;
-                var pageSize = 8;
+                var pageSize = 6;
                 var lsNews = _context.News
                     .AsNoTracking().OrderByDescending(X => X.CreatedDate);
                 PagedList<News> models = new PagedList<News>(lsNews, pageNumber, pageSize);

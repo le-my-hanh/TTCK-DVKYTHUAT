@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.EntityFrameworkCore;
 using TTCK_DVKYTHUAT.Data;
+using TTCK_DVKYTHUAT.Helpers;
 using TTCK_DVKYTHUAT.Models;
+using TTCK_DVKYTHUAT.ModelsView;
 
 namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
 {
@@ -62,6 +65,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(account);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

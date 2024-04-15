@@ -26,7 +26,7 @@ namespace TTCK_DVKYTHUAT.Controllers
             try
             {
                 var pageNumber = page.HasValue && page > 0 ? page.Value : 1;
-                var pageSize = 8;
+                var pageSize = 12;
                 var lsServices = _context.Services
                     .AsNoTracking().OrderByDescending(X => X.CreatedDate);
                 PagedList<Service> models = new PagedList<Service>(lsServices, pageNumber, pageSize);

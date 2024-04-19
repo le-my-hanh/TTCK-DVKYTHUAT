@@ -44,6 +44,7 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             var rating = _context.Conments
                 .Where(i => i.Rating == 5)
                 .Count();
+
             // Gửi dữ liệu đến view thông qua ViewBag
             ViewBag.CustomerCount = customerCount;
             ViewBag.TotalRevenue = totalRevenue;
@@ -51,6 +52,26 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             ViewBag.Ordersuccess = ordersuccess;
             ViewBag.ConmentCount = conmentCount;
             ViewBag.Rating = rating;
+
+
+            // Lấy dữ liệu doanh thu hóa đơn đã ở trạng thái hoàn thành theo ngày
+            var orders = _context.Orders
+                .Where(o => o.TransactStatus.Status == "Hoàn thành" && o.AppDate != null && o.TotalMoney != null) // Lọc những hóa đơn có ngày hẹn, tổng tiền không null và ở trạng thái hoàn thành
+                .GroupBy(o => o.AppDate.Value.Date) // Nhóm theo ngày
+                .Select(g => new {
+                    Date = g.Key,
+                    TotalRevenue = g.Sum(o => o.TotalMoney)
+                })
+                .ToList();
+
+            // Tạo mảng chứa ngày và doanh thu tương ứng
+            var dates = orders.Select(o => o.Date.ToString("yyyy-MM-dd")).ToArray();
+            var revenues = orders.Select(o => o.TotalRevenue).ToArray();
+
+            // Gửi dữ liệu đến view thông qua ViewBag
+            ViewBag.Dates = dates;
+            ViewBag.Revenues = revenues;
+
 
             return View();
 

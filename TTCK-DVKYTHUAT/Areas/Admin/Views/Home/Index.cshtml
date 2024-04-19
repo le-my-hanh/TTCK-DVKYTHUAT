@@ -30,7 +30,7 @@
                     <div class="card-block-small">
                         <i class="ti-receipt bg-c-pink card1-icon"></i>
                         <span class="text-c-pink f-w-600">Hóa Đơn</span>
-                        <h4> @ViewBag.OrderCount/@ViewBag.Ordersuccess</h4>
+                        <h4> @ViewBag.Ordersuccess/@ViewBag.OrderCount</h4>
                         <div>
                             <span class="f-left m-t-10 text-muted">
                                 <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Tổng Số Hóa Đơn
@@ -62,7 +62,7 @@
                     <div class="card-block-small">
                         <i class="ti-star bg-c-yellow card1-icon"></i>
                         <span class="text-c-yellow f-w-600">Đánh Giá</span>
-                        <h4>@ViewBag.ConmentCount/@ViewBag.Rating</h4>
+                        <h4>@ViewBag.Rating/@ViewBag.ConmentCount</h4>
                         <div>
                             <span class="f-left m-t-10 text-muted">
                                 <i class="text-c-yellow f-16 icofont icofont-refresh m-r-10"></i>Số Lượng Phản Hồi
@@ -72,8 +72,18 @@
                 </div>
             </div>
             <!-- card1 end -->
-          @*   <!-- Statestics Start -->
-            <div class="col-md-12 col-xl-8">
+           <!-- Statestics Start -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Biểu đồ doanh thu hóa đơn theo ngày</h5>
+                    </div>
+                    <div class="card-block">
+                        <canvas id="revenueChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+          @*   <div class="col-md-12 ">
                 <div class="card">
                     <div class="card-header">
                         <h5>Statestics</h5>
@@ -93,10 +103,10 @@
                         <div id="statestics-chart" style="height:517px;"></div>
                     </div>
                 </div>
-            </div>
+            </div> *@
 
-
-
+           
+            @*
             <div class="col-md-12 col-xl-4">
                 <div class="card fb-card">
                     <div class="card-header">
@@ -356,3 +366,30 @@
 
 <div id="styleSelector">
 </div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('revenueChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: @Html.Raw(Json.Serialize(ViewBag.Dates)),
+                datasets: [{
+                    label: 'Doanh Thu Hóa Đơn Theo Ngày',
+                    data: @Html.Raw(Json.Serialize(ViewBag.Revenues)),
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)', // Màu nền của biểu đồ
+                    borderColor: 'rgba(255, 99, 132, 1)', // Màu viền của biểu đồ
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}

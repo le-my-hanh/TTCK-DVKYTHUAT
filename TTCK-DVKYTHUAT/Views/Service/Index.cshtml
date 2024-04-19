@@ -30,11 +30,18 @@
     }
 </style> *@
 <section class="slider-area slider-02 slider-active">
-    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner7.jpg); width:800px;height:300px; " data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+    @* <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner7.jpg); width:800px;height:300px; " data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
         <div class="container">
             
         </div>
         <div class="form-group" style="float: right; margin-top: 260px;">
+            <input type="text" class="search form-control" placeholder="Tìm kiếm...." style="width: 250px;">
+        </div>
+    </div> *@
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style=" width:800px;height:50px; " data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+        <div class="container">
+        </div>
+        <div class="form-group" style="float: right; margin-bottom: 10px;">
             <input type="text" class="search form-control" placeholder="Tìm kiếm...." style="width: 250px;">
         </div>
     </div>
@@ -47,7 +54,7 @@
 
 <!--====== Shop Masonry Start ======-->
 
-<section class="shop-page pt-50 pb-80">
+<section class="shop-page pb-80">
     <div class="container-fluid custom-container">
         <div class="row product-row">
             @foreach(var item in Model)

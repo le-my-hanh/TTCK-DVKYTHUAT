@@ -20,7 +20,7 @@
     }
 
     thead th:nth-child(1) {
-        width: 5%;
+        width: 2%;
     }
 
     thead th:nth-child(2) {
@@ -95,7 +95,8 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th></th>
+                        @* <th>ID</th> *@
                         <th>Khách hàng</th>
                         <th>SĐT</th>
                         <th>Email</th>
@@ -110,7 +111,8 @@
                         foreach (var item in Model)
                         {
                             <tr>
-                                <th scope="row">@item.CustomerId</th>
+                                <th></th>
+                                @* <th scope="row">@item.CustomerId</th> *@
                                 <td>@item.Name</td>
                                 <td>@item.Phone</td>
                                 <td>@item.Email</td>

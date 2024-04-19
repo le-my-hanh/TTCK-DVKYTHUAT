@@ -8,23 +8,12 @@
 <section class="slider-area slider-02 slider-active">
     <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner4.png); width:800px;height:400px; " data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
         <div class="container">
-            @* <div class="slider-content-2 text-center">
-                <h1 class="title"><span data-animation="slideInUp" data-delay="0.6s">Technical services 2024</span></h1>
-                <div class="slider-btn">
-                    <a data-animation="zoomIn" data-delay="1.2s" href="#" class="main-btn">Services Now</a>
-                </div>
-            </div> *@
+            
         </div>
     </div>
     <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner5.png); width:800px;height:400px;" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
         <div class="container">
-            @* <div class="slider-content-2-2 text-center">
-                <h5 class="sub-title"><span data-animation="slideInDown" data-delay="0.6s">Trung tâm Dịch vụ kỹ thuật - VCC Services</span></h5>
-                <h1 class="title"><span data-animation="slideInUp" data-delay="1s">Up to 25%</span></h1>
-                <div class="slider-btn">
-                    <a data-animation="zoomIn" data-delay="1.6s" href="#" class="main-btn">Services Now</a>
-                </div>
-            </div> *@
+           
         </div>
     </div>
     <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(images/banner3.jpg); width:800px;height:400px;" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
@@ -61,36 +50,7 @@
                     </div>
                 </div>
             }
-           @*  <div class="col-md-4">
-                <div class="category-item-2 mt-30">
-                    <a href="shop-sidebar.html">
-                        <img src="assets/images/m2-b1.jpg" alt="">
-                        <div class="category-content">
-                            <h4 class="title">Man</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="category-item-2 mt-30">
-                    <a href="shop-sidebar.html">
-                        <img src="assets/images/m2-b2.jpg" alt="">
-                        <div class="category-content">
-                            <h4 class="title">WoMan</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="category-item-2 mt-30">
-                    <a href="shop-sidebar.html">
-                        <img src="assets/images/m2-b3.jpg" alt="">
-                        <div class="category-content">
-                            <h4 class="title">Kids</h4>
-                        </div>
-                    </a>
-                </div>
-            </div> *@
+          
         </div>
     </div>
 </section>
@@ -122,9 +82,7 @@
                             </div>
                             <ul class="product-meta text-center">
                                 <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Đặt dịch vụ" data-id="@dv.ServiceId" class="ajax-add-to-cart"><i class="fal fa-Shopping-cart"></i></a></li>
-                              @*   <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Quick Shop" data-bs-toggle="modal" data-bs-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>> *@
-                               @*  <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                                <li><a data-bs-tooltip="tooltip" data-bs-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li> *@
+                             
                             </ul>
                          
                         </div>
@@ -163,23 +121,12 @@
                         type: "ajax"
                     },
                     success: function (data) {
-                        // Swal.fire({
-                        //     icon: 'success',
-                        //     title: 'Thêm dịch vụ thành công',
-                        //     showConfirmButton: false,
-                        //     timer: 2500
-                        // });
+                       
                         console.log(data.soLuong);
                         $("#cart_count").html(data.soLuong);
                     },
                     error: function () {
-                        // Swal.fire({
-                        //     icon: 'error',
-                        //     title: 'Thêm dịch vụ thất bại',
-                        //     text: 'Vui lòng thử lại',
-                        //     showConfirmButton: false,
-                        //     timer: 2500
-                        // });
+                       
                     }
                 });
             });

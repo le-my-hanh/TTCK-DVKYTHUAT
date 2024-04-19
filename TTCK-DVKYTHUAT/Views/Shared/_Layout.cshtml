@@ -197,6 +197,11 @@
   @*  @await Component.InvokeAsync("Notyf")  *@
     @RenderSection("scripts", required: false)
     @* @await RenderSectionAsync("scripts", required:false ) *@
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME"
+                  chat-title="TTCK_DVKYTHUAT"
+                  agent-id="f586311a-b387-4ce1-9caa-1552acce0c1b"
+                  language-code="vi"></df-messenger>
 </body>
 
 </html>

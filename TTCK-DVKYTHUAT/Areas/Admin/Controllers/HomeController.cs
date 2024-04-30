@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Session;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using TTCK_DVKYTHUAT.Data;
 
 
@@ -54,23 +55,47 @@ namespace TTCK_DVKYTHUAT.Areas.Admin.Controllers
             ViewBag.Rating = rating;
 
 
-            // Lấy dữ liệu doanh thu hóa đơn đã ở trạng thái hoàn thành theo ngày
-            var orders = _context.Orders
-                .Where(o => o.TransactStatus.Status == "Hoàn thành" && o.AppDate != null && o.TotalMoney != null) // Lọc những hóa đơn có ngày hẹn, tổng tiền không null và ở trạng thái hoàn thành
-                .GroupBy(o => o.AppDate.Value.Date) // Nhóm theo ngày
+            // Lấy dữ liệu hóa đơn đã hoàn thành từ cơ sở dữ liệu
+            var completedOrders = _context.Orders
+                .Include(o => o.TransactStatus)
+                .Where(o => o.TransactStatus.Status == "Hoàn thành" && o.AppDate != null && o.TotalMoney != null)
+                .ToList(); // Lấy dữ liệu từ cơ sở dữ liệu và chuyển sang danh sách trên bộ nhớ
+
+            // Nhóm dữ liệu theo tuần sử dụng LINQ to Objects
+            var ordersGroupedByWeek = completedOrders
+                .GroupBy(o => new { Year = o.AppDate.Value.Year, Week = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(o.AppDate.Value, CalendarWeekRule.FirstDay, DayOfWeek.Monday) })
                 .Select(g => new {
-                    Date = g.Key,
+                    Year = g.Key.Year,
+                    Week = g.Key.Week,
                     TotalRevenue = g.Sum(o => o.TotalMoney)
                 })
-                .ToList();
+                .ToList(); // Chuyển sang danh sách trên bộ nhớ
 
-            // Tạo mảng chứa ngày và doanh thu tương ứng
-            var dates = orders.Select(o => o.Date.ToString("yyyy-MM-dd")).ToArray();
-            var revenues = orders.Select(o => o.TotalRevenue).ToArray();
+            // Tạo mảng chứa tuần và doanh thu tương ứng
+            var weeks = ordersGroupedByWeek.Select(o => $"Tuần {o.Week} - {o.Year}").ToArray();
+            var revenues = ordersGroupedByWeek.Select(o => o.TotalRevenue).ToArray();
 
-            // Gửi dữ liệu đến view thông qua ViewBag
-            ViewBag.Dates = dates;
+            ViewBag.Weeks = weeks;
             ViewBag.Revenues = revenues;
+
+
+            //// Lấy dữ liệu doanh thu hóa đơn đã ở trạng thái hoàn thành theo ngày
+            //var orders = _context.Orders
+            //    .Where(o => o.TransactStatus.Status == "Hoàn thành" && o.AppDate != null && o.TotalMoney != null) // Lọc những hóa đơn có ngày hẹn, tổng tiền không null và ở trạng thái hoàn thành
+            //    .GroupBy(o => o.AppDate.Value.Date) // Nhóm theo ngày
+            //    .Select(g => new {
+            //        Date = g.Key,
+            //        TotalRevenue = g.Sum(o => o.TotalMoney)
+            //    })
+            //    .ToList();
+
+            //// Tạo mảng chứa ngày và doanh thu tương ứng
+            //var dates = orders.Select(o => o.Date.ToString("yyyy-MM-dd")).ToArray();
+            //var revenues = orders.Select(o => o.TotalRevenue).ToArray();
+
+            //// Gửi dữ liệu đến view thông qua ViewBag
+            //ViewBag.Dates = dates;
+            //ViewBag.Revenues = revenues;
 
 
             return View();

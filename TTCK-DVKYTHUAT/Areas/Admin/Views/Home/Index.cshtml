@@ -76,7 +76,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Biểu đồ doanh thu hóa đơn theo ngày</h5>
+                        <h5>Biểu đồ doanh thu hóa đơn theo tuần</h5>
                     </div>
                     <div class="card-block">
                         <canvas id="revenueChart" width="400" height="200"></canvas>
@@ -371,6 +371,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script>
         var ctx = document.getElementById('revenueChart').getContext('2d');
+
+        // Lấy dữ liệu từ ViewBag
+        var weeks = @Html.Raw(Json.Serialize(ViewBag.Weeks));
+        var revenues = @Html.Raw(Json.Serialize(ViewBag.Revenues));
+
+        // Tạo mảng chứa ngày đầu tiên và ngày cuối cùng của mỗi tuần
+        var weekRanges = weeks.map(function (week) {
+            var weekParts = week.split(" - ");
+            var year = parseInt(weekParts[1]);
+            var weekNumber = parseInt(weekParts[0].replace("Tuần ", ""));
+            var startDate = new Date(year, 0, (weekNumber - 1) * 7 + 1); // Ngày đầu tiên của tuần
+            var endDate = new Date(year, 0, (weekNumber - 1) * 7 + 7); // Ngày cuối cùng của tuần
+            return startDate.toLocaleDateString() + ' - ' + endDate.toLocaleDateString();
+        });
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: weekRanges, // Sử dụng mảng chứa ngày đầu tiên và ngày cuối cùng của mỗi tuần
+                datasets: [{
+                    label: 'Doanh Thu Hóa Đơn Theo Tuần',
+                    data: revenues,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
+@* @section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('revenueChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -392,4 +436,4 @@
             }
         });
     </script>
-}
+} *@
